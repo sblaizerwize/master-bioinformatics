@@ -1,0 +1,173 @@
+juil.-18 14:49:17.953 [main] DEBUG nextflow.cli.Launcher - $> nextflow run 'https://github.com/sblaizerwize/nextflow-for-rnaseq-training' -r rnaseq-multiple-samples-workflow -latest -profile batch --reads 's3://nextflow-for-rnaseq/data/single-end.csv' --transcriptome 's3://nextflow-for-rnaseq/data/aligned/genome_index.tar.gz' --outdir 's3://nextflow-for-rnaseq/results'
+juil.-18 14:49:18.115 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+juil.-18 14:49:18.651 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/Users/smarquez/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+juil.-18 14:49:18.800 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+juil.-18 14:49:18.805 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+juil.-18 14:49:18.851 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+juil.-18 14:49:18.904 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+juil.-18 14:49:18.960 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /Users/smarquez/.nextflow/scm
+juil.-18 14:49:19.083 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+juil.-18 14:49:19.104 [main] DEBUG nextflow.scm.RepositoryFactory - Git url=nextflow.scm.GitUrl(https, null, github.com, sblaizerwize/nextflow-for-rnaseq-training) -> config=ProviderConfig[name: github, platform: github, server: https://github.com]
+juil.-18 14:49:19.105 [main] DEBUG nextflow.scm.AssetManager - Repository URL: https://github.com/sblaizerwize/nextflow-for-rnaseq-training; Project: sblaizerwize/nextflow-for-rnaseq-training; Hub provider: github
+juil.-18 14:49:19.881 [main] DEBUG nextflow.scm.AssetManager - Git config: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/.git/config; branch: null; remote: origin; url: https://github.com/sblaizerwize/nextflow-for-rnaseq-training.git
+juil.-18 14:49:19.897 [main] INFO  nextflow.cli.CmdRun - Pulling sblaizerwize/nextflow-for-rnaseq-training ...
+juil.-18 14:49:19.899 [main] DEBUG nextflow.scm.AssetManager - Pull pipeline sblaizerwize/nextflow-for-rnaseq-training  -- Using local path: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training
+juil.-18 14:49:23.771 [main] INFO  nextflow.cli.CmdRun -  checked out at d69de14d80182331b9b22af0abc4c3d92d85a8d2
+juil.-18 14:49:23.793 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/nextflow.config
+juil.-18 14:49:23.794 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Volumes/DataWinBackup/NEXTFLOW/nextflow-for-rnaseq-training-rnaseq-multiple-samples-workflow/nextflow.config
+juil.-18 14:49:23.797 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/nextflow.config
+juil.-18 14:49:23.798 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Volumes/DataWinBackup/NEXTFLOW/nextflow-for-rnaseq-training-rnaseq-multiple-samples-workflow/nextflow.config
+juil.-18 14:49:23.815 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /Users/smarquez/.nextflow/secrets/store.json
+juil.-18 14:49:23.817 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@3a3f96ab] - activable => nextflow.secret.LocalSecretsProvider@3a3f96ab
+juil.-18 14:49:23.838 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `batch`
+juil.-18 14:49:23.900 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `batch`
+juil.-18 14:49:23.953 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [batch, docker]
+juil.-18 14:49:23.991 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+juil.-18 14:49:23.992 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/sblaizerwize/nextflow-for-rnaseq-training` [marvelous_montalcini] DSL2 - revision: d69de14d80 [rnaseq-multiple-samples-workflow]
+juil.-18 14:49:23.995 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[nf-amazon@2.15.0]
+juil.-18 14:49:23.995 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-amazon@2.15.0]
+juil.-18 14:49:23.997 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-amazon version: 2.15.0
+juil.-18 14:49:24.038 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-amazon@2.15.0' resolved
+juil.-18 14:49:24.038 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-amazon@2.15.0'
+juil.-18 14:49:24.156 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-amazon@2.15.0
+juil.-18 14:49:24.181 [main] DEBUG nextflow.file.FileHelper - > Added 'S3FileSystemProvider' to list of installed providers [s3]
+juil.-18 14:49:24.263 [main] DEBUG nextflow.Session - Session UUID: 1c8f7e4a-a994-4b35-936c-f511c38a088e
+juil.-18 14:49:24.263 [main] DEBUG nextflow.Session - Run name: marvelous_montalcini
+juil.-18 14:49:24.263 [main] DEBUG nextflow.Session - Executor pool size: 4
+juil.-18 14:49:24.296 [main] DEBUG nextflow.file.FileHelper - Creating a file system instance for provider: S3FileSystemProvider
+juil.-18 14:49:24.314 [main] DEBUG nextflow.cloud.aws.config.AwsConfig - AWS S3 config properties: {max_error_retry=5}
+juil.-18 14:49:24.707 [main] DEBUG nextflow.cloud.aws.AwsClientFactory - Merging AWS credentials file '/Users/smarquez/.aws/credentials' and config file '/Users/smarquez/.aws/config'
+juil.-18 14:49:25.126 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+juil.-18 14:49:25.132 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+juil.-18 14:49:25.277 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (13:27 CEST)
+  System: Mac OS X 13.7.3
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 84600@MacBook-Pro.local [127.0.0.1]
+  CPUs: 4 - Mem: 16 GB (38.5 MB) - Swap: 7 GB (696.2 MB)
+juil.-18 14:49:25.926 [main] DEBUG nextflow.Session - Work-dir: s3://nextflow-for-rnaseq/test_env [Mac OS X]
+juil.-18 14:49:25.927 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/bin
+juil.-18 14:49:25.970 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[AwsBatchExecutor]
+juil.-18 14:49:25.987 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+juil.-18 14:49:25.994 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+juil.-18 14:49:26.046 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+juil.-18 14:49:26.059 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
+juil.-18 14:49:26.175 [main] DEBUG nextflow.Session - Session start
+juil.-18 14:49:26.443 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+juil.-18 14:49:26.744 [main] INFO  nextflow.Nextflow -         R N A S E Q - N F   P I P E L I N E
+        ===================================
+        transcriptome: s3://nextflow-for-rnaseq/data/aligned/genome_index.tar.gz
+        reads        : s3://nextflow-for-rnaseq/data/single-end.csv
+        outdir       : s3://nextflow-for-rnaseq/results
+    
+juil.-18 14:49:26.921 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: awsbatch
+juil.-18 14:49:26.921 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'awsbatch'
+juil.-18 14:49:26.925 [main] DEBUG nextflow.executor.Executor - [warm up] executor > awsbatch
+juil.-18 14:49:26.937 [main] DEBUG nextflow.util.ThrottlingExecutor - Creating throttling executor with opts: nextflow.util.ThrottlingExecutor$Options(poolName:AWSBatch-executor, limiter:RateLimiter[stableRate=50.0qps], poolSize:20, maxPoolSize:20, queueSize:5000, maxRetries:10, keepAlive:1m, autoThrottle:true, errorBurstDelay:1s, rampUpInterval:100, rampUpFactor:1.2, rampUpMaxRate:1.7976931348623157E308, backOffFactor:2.0, backOffMinRate:0.0166666667, retryDelay:1s)
+juil.-18 14:49:26.942 [main] DEBUG nextflow.util.ThrottlingExecutor - Creating throttling executor with opts: nextflow.util.ThrottlingExecutor$Options(poolName:AWSBatch-reaper, limiter:RateLimiter[stableRate=50.0qps], poolSize:20, maxPoolSize:20, queueSize:5000, maxRetries:10, keepAlive:1m, autoThrottle:true, errorBurstDelay:1s, rampUpInterval:100, rampUpFactor:1.2, rampUpMaxRate:1.7976931348623157E308, backOffFactor:2.0, backOffMinRate:0.0166666667, retryDelay:1s)
+juil.-18 14:49:26.956 [main] DEBUG n.cloud.aws.batch.AwsBatchExecutor - Creating parallel monitor for executor 'awsbatch' > pollInterval=10s; dumpInterval=5m
+juil.-18 14:49:26.965 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: awsbatch)
+juil.-18 14:49:26.970 [main] DEBUG nextflow.cloud.aws.AwsClientFactory - Merging AWS credentials file '/Users/smarquez/.aws/credentials' and config file '/Users/smarquez/.aws/config'
+juil.-18 14:49:27.016 [main] DEBUG n.cloud.aws.batch.AwsBatchExecutor - [AWS BATCH] Executor options=AwsOptions(remoteBinDir:null, fetchInstanceType:false, region:eu-west-1, jobRole:null, logsGroup:null, retryMode:standard, shareIdentifier:null, schedulingPriority:0, cliPath:/home/ec2-user/miniconda/bin/aws, volumes:[], maxParallelTransfers:4, maxTransferAttempts:5, maxSpotAttempts:null, delayBetweenAttempts:10s, storageClass:null, storageEncryption:null, storageKmsKeyId:null, s3Acl:null, debug:null, requesterPays:null, awsCli:/home/ec2-user/miniconda/bin/aws --region eu-west-1, fargateMode:false, s5cmdPath:null, executionRole:null)
+juil.-18 14:49:27.046 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FASTQC': maxForks=0; fair=false; array=0
+juil.-18 14:49:27.090 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE` matches process TRIM_GALORE
+juil.-18 14:49:27.093 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: awsbatch
+juil.-18 14:49:27.093 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'awsbatch'
+juil.-18 14:49:27.094 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE': maxForks=0; fair=false; array=0
+juil.-18 14:49:27.108 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: awsbatch
+juil.-18 14:49:27.109 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'awsbatch'
+juil.-18 14:49:27.110 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'HISAT2_ALIGN': maxForks=0; fair=false; array=0
+juil.-18 14:49:27.136 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: awsbatch
+juil.-18 14:49:27.137 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'awsbatch'
+juil.-18 14:49:27.137 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MULTIQC': maxForks=0; fair=false; array=0
+juil.-18 14:49:27.142 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FASTQC, TRIM_GALORE, HISAT2_ALIGN, MULTIQC
+juil.-18 14:49:27.145 [main] DEBUG nextflow.Session - Igniting dataflow network (5)
+juil.-18 14:49:27.152 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTQC
+juil.-18 14:49:27.152 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE
+juil.-18 14:49:27.152 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HISAT2_ALIGN
+juil.-18 14:49:27.152 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC
+juil.-18 14:49:27.157 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_f545c13798137f67: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/modules/multiqc.nf
+  Script_47bdd4798e236024: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/modules/fastqc.nf
+  Script_d9af634f38c04de5: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/main.nf
+  Script_4c9144cf7dd40d1c: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/modules/trim_galore.nf
+  Script_13bc628137210ef8: /Users/smarquez/.nextflow/assets/sblaizerwize/nextflow-for-rnaseq-training/modules/hisat2_align.nf
+juil.-18 14:49:27.157 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+juil.-18 14:49:27.157 [main] DEBUG nextflow.Session - Session await
+juil.-18 14:49:28.682 [AWSBatch-executor-5] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] [AWS BATCH] Found job definition name=nf-community-wave-seqera-io-library-trim-galore-0-6-10--1bf8ca4e1967cd18:1; container=community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18
+juil.-18 14:49:28.843 [AWSBatch-executor-4] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `FASTQC (1)` submitted > job=852be3f9-727b-4150-b609-873497f229d1; work-dir=s3://nextflow-for-rnaseq/test_env/37/c283feabe4c3c50b789bb22b9fd0c0
+juil.-18 14:49:28.843 [AWSBatch-executor-4] INFO  nextflow.Session - [37/c283fe] Submitted process > FASTQC (1)
+juil.-18 14:49:28.936 [AWSBatch-executor-1] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `FASTQC (3)` submitted > job=ab9c7355-92d8-46ac-96f3-713bb2b531b9; work-dir=s3://nextflow-for-rnaseq/test_env/bf/66f94ffcc0efda78cd9cbe817623ac
+juil.-18 14:49:28.936 [AWSBatch-executor-1] INFO  nextflow.Session - [bf/66f94f] Submitted process > FASTQC (3)
+juil.-18 14:49:28.939 [AWSBatch-executor-10] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `FASTQC (6)` submitted > job=7f4ca59d-69fd-4a60-b2f0-dde1225514ae; work-dir=s3://nextflow-for-rnaseq/test_env/a9/f27a7d63052e5348846c673be4e845
+juil.-18 14:49:28.939 [AWSBatch-executor-10] INFO  nextflow.Session - [a9/f27a7d] Submitted process > FASTQC (6)
+juil.-18 14:49:28.941 [AWSBatch-executor-12] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `TRIM_GALORE (6)` submitted > job=1e0c0749-b721-4692-9233-a8536822639d; work-dir=s3://nextflow-for-rnaseq/test_env/7e/965c206bba38ee317809fabe38abc3
+juil.-18 14:49:28.942 [AWSBatch-executor-12] INFO  nextflow.Session - [7e/965c20] Submitted process > TRIM_GALORE (6)
+juil.-18 14:49:28.946 [AWSBatch-executor-11] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `TRIM_GALORE (5)` submitted > job=1e21436f-8668-401c-a7d2-5b312a611907; work-dir=s3://nextflow-for-rnaseq/test_env/02/0ef694fd7cf15635ac80c8b81fc528
+juil.-18 14:49:28.947 [AWSBatch-executor-11] INFO  nextflow.Session - [02/0ef694] Submitted process > TRIM_GALORE (5)
+juil.-18 14:49:28.949 [AWSBatch-executor-7] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `TRIM_GALORE (2)` submitted > job=07c93e5f-03d5-4f87-8d01-e316ead1fefe; work-dir=s3://nextflow-for-rnaseq/test_env/48/6dc7ea48af3f360c1e6b3a75fa1a22
+juil.-18 14:49:28.950 [AWSBatch-executor-7] INFO  nextflow.Session - [48/6dc7ea] Submitted process > TRIM_GALORE (2)
+juil.-18 14:49:28.950 [AWSBatch-executor-3] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `FASTQC (4)` submitted > job=f82a985d-ae2e-483d-a572-703d3fdb0cf2; work-dir=s3://nextflow-for-rnaseq/test_env/3e/8f2b719afc954ba6d0fc8883678fe1
+juil.-18 14:49:28.950 [AWSBatch-executor-8] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `TRIM_GALORE (3)` submitted > job=a5896190-a9ae-44a9-8701-6f4920d12670; work-dir=s3://nextflow-for-rnaseq/test_env/4d/bcf81197a2b5543660f3fde11d8c96
+juil.-18 14:49:28.951 [AWSBatch-executor-8] INFO  nextflow.Session - [4d/bcf811] Submitted process > TRIM_GALORE (3)
+juil.-18 14:49:28.951 [AWSBatch-executor-3] INFO  nextflow.Session - [3e/8f2b71] Submitted process > FASTQC (4)
+juil.-18 14:49:28.955 [AWSBatch-executor-2] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `FASTQC (2)` submitted > job=75ab056a-dffc-4913-928b-12884b53f6ef; work-dir=s3://nextflow-for-rnaseq/test_env/55/196e7c30b9212fc76e1510438b16a8
+juil.-18 14:49:28.955 [AWSBatch-executor-2] INFO  nextflow.Session - [55/196e7c] Submitted process > FASTQC (2)
+juil.-18 14:49:28.956 [AWSBatch-executor-5] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `TRIM_GALORE (1)` submitted > job=b95e64f8-13ac-4807-841a-88a85a0ee607; work-dir=s3://nextflow-for-rnaseq/test_env/40/97e9bf1fc4ea2cb8ebf53b604743ea
+juil.-18 14:49:28.956 [AWSBatch-executor-5] INFO  nextflow.Session - [40/97e9bf] Submitted process > TRIM_GALORE (1)
+juil.-18 14:49:28.960 [AWSBatch-executor-6] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `TRIM_GALORE (4)` submitted > job=7e82694d-a4fb-4f6b-8e37-eec2cca84153; work-dir=s3://nextflow-for-rnaseq/test_env/cb/c091b8d65160b2618efae4ccb0dbde
+juil.-18 14:49:28.961 [AWSBatch-executor-6] INFO  nextflow.Session - [cb/c091b8] Submitted process > TRIM_GALORE (4)
+juil.-18 14:49:29.066 [AWSBatch-executor-9] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `FASTQC (5)` submitted > job=80799ae0-bddd-449a-8b78-f373a8d5ff83; work-dir=s3://nextflow-for-rnaseq/test_env/1a/e6f52bf239a56dc78a74265d85364c
+juil.-18 14:49:29.067 [AWSBatch-executor-9] INFO  nextflow.Session - [1a/e6f52b] Submitted process > FASTQC (5)
+juil.-18 14:53:27.536 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: FASTQC (1); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/37/c283feabe4c3c50b789bb22b9fd0c0]
+juil.-18 14:53:27.541 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+juil.-18 14:53:27.652 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: FASTQC (3); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/bf/66f94ffcc0efda78cd9cbe817623ac]
+juil.-18 14:53:27.762 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 11; name: FASTQC (6); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/a9/f27a7d63052e5348846c673be4e845]
+juil.-18 14:53:27.832 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 12; name: TRIM_GALORE (6); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/7e/965c206bba38ee317809fabe38abc3]
+juil.-18 14:53:27.904 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: TRIM_GALORE (5); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/02/0ef694fd7cf15635ac80c8b81fc528]
+juil.-18 14:53:27.977 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: TRIM_GALORE (2); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/48/6dc7ea48af3f360c1e6b3a75fa1a22]
+juil.-18 14:53:28.052 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 9; name: FASTQC (4); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/3e/8f2b719afc954ba6d0fc8883678fe1]
+juil.-18 14:53:28.151 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 5; name: TRIM_GALORE (3); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/4d/bcf81197a2b5543660f3fde11d8c96]
+juil.-18 14:53:28.169 [TaskFinalizer-3] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+juil.-18 14:53:28.227 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: FASTQC (2); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/55/196e7c30b9212fc76e1510438b16a8]
+juil.-18 14:53:28.307 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: TRIM_GALORE (1); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/40/97e9bf1fc4ea2cb8ebf53b604743ea]
+juil.-18 14:53:28.398 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: TRIM_GALORE (4); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/cb/c091b8d65160b2618efae4ccb0dbde]
+juil.-18 14:53:28.480 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 10; name: FASTQC (5); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/1a/e6f52bf239a56dc78a74265d85364c]
+juil.-18 14:53:29.228 [AWSBatch-executor-37] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] [AWS BATCH] Found job definition name=nf-community-wave-seqera-io-library-hisat2_samtools-5e49f68a37dc010e:1; container=community.wave.seqera.io/library/hisat2_samtools:5e49f68a37dc010e
+juil.-18 14:53:29.341 [AWSBatch-executor-39] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `HISAT2_ALIGN (2)` submitted > job=032c8d9e-8ef0-4b03-9c1c-96bb586e3bf1; work-dir=s3://nextflow-for-rnaseq/test_env/21/a6a775757f97af0ae6e6982fd139d4
+juil.-18 14:53:29.341 [AWSBatch-executor-39] INFO  nextflow.Session - [21/a6a775] Submitted process > HISAT2_ALIGN (2)
+juil.-18 14:53:29.486 [AWSBatch-executor-37] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `HISAT2_ALIGN (1)` submitted > job=13408ce5-ad06-4729-a624-be1e9b23c0bd; work-dir=s3://nextflow-for-rnaseq/test_env/dc/bf5e2d21607f73eb720742799f88f1
+juil.-18 14:53:29.486 [AWSBatch-executor-37] INFO  nextflow.Session - [dc/bf5e2d] Submitted process > HISAT2_ALIGN (1)
+juil.-18 14:53:29.495 [AWSBatch-executor-38] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `HISAT2_ALIGN (3)` submitted > job=14a8bae6-9c95-47b2-a64b-e5333eca1404; work-dir=s3://nextflow-for-rnaseq/test_env/59/b39538a0f55d76d5483af21b203f85
+juil.-18 14:53:29.496 [AWSBatch-executor-38] INFO  nextflow.Session - [59/b39538] Submitted process > HISAT2_ALIGN (3)
+juil.-18 14:53:29.500 [AWSBatch-executor-40] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `HISAT2_ALIGN (5)` submitted > job=8ff7ba27-cb37-4ef2-89a3-260a034fe299; work-dir=s3://nextflow-for-rnaseq/test_env/36/9beadf6b9bc2ff383c1e1ff7fbab4d
+juil.-18 14:53:29.500 [AWSBatch-executor-40] INFO  nextflow.Session - [36/9beadf] Submitted process > HISAT2_ALIGN (5)
+juil.-18 14:53:29.605 [AWSBatch-executor-41] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `HISAT2_ALIGN (4)` submitted > job=34003e1f-c98e-4d88-8988-ada9ce400133; work-dir=s3://nextflow-for-rnaseq/test_env/76/4c0fffc0a0f33761fca9831a9a9d32
+juil.-18 14:53:29.605 [AWSBatch-executor-41] INFO  nextflow.Session - [76/4c0fff] Submitted process > HISAT2_ALIGN (4)
+juil.-18 14:53:29.639 [AWSBatch-executor-42] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `HISAT2_ALIGN (6)` submitted > job=9a0fa1ec-e601-4b90-941b-1f3fba97922e; work-dir=s3://nextflow-for-rnaseq/test_env/09/bd316d1cfe105412d156b1c4b31322
+juil.-18 14:53:29.639 [AWSBatch-executor-42] INFO  nextflow.Session - [09/bd316d] Submitted process > HISAT2_ALIGN (6)
+juil.-18 14:53:57.491 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 14; name: HISAT2_ALIGN (2); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/21/a6a775757f97af0ae6e6982fd139d4]
+juil.-18 14:53:57.561 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 13; name: HISAT2_ALIGN (1); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/dc/bf5e2d21607f73eb720742799f88f1]
+juil.-18 14:53:57.767 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: HISAT2_ALIGN (3); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/59/b39538a0f55d76d5483af21b203f85]
+juil.-18 14:53:57.836 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 17; name: HISAT2_ALIGN (5); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/36/9beadf6b9bc2ff383c1e1ff7fbab4d]
+juil.-18 14:53:57.905 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: HISAT2_ALIGN (4); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/76/4c0fffc0a0f33761fca9831a9a9d32]
+juil.-18 14:53:57.973 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: HISAT2_ALIGN (6); status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/09/bd316d1cfe105412d156b1c4b31322]
+juil.-18 14:54:01.559 [AWSBatch-executor-46] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] [AWS BATCH] Found job definition name=nf-community-wave-seqera-io-library-pip_multiqc-ad8f247edb55897c:1; container=community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c
+juil.-18 14:54:01.696 [AWSBatch-executor-46] DEBUG n.c.aws.batch.AwsBatchTaskHandler - [AWS BATCH] Process `MULTIQC` submitted > job=91fe9fee-84a5-4373-9f02-670fc6f59021; work-dir=s3://nextflow-for-rnaseq/test_env/1a/c9a98ed6df55bb353aa70f35e259a9
+juil.-18 14:54:01.698 [AWSBatch-executor-46] INFO  nextflow.Session - [1a/c9a98e] Submitted process > MULTIQC
+juil.-18 14:54:37.175 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor awsbatch > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 19; name: MULTIQC; status: SUBMITTED; exit: -; error: -; workDir: s3://nextflow-for-rnaseq/test_env/1a/c9a98ed6df55bb353aa70f35e259a9]
+juil.-18 14:54:57.535 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 19; name: MULTIQC; status: COMPLETED; exit: 0; error: -; workDir: s3://nextflow-for-rnaseq/test_env/1a/c9a98ed6df55bb353aa70f35e259a9]
+juil.-18 14:54:57.829 [main] DEBUG nextflow.Session - Session await > all processes finished
+juil.-18 14:55:07.184 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: awsbatch) - terminating tasks monitor poll loop
+juil.-18 14:55:07.185 [main] DEBUG nextflow.Session - Session await > all barriers passed
+juil.-18 14:55:07.191 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+juil.-18 14:55:12.124 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+juil.-18 14:55:12.140 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=19; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=3m 31s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=12; peakCpus=12; peakMemory=24 GB; ]
+juil.-18 14:55:12.426 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+juil.-18 14:55:12.459 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-amazon@2.15.0'
+juil.-18 14:55:12.459 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-amazon
+juil.-18 14:55:12.461 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+juil.-18 14:55:12.465 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
