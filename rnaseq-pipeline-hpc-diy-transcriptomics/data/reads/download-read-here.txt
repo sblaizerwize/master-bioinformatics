@@ -1,0 +1,2 @@
+You can download the original reads used for this RNAseq analysis using the following link provided by Daniel Beiting for the DIY Transcriptomics course: 
+https://drive.google.com/drive/folders/1sEk1od1MJKLjqyCExYyfHc0n7DAIy_x7

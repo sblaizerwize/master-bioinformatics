@@ -1,5 +1,9 @@
-nextflow-for-rnaseq-hpc/.nextflow
-nextflow-for-rnaseq-hpc/images/
-nextflow-for-rnaseq-hpc/results/
-nextflow-for-rnaseq-hpc/work/
-nextflow-for-rnaseq-hpc/.nextflow.log
+rnaseq-pipeline-hpc/.nextflow
+rnaseq-pipeline-hpc/images/
+rnaseq-pipeline-hpc/results/
+rnaseq-pipeline-hpc/work/
+rnaseq-pipeline-hpc/.nextflow.log
+
+rnaseq-pipeline-hpc-diy-transcriptomics/data/aligned/*.tar.gz
+rnaseq-pipeline-hpc-diy-transcriptomics/data/reads/*.fastq.gz
+rnaseq-pipeline-hpc-diy-transcriptomics/results
