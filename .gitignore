@@ -6,7 +6,11 @@ rnaseq-pipeline-hpc/.nextflow.log
 
 rnaseq-pipeline-hpc-diy-transcriptomics/data/aligned/*.tar.gz
 rnaseq-pipeline-hpc-diy-transcriptomics/data/reads/*.fastq.gz
-rnaseq-pipeline-hpc-diy-transcriptomics/results
+rnaseq-pipeline-hpc-diy-transcriptomics/.nextflow
+rnaseq-pipeline-hpc-diy-transcriptomics/images/
+rnaseq-pipeline-hpc-diy-transcriptomics/results/
+rnaseq-pipeline-hpc-diy-transcriptomics/work/
+rnaseq-pipeline-hpc-diy-transcriptomics/.nextflow.log
 
 *.err
 *.out

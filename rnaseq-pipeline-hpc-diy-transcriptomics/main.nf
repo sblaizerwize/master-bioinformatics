@@ -6,16 +6,6 @@ include { TRIM_GALORE } from './modules/trim_galore.nf'
 include { HISAT2_ALIGN } from './modules/hisat2_align.nf'
 include { MULTIQC } from './modules/multiqc.nf'
 
-/*
- * Pipeline parameters
- */
-
-// Primary input
-params.reads = "$baseDir/data/single-end.csv"
-params.transcriptome = "$baseDir/data/aligned/genome_index.tar.gz"
-params.outdir = "results"
-params.report_id = "all_single-end"
-
 workflow {
     log.info """\
         R N A S E Q - N F   P I P E L I N E

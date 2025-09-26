@@ -1,14 +1,6 @@
 sample_id,fastq_path
-SRR8668755,s3://diy-transcriptomics-rna-seq-data/data/SRR8668755.fastq.gz
-SRR8668756,s3://diy-transcriptomics-rna-seq-data/data/SRR8668756.fastq.gz
-SRR8668757,s3://diy-transcriptomics-rna-seq-data/data/SRR8668757.fastq.gz
-SRR8668758,s3://diy-transcriptomics-rna-seq-data/data/SRR8668758.fastq.gz
-SRR8668759,s3://diy-transcriptomics-rna-seq-data/data/SRR8668759.fastq.gz
-SRR8668769,s3://diy-transcriptomics-rna-seq-data/data/SRR8668769.fastq.gz
-SRR8668771,s3://diy-transcriptomics-rna-seq-data/data/SRR8668771.fastq.gz
-SRR8668772,s3://diy-transcriptomics-rna-seq-data/data/SRR8668772.fastq.gz
-SRR8668773,s3://diy-transcriptomics-rna-seq-data/data/SRR8668773.fastq.gz
-SRR8668774,s3://diy-transcriptomics-rna-seq-data/data/SRR8668774.fastq.gz
+SRR8668755_1M,data/reads/SRR8668774.fastq.gz
+
 
 
 
