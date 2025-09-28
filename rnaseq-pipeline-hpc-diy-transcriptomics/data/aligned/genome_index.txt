@@ -13,3 +13,4 @@ Briefly,
   >> ls genome_index.*
 - Store the genome index files in a single file:
   >> tar -czvf genome_index.tar.gz genome_index.*
+  This command will create a genome_index.tar.gz file with size around 1.52 GB. 
