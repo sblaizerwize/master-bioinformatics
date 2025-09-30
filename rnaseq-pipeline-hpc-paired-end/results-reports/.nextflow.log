@@ -1,0 +1,150 @@
+Sep-30 12:21:57.045 [main] DEBUG nextflow.cli.Launcher - $> nextflow run . -profile unavcluster
+Sep-30 12:21:57.258 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Sep-30 12:21:57.493 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/samarquez/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Sep-30 12:21:57.648 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-30 12:21:57.650 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-30 12:21:57.656 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Sep-30 12:21:57.737 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-30 12:21:59.271 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/nextflow.config
+Sep-30 12:21:59.277 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/nextflow.config
+Sep-30 12:21:59.338 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/samarquez/.nextflow/secrets/store.json
+Sep-30 12:21:59.345 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@44065156] - activable => nextflow.secret.LocalSecretsProvider@44065156
+Sep-30 12:21:59.361 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `unavcluster`
+Sep-30 12:21:59.554 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [unavcluster, batch, docker]
+Sep-30 12:21:59.629 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Sep-30 12:21:59.696 [main] DEBUG nextflow.cli.CmdRun - Launching `./main.nf` [modest_woese] DSL2 - revision: d7a2187160
+Sep-30 12:21:59.701 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-30 12:21:59.702 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-30 12:21:59.855 [main] DEBUG nextflow.Session - Session UUID: a1552dd2-9ed3-4914-8504-82747806adcf
+Sep-30 12:21:59.856 [main] DEBUG nextflow.Session - Run name: modest_woese
+Sep-30 12:21:59.857 [main] DEBUG nextflow.Session - Executor pool size: 8
+Sep-30 12:21:59.875 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-30 12:21:59.886 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-30 12:22:00.290 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (13:27 CEST)
+  System: Linux 4.18.0-553.22.1.el8_10.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 21.0.5+11-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 2326356@nodo04 [172.16.2.4]
+  CPUs: 8 - Mem: 16 GB (15.8 GB) - Swap: 0 (0)
+Sep-30 12:22:00.784 [main] DEBUG nextflow.Session - Work-dir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work [fhgfs]
+Sep-30 12:22:00.785 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/bin
+Sep-30 12:22:00.836 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-30 12:22:00.852 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-30 12:22:00.877 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Sep-30 12:22:00.917 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-30 12:22:00.960 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Sep-30 12:22:02.224 [main] DEBUG nextflow.Session - Session start
+Sep-30 12:22:02.236 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/results/trace.txt
+Sep-30 12:22:02.709 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-30 12:22:03.341 [main] INFO  nextflow.Nextflow -         R N A S E Q - N F   P I P E L I N E
+        ===================================
+        transcriptome: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/data/aligned/genome_index.tar.gz
+        reads        : /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/data/paired-end.csv
+        outdir       : results
+    
+Sep-30 12:22:03.655 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Sep-30 12:22:03.656 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Sep-30 12:22:03.678 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Sep-30 12:22:03.694 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Sep-30 12:22:03.698 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Sep-30 12:22:03.702 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-30 12:22:03.761 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FASTQC': maxForks=0; fair=false; array=0
+Sep-30 12:22:03.881 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Sep-30 12:22:03.884 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Sep-30 12:22:03.894 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE': maxForks=0; fair=false; array=0
+Sep-30 12:22:03.927 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Sep-30 12:22:03.935 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Sep-30 12:22:03.936 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'HISAT2_ALIGN': maxForks=0; fair=false; array=0
+Sep-30 12:22:03.999 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Sep-30 12:22:04.000 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Sep-30 12:22:04.001 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MULTIQC': maxForks=0; fair=false; array=0
+Sep-30 12:22:04.008 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FASTQC, TRIM_GALORE, HISAT2_ALIGN, MULTIQC
+Sep-30 12:22:04.063 [main] DEBUG nextflow.Session - Igniting dataflow network (5)
+Sep-30 12:22:04.102 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTQC
+Sep-30 12:22:04.118 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE
+Sep-30 12:22:04.139 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > HISAT2_ALIGN
+Sep-30 12:22:04.143 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC
+Sep-30 12:22:04.145 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_f545c13798137f67: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/modules/multiqc.nf
+  Script_7b5e377c5f4db084: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/main.nf
+  Script_75a12af624c083ce: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/modules/trim_galore.nf
+  Script_ce8c21c3161291f9: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/modules/hisat2_align.nf
+  Script_c1479d9ca4df05fb: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/modules/fastqc.nf
+Sep-30 12:22:04.235 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Sep-30 12:22:04.236 [main] DEBUG nextflow.Session - Session await
+Sep-30 12:22:04.348 [Actor Thread 16] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18; path=/beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/images/community.wave.seqera.io-library-trim-galore-0.6.10--1bf8ca4e1967cd18.img
+Sep-30 12:22:05.423 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (6) > jobId: 160870; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/bd/36882b4eb6d2068b1c4ebc97ba65ed
+Sep-30 12:22:05.484 [Task submitter] INFO  nextflow.Session - [bd/36882b] Submitted process > TRIM_GALORE (6)
+Sep-30 12:22:06.183 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (2) > jobId: 160871; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/1c/eff1cb28da20e77274a92cd92aa5c9
+Sep-30 12:22:06.193 [Task submitter] INFO  nextflow.Session - [1c/eff1cb] Submitted process > TRIM_GALORE (2)
+Sep-30 12:22:07.165 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (5) > jobId: 160872; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/56/909a605fb2a5691b2104d15e644f80
+Sep-30 12:22:07.166 [Task submitter] INFO  nextflow.Session - [56/909a60] Submitted process > TRIM_GALORE (5)
+Sep-30 12:22:07.789 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (1) > jobId: 160873; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/2e/af2f79640ad60203a16dc2ad835baa
+Sep-30 12:22:07.791 [Task submitter] INFO  nextflow.Session - [2e/af2f79] Submitted process > TRIM_GALORE (1)
+Sep-30 12:22:08.319 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (5) > jobId: 160874; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/0d/ab3de698a9b40923ab5948522d3b5b
+Sep-30 12:22:08.320 [Task submitter] INFO  nextflow.Session - [0d/ab3de6] Submitted process > FASTQC (5)
+Sep-30 12:22:08.690 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (2) > jobId: 160875; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/b0/ca5a328fc0ef916ccc0c8092ab2f49
+Sep-30 12:22:08.691 [Task submitter] INFO  nextflow.Session - [b0/ca5a32] Submitted process > FASTQC (2)
+Sep-30 12:22:09.396 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (1) > jobId: 160876; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/22/55e461564c86f3202305a6ea8dbca6
+Sep-30 12:22:09.397 [Task submitter] INFO  nextflow.Session - [22/55e461] Submitted process > FASTQC (1)
+Sep-30 12:22:09.921 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (6) > jobId: 160877; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/4b/c701e099cfb55aa5583201957edc23
+Sep-30 12:22:09.922 [Task submitter] INFO  nextflow.Session - [4b/c701e0] Submitted process > FASTQC (6)
+Sep-30 12:22:10.212 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (3) > jobId: 160878; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/01/e18de5e04817232927e650449415bb
+Sep-30 12:22:10.213 [Task submitter] INFO  nextflow.Session - [01/e18de5] Submitted process > FASTQC (3)
+Sep-30 12:22:10.528 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (4) > jobId: 160879; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/72/65fd5ddf88dced4d661fddf1a47c9b
+Sep-30 12:22:10.529 [Task submitter] INFO  nextflow.Session - [72/65fd5d] Submitted process > TRIM_GALORE (4)
+Sep-30 12:22:11.259 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (4) > jobId: 160880; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/5e/0e3df3f39f9f96274936f78e48733e
+Sep-30 12:22:11.260 [Task submitter] INFO  nextflow.Session - [5e/0e3df3] Submitted process > FASTQC (4)
+Sep-30 12:22:11.519 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (3) > jobId: 160881; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/d4/e92b2f7192ceb1d80e2d9cf4743046
+Sep-30 12:22:11.520 [Task submitter] INFO  nextflow.Session - [d4/e92b2f] Submitted process > TRIM_GALORE (3)
+Sep-30 12:22:23.712 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160871; id: 4; name: TRIM_GALORE (2); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/1c/eff1cb28da20e77274a92cd92aa5c9 started: 1759227728736; exited: 2025-09-30T10:22:22Z; ]
+Sep-30 12:22:23.713 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-30 12:22:23.723 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160874; id: 11; name: FASTQC (5); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/0d/ab3de698a9b40923ab5948522d3b5b started: 1759227733713; exited: 2025-09-30T10:22:23Z; ]
+Sep-30 12:22:23.725 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160875; id: 3; name: FASTQC (2); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/b0/ca5a328fc0ef916ccc0c8092ab2f49 started: 1759227733714; exited: 2025-09-30T10:22:20Z; ]
+Sep-30 12:22:23.727 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160876; id: 2; name: FASTQC (1); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/22/55e461564c86f3202305a6ea8dbca6 started: 1759227733716; exited: 2025-09-30T10:22:20Z; ]
+Sep-30 12:22:23.730 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160877; id: 12; name: FASTQC (6); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/4b/c701e099cfb55aa5583201957edc23 started: 1759227733717; exited: 2025-09-30T10:22:20Z; ]
+Sep-30 12:22:23.732 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160878; id: 6; name: FASTQC (3); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/01/e18de5e04817232927e650449415bb started: 1759227733719; exited: 2025-09-30T10:22:22Z; ]
+Sep-30 12:22:23.736 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160880; id: 10; name: FASTQC (4); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/5e/0e3df3f39f9f96274936f78e48733e started: 1759227733722; exited: 2025-09-30T10:22:20Z; ]
+Sep-30 12:22:23.823 [TaskFinalizer-7] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Sep-30 12:22:23.825 [Actor Thread 10] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://community.wave.seqera.io/library/hisat2_samtools:5e49f68a37dc010e; path=/beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/images/community.wave.seqera.io-library-hisat2_samtools-5e49f68a37dc010e.img
+Sep-30 12:22:24.370 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (1) > jobId: 160882; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/3b/490757671cfac82a223a0f4499fce7
+Sep-30 12:22:24.371 [Task submitter] INFO  nextflow.Session - [3b/490757] Submitted process > HISAT2_ALIGN (1)
+Sep-30 12:22:28.711 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160870; id: 9; name: TRIM_GALORE (6); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/bd/36882b4eb6d2068b1c4ebc97ba65ed started: 1759227728708; exited: 2025-09-30T10:22:26Z; ]
+Sep-30 12:22:28.716 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160879; id: 7; name: TRIM_GALORE (4); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/72/65fd5ddf88dced4d661fddf1a47c9b started: 1759227733720; exited: 2025-09-30T10:22:26Z; ]
+Sep-30 12:22:29.242 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (2) > jobId: 160883; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/7f/ece99435330d2331c95bd37834fe22
+Sep-30 12:22:29.242 [Task submitter] INFO  nextflow.Session - [7f/ece994] Submitted process > HISAT2_ALIGN (2)
+Sep-30 12:22:29.862 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (3) > jobId: 160884; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/65/d21fea8dd2443de022920595def4d7
+Sep-30 12:22:29.863 [Task submitter] INFO  nextflow.Session - [65/d21fea] Submitted process > HISAT2_ALIGN (3)
+Sep-30 12:22:33.711 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160872; id: 8; name: TRIM_GALORE (5); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/56/909a605fb2a5691b2104d15e644f80 started: 1759227733708; exited: 2025-09-30T10:22:33Z; ]
+Sep-30 12:22:33.714 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160873; id: 1; name: TRIM_GALORE (1); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/2e/af2f79640ad60203a16dc2ad835baa started: 1759227733711; exited: 2025-09-30T10:22:30Z; ]
+Sep-30 12:22:34.231 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (4) > jobId: 160885; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/6e/ce4f81517a8744fd8d4c6d1c3e48f2
+Sep-30 12:22:34.232 [Task submitter] INFO  nextflow.Session - [6e/ce4f81] Submitted process > HISAT2_ALIGN (4)
+Sep-30 12:22:34.742 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (5) > jobId: 160886; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/53/2833fe5041c5091945f8a4dff92b0b
+Sep-30 12:22:34.743 [Task submitter] INFO  nextflow.Session - [53/2833fe] Submitted process > HISAT2_ALIGN (5)
+Sep-30 12:22:38.711 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160881; id: 5; name: TRIM_GALORE (3); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/d4/e92b2f7192ceb1d80e2d9cf4743046 started: 1759227743737; exited: 2025-09-30T10:22:35Z; ]
+Sep-30 12:22:38.713 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160882; id: 13; name: HISAT2_ALIGN (1); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/3b/490757671cfac82a223a0f4499fce7 started: 1759227753716; exited: 2025-09-30T10:22:35Z; ]
+Sep-30 12:22:39.159 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process HISAT2_ALIGN (6) > jobId: 160887; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/1a/2568b9eb86c518cf01607f8fe10cf7
+Sep-30 12:22:39.160 [Task submitter] INFO  nextflow.Session - [1a/2568b9] Submitted process > HISAT2_ALIGN (6)
+Sep-30 12:22:43.712 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160883; id: 14; name: HISAT2_ALIGN (2); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/7f/ece99435330d2331c95bd37834fe22 started: 1759227753717; exited: 2025-09-30T10:22:39Z; ]
+Sep-30 12:22:43.713 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160884; id: 15; name: HISAT2_ALIGN (3); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/65/d21fea8dd2443de022920595def4d7 started: 1759227753719; exited: 2025-09-30T10:22:40Z; ]
+Sep-30 12:22:48.713 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160885; id: 16; name: HISAT2_ALIGN (4); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/6e/ce4f81517a8744fd8d4c6d1c3e48f2 started: 1759227758721; exited: 2025-09-30T10:22:44Z; ]
+Sep-30 12:22:48.715 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160886; id: 17; name: HISAT2_ALIGN (5); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/53/2833fe5041c5091945f8a4dff92b0b started: 1759227758723; exited: 2025-09-30T10:22:44Z; ]
+Sep-30 12:22:48.718 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160887; id: 18; name: HISAT2_ALIGN (6); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/1a/2568b9eb86c518cf01607f8fe10cf7 started: 1759227763715; exited: 2025-09-30T10:22:46Z; ]
+Sep-30 12:22:48.764 [Actor Thread 8] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c; path=/beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img
+Sep-30 12:22:49.370 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MULTIQC > jobId: 160888; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/20/51260a5f15393916072895b8135cab
+Sep-30 12:22:49.373 [Task submitter] INFO  nextflow.Session - [20/51260a] Submitted process > MULTIQC
+Sep-30 12:23:08.715 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 160888; id: 19; name: MULTIQC; status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/work/20/51260a5f15393916072895b8135cab started: 1759227773710; exited: 2025-09-30T10:23:05Z; ]
+Sep-30 12:23:08.722 [main] DEBUG nextflow.Session - Session await > all processes finished
+Sep-30 12:23:13.712 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Sep-30 12:23:13.713 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-30 12:23:13.719 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Sep-30 12:23:13.720 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Sep-30 12:23:13.729 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=19; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=6m 39s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=12; peakCpus=24; peakMemory=48 GB; ]
+Sep-30 12:23:13.730 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Sep-30 12:23:13.732 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Sep-30 12:23:14.952 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Sep-30 12:23:15.242 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-30 12:23:15.342 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Sep-30 12:23:15.343 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
