@@ -1,0 +1,123 @@
+# Running the rnaseq-pipeline-hpc-diy-kallisto pipeline  
+
+This pipeline performs an RNA-seq analysis on skin data provided by the [DIY Transcriptomics course](https://diytranscriptomics.com/) (approximately 30 GB), which includes 10 patient samples. The goal is to use Kallisto as the pseudoaligner to generate `abundance.tsv` files for each sample. 
+
+Here is a summary of the pipeline. 
+
+```
+
+ N E X T F L O W   ~  version 25.04.6
+
+Launching `./main.nf` [mighty_lamarck] DSL2 - revision: 90d957f7cd
+
+        R N A S E Q - N F   P I P E L I N E
+        ===================================
+        transcriptome: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/data/aligned/homo-genome.idx
+        reads        : /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/data/single-end.csv
+        outdir       : results
+    
+[-        ] FASTQC        -
+[-        ] TRIM_GALORE   -
+[-        ] KALLISTO_QUAN -
+[-        ] MULTIQC       -
+
+executor >  slurm (1)
+[01/1df804] FASTQC (1)    | 0 of 1
+[-        ] TRIM_GALORE   | 0 of 1
+[-        ] KALLISTO_QUAN -
+[-        ] MULTIQC       -
+
+executor >  slurm (2)
+[01/1df804] FASTQC (1)      | 0 of 1
+[38/09141b] TRIM_GALORE (1) | 0 of 1
+[-        ] KALLISTO_QUAN   -
+[-        ] MULTIQC         -
+
+executor >  slurm (2)
+[01/1df804] FASTQC (1)      | 0 of 1
+[38/09141b] TRIM_GALORE (1) | 0 of 1
+[-        ] KALLISTO_QUAN   -
+[-        ] MULTIQC         -
+
+executor >  slurm (2)
+[01/1df804] FASTQC (1)      | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1) | 0 of 1
+[-        ] KALLISTO_QUAN   -
+[-        ] MULTIQC         -
+
+executor >  slurm (2)
+[01/1df804] FASTQC (1)      | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1) | 1 of 1 ✔
+[-        ] KALLISTO_QUAN   -
+[-        ] MULTIQC         -
+Pulling Singularity image docker://community.wave.seqera.io/library/kallisto:0.51.1--b63691b6841c7a52 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-kallisto-0.51.1--b63691b6841c7a52.img]
+
+executor >  slurm (2)
+[01/1df804] FASTQC (1)      | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1) | 1 of 1 ✔
+[-        ] KALLISTO_QUAN   | 0 of 1
+[-        ] MULTIQC         -
+Pulling Singularity image docker://community.wave.seqera.io/library/kallisto:0.51.1--b63691b6841c7a52 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-kallisto-0.51.1--b63691b6841c7a52.img]
+
+executor >  slurm (3)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 0 of 1
+[-        ] MULTIQC           -
+Pulling Singularity image docker://community.wave.seqera.io/library/kallisto:0.51.1--b63691b6841c7a52 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-kallisto-0.51.1--b63691b6841c7a52.img]
+
+executor >  slurm (3)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 0 of 1
+[-        ] MULTIQC           -
+Pulling Singularity image docker://community.wave.seqera.io/library/kallisto:0.51.1--b63691b6841c7a52 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-kallisto-0.51.1--b63691b6841c7a52.img]
+
+executor >  slurm (3)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 1 of 1 ✔
+[-        ] MULTIQC           -
+Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+
+
+executor >  slurm (3)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 1 of 1 ✔
+[-        ] MULTIQC           | 0 of 1
+Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+
+
+executor >  slurm (4)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 1 of 1 ✔
+[f5/5ccb89] MULTIQC           | 0 of 1
+Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+
+executor >  slurm (4)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 1 of 1 ✔
+[f5/5ccb89] MULTIQC           | 0 of 1
+Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+
+executor >  slurm (4)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 1 of 1 ✔
+[f5/5ccb89] MULTIQC           | 1 of 1 ✔
+Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+
+executor >  slurm (4)
+[01/1df804] FASTQC (1)        | 1 of 1 ✔
+[38/09141b] TRIM_GALORE (1)   | 1 of 1 ✔
+[59/04b245] KALLISTO_QUAN (1) | 1 of 1 ✔
+[f5/5ccb89] MULTIQC           | 1 of 1 ✔
+Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+Completed at: 01-Oct-2025 11:32:28
+Duration    : 3m
+CPU hours   : 0.3
+Succeeded   : 4
+```
