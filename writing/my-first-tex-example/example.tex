@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{geometry}
+
+% Page layout
+\geometry{margin=1in}
+\setstretch{1.15}
+
+% Title information
+\title{Title of Your Research Article}
+\author{
+    Author One\thanks{Corresponding author: author.one@email.com} \\
+    Institution One \\
+    \and
+    Author Two \\
+    Institution Two
+}
+\date{\today}
+
+\begin{document}
+
+% Title section
+\maketitle
+
+% Abstract
+\begin{abstract}
+This is a brief summary of your research article. It should concisely state the purpose, methods, key findings, and conclusions. Typically 150-250 words. The abstract should be self-contained and understandable without reference to the main text.
+\end{abstract}
+
+% \keywords{keyword one, keyword two, keyword three}
+
+% Main content
+\section{Introduction}
+\label{sec:introduction}
+
+Start your introduction here. Provide context and background for your research. State the research problem clearly. 
+
+%Cite previous work using \citet{smith2020} for textual citations or \citep{jones2021} for parenthetical citations.
+
+The introduction should end with a clear statement of your research objectives or hypotheses.
+
+\section{Literature Review}
+\label{sec:literature}
+
+Review relevant literature in your field. Discuss key theories, previous findings, and identify research gaps.
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Data Collection}
+Describe your data sources and collection methods.
+
+\subsection{Analytical Methods}
+Explain your analytical approach. You can include equations:
+
+\begin{equation}
+\label{eq:example}
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon
+\end{equation}
+
+\section{Results}
+\label{sec:results}
+
+Present your findings. Use tables and figures to illustrate key results.
+
+\begin{table}[htbp]
+\centering
+\caption{Descriptive Statistics}
+\label{tab:descriptives}
+\begin{tabular}{lcccc}
+\toprule
+Variable & Mean & SD & Min & Max \\
+\midrule
+Variable 1 & 10.5 & 2.3 & 5.0 & 15.0 \\
+Variable 2 & 25.1 & 5.7 & 12.0 & 40.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{example-image}
+\caption{Example figure showing important results}
+\label{fig:results}
+\end{figure}
+
+\section{Discussion}
+\label{sec:discussion}
+
+Interpret your results in the context of existing literature. Discuss implications, limitations, and unexpected findings.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize your main findings and their significance. Suggest directions for future research.
+
+% References
+%\bibliographystyle{apa}
+%\bibliography{references}
+
+% Appendices (optional)
+\appendix
+\section{Supplementary Materials}
+\label{app:supplementary}
+
+Additional materials like questionnaires, code snippets, or extended results.
+
+\end{document}
