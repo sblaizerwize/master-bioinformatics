@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+
+\bibitem{vogelsteinCancerGenomeLandscapes2013}
+Bert Vogelstein, Nickolas Papadopoulos, Victor~E. Velculescu, Shibin Zhou, Luis~A. Diaz, and Kenneth~W. Kinzler.
+\newblock Cancer genome landscapes.
+\newblock {\em Science (New York, N.Y.)}, 339(6127):1546--1558, March 2013.
+
+\bibitem{marxIdentificationDifferentiallyExpressed2024}
+Olivia~M. Marx, Marc~M. Mankarious, Walter~A. Koltun, and Gregory~S. Yochum.
+\newblock Identification of differentially expressed genes and splicing events in early-onset colorectal cancer.
+\newblock {\em Frontiers in Oncology}, 14, April 2024.
+
+\bibitem{nunesPrognosticGenomeTranscriptome2024}
+Lu{\'i}s Nunes, Fuqiang Li, Meizhen Wu, Tian Luo, Klara Hammarstr{\"o}m, Emma Torell, Ingrid Ljuslinder, Artur Mezheyeuski, Per-Henrik Edqvist, Anna {L{\"o}fgren-Burstr{\"o}m}, Carl Zingmark, Sofia Edin, Chatarina Larsson, Lucy Mathot, Erik Osterman, Emerik Osterlund, Viktor Ljungstr{\"o}m, In{\^e}s Neves, Nicole Yacoub, Unnur Gudnad{\'o}ttir, Helgi Birgisson, Malin Enblad, Fredrik Ponten, Richard Palmqvist, Xun Xu, Mathias Uhl{\'e}n, Kui Wu, Bengt Glimelius, Cong Lin, and Tobias Sj{\"o}blom.
+\newblock Prognostic genome and transcriptome signatures in colorectal cancers.
+\newblock {\em Nature}, 633(8028):137--146, September 2024.
+
+\bibitem{vaziri-moghadamIntegratingMachineLearning2024}
+Ayoub {Vaziri-Moghadam} and Mohammad-Hadi {Foroughmand-Araabi}.
+\newblock Integrating machine learning and bioinformatics approaches for identifying novel diagnostic gene biomarkers in colorectal cancer.
+\newblock {\em Scientific Reports}, 14(1):24786, October 2024.
+
+\bibitem{cornishGenomicLandscape20232024a}
+Alex~J. Cornish, Andreas~J. Gruber, Ben Kinnersley, Daniel Chubb, Anna Frangou, Giulio Caravagna, Boris Noyvert, Eszter Lakatos, Henry~M. Wood, Steve Thorn, Richard Culliford, Claudia {Arnedo-Pac}, Jacob Househam, William Cross, Amit Sud, Philip Law, Maire~Ni Leathlobhair, Aliah Hawari, Connor Woolley, Kitty Sherwood, Nathalie Feeley, G{\"u}ler G{\"u}l, Juan {Fernandez-Tajes}, Luis Zapata, Ludmil~B. Alexandrov, Nirupa Murugaesu, Alona Sosinsky, Jonathan Mitchell, Nuria {Lopez-Bigas}, Philip Quirke, David~N. Church, Ian P.~M. Tomlinson, Andrea Sottoriva, Trevor~A. Graham, David~C. Wedge, and Richard~S. Houlston.
+\newblock The genomic landscape of 2,023 colorectal cancers.
+\newblock {\em Nature}, 633(8028):127--136, September 2024.
+
+\bibitem{penicRiNALMoGeneralpurposeRNA2025}
+Rafael~Josip Peni{\'c}, Tin Vla{\v s}i{\'c}, Roland~G. Huber, Yue Wan, and Mile {\v S}iki{\'c}.
+\newblock {{RiNALMo}}: General-purpose {{RNA}} language models can generalize well on structure prediction tasks.
+\newblock {\em Nature Communications}, 16(1):5671, July 2025.
+
+\end{thebibliography}
