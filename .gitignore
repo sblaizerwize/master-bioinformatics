@@ -18,5 +18,13 @@ rnaseq-pipeline-hpc-diy-transcriptomics/results/
 rnaseq-pipeline-hpc-diy-transcriptomics/work/
 rnaseq-pipeline-hpc-diy-transcriptomics/.nextflow.log
 
+rnaseq-pipeline-hpc-diy-kallisto/data/aligned/*.idx
+rnaseq-pipeline-hpc-diy-kallisto/data/reads/*.fastq.gz
+rnaseq-pipeline-hpc-diy-kallisto/.nextflow
+rnaseq-pipeline-hpc-diy-kallisto/images/
+rnaseq-pipeline-hpc-diy-kallisto/results/
+rnaseq-pipeline-hpc-diy-kallisto/work/
+rnaseq-pipeline-hpc-diy-kallisto/.nextflow.log
+
 *.err
 *.out
