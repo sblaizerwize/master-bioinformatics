@@ -1,0 +1,109 @@
+Oct-01 11:29:25.740 [main] DEBUG nextflow.cli.Launcher - $> nextflow run . -profile unavcluster
+Oct-01 11:29:25.891 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Oct-01 11:29:25.981 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/samarquez/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Oct-01 11:29:26.064 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Oct-01 11:29:26.066 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Oct-01 11:29:26.070 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Oct-01 11:29:26.095 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Oct-01 11:29:26.886 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/nextflow.config
+Oct-01 11:29:26.888 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/nextflow.config
+Oct-01 11:29:26.916 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/samarquez/.nextflow/secrets/store.json
+Oct-01 11:29:26.920 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@78b612c6] - activable => nextflow.secret.LocalSecretsProvider@78b612c6
+Oct-01 11:29:26.926 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `unavcluster`
+Oct-01 11:29:27.002 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [unavcluster, batch, docker]
+Oct-01 11:29:27.028 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Oct-01 11:29:27.050 [main] DEBUG nextflow.cli.CmdRun - Launching `./main.nf` [mighty_lamarck] DSL2 - revision: 90d957f7cd
+Oct-01 11:29:27.052 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Oct-01 11:29:27.052 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Oct-01 11:29:27.121 [main] DEBUG nextflow.Session - Session UUID: 09c858db-1905-4268-b9f8-08cf7f0e24dc
+Oct-01 11:29:27.121 [main] DEBUG nextflow.Session - Run name: mighty_lamarck
+Oct-01 11:29:27.122 [main] DEBUG nextflow.Session - Executor pool size: 8
+Oct-01 11:29:27.133 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Oct-01 11:29:27.139 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Oct-01 11:29:27.236 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (13:27 CEST)
+  System: Linux 4.18.0-553.22.1.el8_10.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 21.0.5+11-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 3984997@nodo12 [172.16.2.12]
+  CPUs: 8 - Mem: 16 GB (15.8 GB) - Swap: 0 (0)
+Oct-01 11:29:27.349 [main] DEBUG nextflow.Session - Work-dir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work [fhgfs]
+Oct-01 11:29:27.350 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/bin
+Oct-01 11:29:27.367 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Oct-01 11:29:27.379 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Oct-01 11:29:27.394 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Oct-01 11:29:27.418 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Oct-01 11:29:27.436 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Oct-01 11:29:27.972 [main] DEBUG nextflow.Session - Session start
+Oct-01 11:29:27.980 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/results/trace.txt
+Oct-01 11:29:28.218 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Oct-01 11:29:28.495 [main] INFO  nextflow.Nextflow -         R N A S E Q - N F   P I P E L I N E
+        ===================================
+        transcriptome: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/data/aligned/homo-genome.idx
+        reads        : /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/data/single-end.csv
+        outdir       : results
+    
+Oct-01 11:29:28.687 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Oct-01 11:29:28.688 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Oct-01 11:29:28.703 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Oct-01 11:29:28.716 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Oct-01 11:29:28.719 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Oct-01 11:29:28.722 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Oct-01 11:29:28.762 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'FASTQC': maxForks=0; fair=false; array=0
+Oct-01 11:29:28.803 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:TRIM_GALORE` matches process TRIM_GALORE
+Oct-01 11:29:28.806 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Oct-01 11:29:28.807 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Oct-01 11:29:28.808 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'TRIM_GALORE': maxForks=0; fair=false; array=0
+Oct-01 11:29:28.819 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:KALLISTO_QUAN` matches process KALLISTO_QUAN
+Oct-01 11:29:28.820 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Oct-01 11:29:28.821 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Oct-01 11:29:28.822 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'KALLISTO_QUAN': maxForks=0; fair=false; array=0
+Oct-01 11:29:28.843 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Oct-01 11:29:28.844 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Oct-01 11:29:28.845 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'MULTIQC': maxForks=0; fair=false; array=0
+Oct-01 11:29:28.848 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FASTQC, TRIM_GALORE, KALLISTO_QUAN, MULTIQC
+Oct-01 11:29:28.866 [main] DEBUG nextflow.Session - Igniting dataflow network (5)
+Oct-01 11:29:28.874 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > FASTQC
+Oct-01 11:29:28.875 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_GALORE
+Oct-01 11:29:28.875 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > KALLISTO_QUAN
+Oct-01 11:29:28.876 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MULTIQC
+Oct-01 11:29:28.876 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_f545c13798137f67: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/modules/multiqc.nf
+  Script_ba66246a9ac7b690: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/modules/kallisto_quan.nf
+  Script_47bdd4798e236024: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/modules/fastqc.nf
+  Script_b6e09e14b3d981fc: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/modules/trim_galore.nf
+  Script_350c1d94bc87598c: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/main.nf
+Oct-01 11:29:28.877 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Oct-01 11:29:28.877 [main] DEBUG nextflow.Session - Session await
+Oct-01 11:29:28.995 [Actor Thread 9] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18; path=/beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-trim-galore-0.6.10--1bf8ca4e1967cd18.img
+Oct-01 11:29:29.259 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process FASTQC (1) > jobId: 161406; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/01/1df804d8f1517e5ae8944834a43fe4
+Oct-01 11:29:29.260 [Task submitter] INFO  nextflow.Session - [01/1df804] Submitted process > FASTQC (1)
+Oct-01 11:29:29.552 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_GALORE (1) > jobId: 161407; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/38/09141b967f6e1c7014cc09bf80a55f
+Oct-01 11:29:29.553 [Task submitter] INFO  nextflow.Session - [38/09141b] Submitted process > TRIM_GALORE (1)
+Oct-01 11:30:13.731 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 161406; id: 2; name: FASTQC (1); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/01/1df804d8f1517e5ae8944834a43fe4 started: 1759310973726; exited: 2025-10-01T09:30:12Z; ]
+Oct-01 11:30:13.732 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Oct-01 11:30:13.773 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Oct-01 11:30:18.729 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 161407; id: 1; name: TRIM_GALORE (1); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/38/09141b967f6e1c7014cc09bf80a55f started: 1759310973751; exited: 2025-10-01T09:30:15Z; ]
+Oct-01 11:30:18.780 [Actor Thread 4] INFO  nextflow.container.SingularityCache - Pulling Singularity image docker://community.wave.seqera.io/library/kallisto:0.51.1--b63691b6841c7a52 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-kallisto-0.51.1--b63691b6841c7a52.img]
+Oct-01 11:30:36.615 [Actor Thread 4] DEBUG nextflow.container.SingularityCache - Singularity pull complete image=docker://community.wave.seqera.io/library/kallisto:0.51.1--b63691b6841c7a52 path=/beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-kallisto-0.51.1--b63691b6841c7a52.img
+Oct-01 11:30:37.048 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KALLISTO_QUAN (1) > jobId: 161408; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/59/04b2455020fe5ae2d0b761e2d89b24
+Oct-01 11:30:37.049 [Task submitter] INFO  nextflow.Session - [59/04b245] Submitted process > KALLISTO_QUAN (1)
+Oct-01 11:32:07.490 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 161408; id: 3; name: KALLISTO_QUAN (1); status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/59/04b2455020fe5ae2d0b761e2d89b24 started: 1759311038752; exited: 2025-10-01T09:32:03Z; ]
+Oct-01 11:32:07.506 [Actor Thread 4] INFO  nextflow.container.SingularityCache - Pulling Singularity image docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img]
+Oct-01 11:32:10.030 [Actor Thread 4] DEBUG nextflow.container.SingularityCache - Singularity pull complete image=docker://community.wave.seqera.io/library/pip_multiqc:ad8f247edb55897c path=/beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/images/community.wave.seqera.io-library-pip_multiqc-ad8f247edb55897c.img
+Oct-01 11:32:10.270 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MULTIQC > jobId: 161409; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/f5/5ccb89ba010c6bb386625616735ae0
+Oct-01 11:32:10.272 [Task submitter] INFO  nextflow.Session - [f5/5ccb89] Submitted process > MULTIQC
+Oct-01 11:32:22.491 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 161409; id: 4; name: MULTIQC; status: COMPLETED; exit: 0; error: -; workDir: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-diy-kallisto/work/f5/5ccb89ba010c6bb386625616735ae0 started: 1759311132489; exited: 2025-10-01T09:32:19Z; ]
+Oct-01 11:32:22.496 [main] DEBUG nextflow.Session - Session await > all processes finished
+Oct-01 11:32:27.488 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Oct-01 11:32:27.490 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Oct-01 11:32:27.494 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Oct-01 11:32:27.495 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Oct-01 11:32:27.502 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=18m 44s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=10; peakMemory=24 GB; ]
+Oct-01 11:32:27.502 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Oct-01 11:32:27.504 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Oct-01 11:32:28.367 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Oct-01 11:32:28.581 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Oct-01 11:32:28.662 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Oct-01 11:32:28.663 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

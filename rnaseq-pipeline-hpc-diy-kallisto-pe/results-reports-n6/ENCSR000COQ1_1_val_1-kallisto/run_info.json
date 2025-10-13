@@ -1,0 +1,14 @@
+{
+	"n_targets": 207175,
+	"n_bootstraps": 0,
+	"n_processed": 27816,
+	"n_pseudoaligned": 14351,
+	"n_unique": 4058,
+	"p_pseudoaligned": 51.6,
+	"p_unique": 14.6,
+	"kallisto_version": "0.51.1",
+	"index_version": 13,
+	"k-mer length": 31,
+	"start_time": "Mon Oct 13 08:28:36 2025",
+	"call": "kallisto quant -i homo-genome.idx -o ENCSR000COQ1_1_val_1-kallisto -t 8 ENCSR000COQ1_1_val_1.fq.gz ENCSR000COQ1_2_val_2.fq.gz"
+}
