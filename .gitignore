@@ -10,21 +10,29 @@ rnaseq-pipeline-hpc-paired-end/results/
 rnaseq-pipeline-hpc-paired-end/work/
 rnaseq-pipeline-hpc-paired-end/.nextflow.log
 
-rnaseq-pipeline-hpc-diy-transcriptomics/data/aligned/*.tar.gz
-rnaseq-pipeline-hpc-diy-transcriptomics/data/reads/*.fastq.gz
-rnaseq-pipeline-hpc-diy-transcriptomics/.nextflow
-rnaseq-pipeline-hpc-diy-transcriptomics/images/
-rnaseq-pipeline-hpc-diy-transcriptomics/results/
-rnaseq-pipeline-hpc-diy-transcriptomics/work/
-rnaseq-pipeline-hpc-diy-transcriptomics/.nextflow.log
+rnaseq-pipeline-hpc-diy-transcriptomics-se/data/aligned/*.tar.gz
+rnaseq-pipeline-hpc-diy-transcriptomics-se/data/reads/*.fastq.gz
+rnaseq-pipeline-hpc-diy-transcriptomics-se/.nextflow
+rnaseq-pipeline-hpc-diy-transcriptomics-se/images/
+rnaseq-pipeline-hpc-diy-transcriptomics-se/results/
+rnaseq-pipeline-hpc-diy-transcriptomics-se/work/
+rnaseq-pipeline-hpc-diy-transcriptomics-se/.nextflow.log
 
-rnaseq-pipeline-hpc-diy-kallisto/data/aligned/*.idx
-rnaseq-pipeline-hpc-diy-kallisto/data/reads/*.fastq.gz
-rnaseq-pipeline-hpc-diy-kallisto/.nextflow
-rnaseq-pipeline-hpc-diy-kallisto/images/
-rnaseq-pipeline-hpc-diy-kallisto/results/
-rnaseq-pipeline-hpc-diy-kallisto/work/
-rnaseq-pipeline-hpc-diy-kallisto/.nextflow.log
+rnaseq-pipeline-hpc-diy-kallisto-se/data/aligned/*.idx
+rnaseq-pipeline-hpc-diy-kallisto-se/data/reads/*.fastq.gz
+rnaseq-pipeline-hpc-diy-kallisto-se/.nextflow
+rnaseq-pipeline-hpc-diy-kallisto-se/images/
+rnaseq-pipeline-hpc-diy-kallisto-se/results/
+rnaseq-pipeline-hpc-diy-kallisto-se/work/
+rnaseq-pipeline-hpc-diy-kallisto-se/.nextflow.log
+
+rnaseq-pipeline-hpc-diy-kallisto-pe/data/aligned/*.idx
+rnaseq-pipeline-hpc-diy-kallisto-pe/data/reads/*.fastq.gz
+rnaseq-pipeline-hpc-diy-kallisto-pe/.nextflow
+rnaseq-pipeline-hpc-diy-kallisto-pe/images/
+rnaseq-pipeline-hpc-diy-kallisto-pe/results/
+rnaseq-pipeline-hpc-diy-kallisto-pe/work/
+rnaseq-pipeline-hpc-diy-kallisto-pe/.nextflow.log
 
 *.err
 *.out

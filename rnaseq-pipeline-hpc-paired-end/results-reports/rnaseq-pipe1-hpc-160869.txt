@@ -1,0 +1,220 @@
+
+ N E X T F L O W   ~  version 25.04.6
+
+Launching `./main.nf` [modest_woese] DSL2 - revision: d7a2187160
+
+        R N A S E Q - N F   P I P E L I N E
+        ===================================
+        transcriptome: /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/data/aligned/genome_index.tar.gz
+        reads        : /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/rnaseq-pipeline-hpc-paired-end/data/paired-end.csv
+        outdir       : results
+    
+[-        ] FASTQC -
+
+[-        ] FASTQC       -
+[-        ] TRIM_GALORE  -
+[-        ] HISAT2_ALIGN -
+[-        ] MULTIQC      -
+
+[-        ] FASTQC       | 0 of 6
+[-        ] TRIM_GALORE  | 0 of 6
+[-        ] HISAT2_ALIGN -
+[-        ] MULTIQC      -
+
+executor >  slurm (1)
+[-        ] FASTQC          | 0 of 6
+[bd/36882b] TRIM_GALORE (6) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (2)
+[-        ] FASTQC          | 0 of 6
+[1c/eff1cb] TRIM_GALORE (2) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (3)
+[-        ] FASTQC          | 0 of 6
+[56/909a60] TRIM_GALORE (5) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (4)
+[-        ] FASTQC          | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (5)
+[0d/ab3de6] FASTQC (5)      | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (6)
+[b0/ca5a32] FASTQC (2)      | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (6)
+[b0/ca5a32] FASTQC (2)      | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (7)
+[22/55e461] FASTQC (1)      | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (8)
+[4b/c701e0] FASTQC (6)      | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (9)
+[01/e18de5] FASTQC (3)      | 0 of 6
+[2e/af2f79] TRIM_GALORE (1) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (10)
+[01/e18de5] FASTQC (3)      | 0 of 6
+[72/65fd5d] TRIM_GALORE (4) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (11)
+[5e/0e3df3] FASTQC (4)      | 0 of 6
+[72/65fd5d] TRIM_GALORE (4) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (12)
+[5e/0e3df3] FASTQC (4)      | 0 of 6
+[d4/e92b2f] TRIM_GALORE (3) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (12)
+[5e/0e3df3] FASTQC (4)      | 0 of 6
+[d4/e92b2f] TRIM_GALORE (3) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (12)
+[5e/0e3df3] FASTQC (4)      | 0 of 6
+[d4/e92b2f] TRIM_GALORE (3) | 0 of 6
+[-        ] HISAT2_ALIGN    -
+[-        ] MULTIQC         -
+
+executor >  slurm (12)
+[b0/ca5a32] FASTQC (2)      | 6 of 6 ✔
+[1c/eff1cb] TRIM_GALORE (2) | 1 of 6
+[-        ] HISAT2_ALIGN    | 0 of 1
+[-        ] MULTIQC         -
+
+executor >  slurm (13)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[1c/eff1cb] TRIM_GALORE (2)  | 1 of 6
+[3b/490757] HISAT2_ALIGN (1) | 0 of 1
+[-        ] MULTIQC          -
+
+executor >  slurm (13)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[72/65fd5d] TRIM_GALORE (4)  | 3 of 6
+[3b/490757] HISAT2_ALIGN (1) | 0 of 3
+[-        ] MULTIQC          -
+
+executor >  slurm (14)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[72/65fd5d] TRIM_GALORE (4)  | 3 of 6
+[7f/ece994] HISAT2_ALIGN (2) | 0 of 3
+[-        ] MULTIQC          -
+
+executor >  slurm (15)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[72/65fd5d] TRIM_GALORE (4)  | 3 of 6
+[65/d21fea] HISAT2_ALIGN (3) | 0 of 3
+[-        ] MULTIQC          -
+
+executor >  slurm (15)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[2e/af2f79] TRIM_GALORE (1)  | 5 of 6
+[65/d21fea] HISAT2_ALIGN (3) | 0 of 5
+[-        ] MULTIQC          -
+
+executor >  slurm (16)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[2e/af2f79] TRIM_GALORE (1)  | 5 of 6
+[6e/ce4f81] HISAT2_ALIGN (4) | 0 of 5
+[-        ] MULTIQC          -
+
+executor >  slurm (17)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[2e/af2f79] TRIM_GALORE (1)  | 5 of 6
+[53/2833fe] HISAT2_ALIGN (5) | 0 of 5
+[-        ] MULTIQC          -
+
+executor >  slurm (17)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[2e/af2f79] TRIM_GALORE (1)  | 5 of 6
+[3b/490757] HISAT2_ALIGN (1) | 1 of 5
+[-        ] MULTIQC          -
+
+executor >  slurm (17)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[3b/490757] HISAT2_ALIGN (1) | 1 of 6
+[-        ] MULTIQC          -
+
+executor >  slurm (18)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[1a/2568b9] HISAT2_ALIGN (6) | 1 of 6
+[-        ] MULTIQC          -
+
+executor >  slurm (18)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[7f/ece994] HISAT2_ALIGN (2) | 3 of 6
+[-        ] MULTIQC          -
+
+executor >  slurm (18)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[1a/2568b9] HISAT2_ALIGN (6) | 6 of 6 ✔
+[-        ] MULTIQC          | 0 of 1
+
+executor >  slurm (19)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[1a/2568b9] HISAT2_ALIGN (6) | 6 of 6 ✔
+[20/51260a] MULTIQC          | 0 of 1
+
+executor >  slurm (19)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[1a/2568b9] HISAT2_ALIGN (6) | 6 of 6 ✔
+[20/51260a] MULTIQC          | 0 of 1
+
+executor >  slurm (19)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[1a/2568b9] HISAT2_ALIGN (6) | 6 of 6 ✔
+[20/51260a] MULTIQC          | 1 of 1 ✔
+
+executor >  slurm (19)
+[b0/ca5a32] FASTQC (2)       | 6 of 6 ✔
+[d4/e92b2f] TRIM_GALORE (3)  | 6 of 6 ✔
+[1a/2568b9] HISAT2_ALIGN (6) | 6 of 6 ✔
+[20/51260a] MULTIQC          | 1 of 1 ✔
+Completed at: 30-Sep-2025 12:23:15
+Duration    : 1m 13s
+CPU hours   : 0.1
+Succeeded   : 19
+
+
