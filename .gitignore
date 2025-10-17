@@ -34,13 +34,23 @@ rnaseq-pipeline-hpc-diy-kallisto-pe/results/
 rnaseq-pipeline-hpc-diy-kallisto-pe/work/
 rnaseq-pipeline-hpc-diy-kallisto-pe/.nextflow.log
 
-nf-core-rnaseq-pipeline-pe/data/genomes/GRCh38/*.gz
-nf-core-rnaseq-pipeline-pe/data/reads/*.fastq.gz
-nf-core-rnaseq-pipeline-pe/.nextflow
-nf-core-rnaseq-pipeline-pe/singularity_images/
-nf-core-rnaseq-pipeline-pe/results/
-nf-core-rnaseq-pipeline-pe/work/
-nf-core-rnaseq-pipeline-pe/.nextflow.log
+nf-core-rnaseq-kallisto-pe/data/genomes/GRCh38/*.gz
+nf-core-rnaseq-kallisto-pe/data/reads/*.fastq.gz
+nf-core-rnaseq-kallisto-pe/.nextflow
+nf-core-rnaseq-kallisto-pe/singularity_images/
+nf-core-rnaseq-kallisto-pe/results/
+nf-core-rnaseq-kallisto-pe/work/
+nf-core-rnaseq-kallisto-pe/.nextflow.log
+
+nf-core-rnaseq-salmon-pe/data/genomes/GRCh38/*
+nf-core-rnaseq-salmon-pe/data/reads/*.fastq.gz
+nf-core-rnaseq-salmon-pe/.nextflow
+nf-core-rnaseq-salmon-pe/singularity_images/
+nf-core-rnaseq-salmon-pe/results/
+nf-core-rnaseq-salmon-pe/work/
+nf-core-rnaseq-salmon-pe/.nextflow.log
+nf-core-rnaseq-salmon-pe/reports_salmon_crc_1sample/salmon
+nf-core-rnaseq-salmon-pe/reports_salmon_crc_1sample_autostranded/salmon
 
 *.err
 *.out
