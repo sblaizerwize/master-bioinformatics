@@ -1,7 +1,0 @@
-sample,fastq_1,fastq_2,strandedness
-encsr000coq1,data/reads/ENCSR000COQ1_1.clean.fastq.gz,data/reads/ENCSR000COQ1_2.clean.fastq.gz,unstranded
-encsr000coq2,data/reads/ENCSR000COQ2_1.clean.fastq.gz,data/reads/ENCSR000COQ2_2.clean.fastq.gz,unstranded
-encsr000cor1,data/reads/ENCSR000COR1_1.clean.fastq.gz,data/reads/ENCSR000COR1_2.clean.fastq.gz,unstranded
-encsr000cor2,data/reads/ENCSR000COR2_1.clean.fastq.gz,data/reads/ENCSR000COR2_2.clean.fastq.gz,unstranded
-encsr000cpo1,data/reads/ENCSR000CPO1_1.clean.fastq.gz,data/reads/ENCSR000CPO1_2.clean.fastq.gz,unstranded
-encsr000cpo2,data/reads/ENCSR000CPO2_1.clean.fastq.gz,data/reads/ENCSR000CPO2_2.clean.fastq.gz,unstranded

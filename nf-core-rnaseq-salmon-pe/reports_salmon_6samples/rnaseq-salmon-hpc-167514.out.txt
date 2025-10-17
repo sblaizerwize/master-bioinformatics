@@ -1,0 +1,2594 @@
+
+ N E X T F L O W   ~  version 25.04.6
+
+Launching `https://github.com/nf-core/rnaseq` [nice_borg] DSL2 - revision: 9738a2df42 [master]
+
+
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/rnaseq 3.21.0
+------------------------------------------------------
+Input/output options
+  input              : samplesheet.csv
+  outdir             : results
+  multiqc_title      : crc-rna-seq-salmon
+
+Reference genome options
+  fasta              : data/genomes/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+  gtf                : data/genomes/GRCh38/Homo_sapiens.GRCh38.115.gtf.gz
+  igenomes_ignore    : true
+
+UMI options
+  umi_discard_read   : 0
+
+Alignment options
+  pseudo_aligner     : salmon
+
+Optional outputs
+  save_reference     : true
+
+Process skipping options
+  skip_alignment     : true
+
+Generic options
+  trace_report_suffix: 2025-10-16_17-26-13
+
+Core Nextflow options
+  revision           : master
+  runName            : nice_borg
+  containerEngine    : singularity
+  launchDir          : /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe
+  workDir            : /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/work
+  projectDir         : /home/samarquez/.nextflow/assets/nf-core/rnaseq
+  userName           : samarquez
+  profile            : unavcluster
+  configFiles        : /home/samarquez/.nextflow/assets/nf-core/rnaseq/nextflow.config, /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/hpc.config
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+------------------------------------------------------
+* The pipeline
+    https://doi.org/10.5281/zenodo.1400710
+
+* The nf-core framework
+    https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+    https://github.com/nf-core/rnaseq/blob/master/CITATIONS.md
+
+WARN: The following invalid input values have been detected:
+
+* --skip_fastq_lint: true
+
+
+WARN: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  '--skip_alignment' parameter has been provided.
+  Skipping alignment, genome-based quantification and all downstream QC processes.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 1 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 8 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 17 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 24 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 29 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF | 0 of 1
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (1)
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (2)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[-        ] NFC…ER_SETSTRANDEDNESS:FQ_LINT | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (3)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (4)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[7f/b06228] NFC…ESS:FQ_LINT (encsr000cpo1) | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (5)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e9/b6e808] NFC…ESS:FQ_LINT (encsr000cor2) | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (7)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[7a/c250a4] NFC…ESS:FQ_LINT (encsr000cpo2) | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (8)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 0 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (8)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (8)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC | 0 of 4
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (9)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[22/855955] NFC…LORE:FASTQC (encsr000coq2) | 0 of 4
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (10)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[ba/7a784b] NFC…LORE:FASTQC (encsr000cor1) | 0 of 4
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (11)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[02/d3e3b2] NFC…LORE:FASTQC (encsr000cpo1) | 0 of 4
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE | 0 of 4
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (12)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[c6/89b5ac] NFC…LORE:FASTQC (encsr000cor2) | 0 of 4
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE | 0 of 4
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (13)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[c6/89b5ac] NFC…LORE:FASTQC (encsr000cor2) | 0 of 4
+[f1/dbf700] NFC…:TRIMGALORE (encsr000cpo1) | 0 of 4
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (15)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[e8/869452] NFC…ESS:FQ_LINT (encsr000coq2) | 4 of 6
+[c6/89b5ac] NFC…LORE:FASTQC (encsr000cor2) | 0 of 4
+[5b/899a04] NFC…:TRIMGALORE (encsr000coq2) | 0 of 4
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (16)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[c6/89b5ac] NFC…LORE:FASTQC (encsr000cor2) | 0 of 6
+[8f/4f73ab] NFC…:TRIMGALORE (encsr000cor2) | 0 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (17)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 0 of 6
+[8f/4f73ab] NFC…:TRIMGALORE (encsr000cor2) | 0 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (19)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 0 of 6
+[d0/0cdcc5] NFC…:TRIMGALORE (encsr000cpo2) | 0 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (20)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 0 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 0 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (20)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 0 of 1
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[ba/7a784b] NFC…LORE:FASTQC (encsr000cor1) | 2 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 0 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (20)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 0 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING -
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (20)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[f1/dbf700] NFC…:TRIMGALORE (encsr000cpo1) | 1 of 6
+[-        ] NFC…ESS:FQ_LINT_AFTER_TRIMMING | 0 of 1
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (21)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[f1/dbf700] NFC…:TRIMGALORE (encsr000cpo1) | 1 of 6
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 0 of 1
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (21)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 0 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (22)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[de/ecc1bb] NFC…ER_TRIMMING (encsr000cor1) | 0 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (23)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[d6/04e4b8] NFC…ER_TRIMMING (encsr000coq2) | 0 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (24)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[b7/2ac7e3] NFC…ER_TRIMMING (encsr000cor2) | 0 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (25)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[87/015b21] NFC…ER_TRIMMING (encsr000cpo2) | 0 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (26)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 0 of 1
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[14/38a185] NFC…LORE:FASTQC (encsr000cpo2) | 5 of 6
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 0 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (26)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 1 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+
+executor >  slurm (26)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES | 0 of 1
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 1 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+
+executor >  slurm (27)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER -
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 1 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/52/52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fq:0.12.0--h9ee0642_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+executor >  slurm (27)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[-        ] NFC…:PREPARE_GENOME:GTF_FILTER | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 1 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+
+
+executor >  slurm (28)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[0f/aac471] NFC…ER_TRIMMING (encsr000cpo1) | 1 of 6
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+
+
+executor >  slurm (28)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/9b/9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+executor >  slurm (28)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+
+
+executor >  slurm (28)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/samtools:1.21--h50ea8bc_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.9--1 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.9--1.img]
+
+
+
+executor >  slurm (28)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED -
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/perl:5.26.2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-perl-5.26.2.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/23/23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img]
+
+
+
+executor >  slurm (28)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…SEQ:PREPARE_GENOME:GTF2BED | 0 of 1
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/perl:5.26.2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-perl-5.26.2.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/23/23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img]
+
+
+
+executor >  slurm (29)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA -
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/perl:5.26.2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-perl-5.26.2.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/23/23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img]
+
+executor >  slurm (29)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[-        ] NFC…OME:MAKE_TRANSCRIPTS_FASTA | 0 of 1
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/perl:5.26.2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-perl-5.26.2.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/23/23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img]
+
+executor >  slurm (30)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/perl:5.26.2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-perl-5.26.2.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/23/23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img]
+
+executor >  slurm (30)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/perl:5.26.2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-perl-5.26.2.img]
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/23/23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img]
+
+executor >  slurm (30)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 0 of 1
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+
+
+
+executor >  slurm (30)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX -
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.3--h6dccd9a_2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.3--h6dccd9a_2.img]
+
+
+executor >  slurm (30)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[-        ] NFC…REPARE_GENOME:SALMON_INDEX | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.3--h6dccd9a_2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.3--h6dccd9a_2.img]
+
+executor >  slurm (31)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.3--h6dccd9a_2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.3--h6dccd9a_2.img]
+
+executor >  slurm (31)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 0 of 1
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.3--h6dccd9a_2 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.3--h6dccd9a_2.img]
+
+executor >  slurm (31)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 0 of 1
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+Plus 31 more processes waiting for tasks…
+
+
+executor >  slurm (31)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[-        ] NFC…UDO_ALIGNMENT:SALMON_QUANT | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (32)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[e7/07a052] NFC…ALMON_QUANT (encsr000coq2) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (33)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (34)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[6e/be49e1] NFC…ALMON_QUANT (encsr000cpo2) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (35)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[fa/1f80d4] NFC…ALMON_QUANT (encsr000cor1) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (36)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[76/0abbf4] NFC…ALMON_QUANT (encsr000cpo1) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[8b/7c0878] NFC…ALMON_QUANT (encsr000cor2) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[8b/7c0878] NFC…ALMON_QUANT (encsr000cor2) | 0 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[6e/be49e1] NFC…ALMON_QUANT (encsr000cpo2) | 3 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[8b/7c0878] NFC…ALMON_QUANT (encsr000cor2) | 4 of 6
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+Plus 30 more processes waiting for tasks…
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+Plus 30 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (37)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…O_ALIGNMENT:CUSTOM_TX2GENE | 0 of 1
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (38)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 0 of 1
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (38)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 0 of 1
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/python:3.10.4 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-python-3.10.4.img]
+
+executor >  slurm (38)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+Plus 29 more processes waiting for tasks…
+
+
+executor >  slurm (38)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+Plus 29 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-tximeta%3A1.20.1--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-tximeta%3A1.20.1--r43hdfd78af_0.img]
+
+executor >  slurm (39)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 0 of 1
+Plus 28 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-tximeta%3A1.20.1--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-tximeta%3A1.20.1--r43hdfd78af_0.img]
+
+executor >  slurm (39)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 0 of 1
+Plus 28 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-tximeta%3A1.20.1--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-tximeta%3A1.20.1--r43hdfd78af_0.img]
+
+executor >  slurm (39)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+Plus 28 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+
+executor >  slurm (39)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[-        ] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 27 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (40)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[-        ] NFC…_ALIGNMENT:SE_GENE_UNIFIED | 0 of 1
+[-        ] NFC…MENT:SE_TRANSCRIPT_UNIFIED | 0 of 1
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (41)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[-        ] NFC…_ALIGNMENT:SE_GENE_UNIFIED | 0 of 1
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (42)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 0 of 1
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (42)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 0 of 1
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 0 of 1
+Plus 25 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (42)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 0 of 1
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+Plus 25 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91:ab110436faf952a33575c64dd74615a84011450b-0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/bioconductor-summarizedexperiment:1.32.0--r43hdfd78af_0 [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img]
+
+executor >  slurm (42)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 0 of 1
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+Plus 25 more processes waiting for tasks…
+
+
+
+executor >  slurm (42)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+Plus 25 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/ef/eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-ef-eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329-data.img]
+
+
+executor >  slurm (42)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[-        ] NFCORE_RNASEQ:RNASEQ:MULTIQC   | 0 of 1
+Plus 24 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/ef/eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-ef-eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329-data.img]
+
+executor >  slurm (43)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[ff/1fc432] NFC…_RNASEQ:RNASEQ:MULTIQC (1) | 0 of 1
+Plus 24 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/ef/eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-ef-eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329-data.img]
+
+executor >  slurm (43)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[ff/1fc432] NFC…_RNASEQ:RNASEQ:MULTIQC (1) | 0 of 1
+Plus 24 more processes waiting for tasks…
+Pulling Singularity image https://community-cr-prod.seqera.io/docker/registry/v2/blobs/sha256/ef/eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329/data [cache /beegfs/home/samarquez/tfm-rnaseq/master-bioinformatics/nf-core-rnaseq-salmon-pe/singularity_images/community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-ef-eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329-data.img]
+
+executor >  slurm (43)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[ff/1fc432] NFC…_RNASEQ:RNASEQ:MULTIQC (1) | 1 of 1 ✔
+Plus 24 more processes waiting for tasks…
+
+
+executor >  slurm (43)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[ff/1fc432] NFC…_RNASEQ:RNASEQ:MULTIQC (1) | 1 of 1 ✔
+Plus 24 more processes waiting for tasks…
+-[nf-core/rnaseq] Pipeline completed successfully -
+
+executor >  slurm (43)
+[d3/56e1d0] NFC…sapiens.GRCh38.115.gtf.gz) | 1 of 1 ✔
+[97/066d5f] NFC…na.primary_assembly.fa.gz) | 1 of 1 ✔
+[46/e50303] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[53/44712f] NFC…s.GRCh38.115.filtered.gtf) | 1 of 1 ✔
+[12/b915a8] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[71/45f46a] NFC…8.dna.primary_assembly.fa) | 1 of 1 ✔
+[1d/38f706] NFC…EX (genome.transcripts.fa) | 1 of 1 ✔
+[-        ] NFC…ASEQ:RNASEQ:SAMTOOLS_INDEX -
+[-        ] NFC…_SETSTRANDEDNESS:CAT_FASTQ -
+[93/d2a997] NFC…ESS:FQ_LINT (encsr000coq1) | 6 of 6 ✔
+[22/a4b150] NFC…LORE:FASTQC (encsr000coq1) | 6 of 6 ✔
+[2b/93b0b4] NFC…:TRIMGALORE (encsr000coq1) | 6 of 6 ✔
+[62/442a07] NFC…ER_TRIMMING (encsr000coq1) | 6 of 6 ✔
+[-        ] NFC…PLE_FQ_SALMON:FQ_SUBSAMPLE -
+[-        ] NFC…PLE_FQ_SALMON:SALMON_QUANT -
+[-        ] NFC…Y_STAR_SALMON:SALMON_QUANT -
+[-        ] NFC…STAR_SALMON:CUSTOM_TX2GENE -
+[-        ] NFC…AR_SALMON:TXIMETA_TXIMPORT -
+[-        ] NFC…TAR_SALMON:SE_GENE_UNIFIED -
+[-        ] NFC…LMON:SE_TRANSCRIPT_UNIFIED -
+[69/b45be2] NFC…ALMON_QUANT (encsr000coq1) | 6 of 6 ✔
+[f9/ad109c] NFC…MENT:CUSTOM_TX2GENE (null) | 1 of 1 ✔
+[a7/77568b] NFC…ALIGNMENT:TXIMETA_TXIMPORT | 1 of 1 ✔
+[5a/bdfeaa] NFC…GENE_UNIFIED (all_samples) | 1 of 1 ✔
+[da/b2a7dc] NFC…RIPT_UNIFIED (all_samples) | 1 of 1 ✔
+[54/5696d7] NFC…EQ:RNASEQ:DESEQ2_QC_PSEUDO | 1 of 1 ✔
+[ff/1fc432] NFC…_RNASEQ:RNASEQ:MULTIQC (1) | 1 of 1 ✔
+Plus 24 more processes waiting for tasks…
+-[nf-core/rnaseq] Pipeline completed successfully -
+Completed at: 16-Oct-2025 18:07:10
+Duration    : 40m 51s
+CPU hours   : 9.2
+Succeeded   : 43
+
+

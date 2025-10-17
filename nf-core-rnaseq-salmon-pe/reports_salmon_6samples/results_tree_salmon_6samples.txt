@@ -1,0 +1,858 @@
+[samarquez@login01 nf-core-rnaseq-salmon-pe]$ tree -L 5
+.
+├── data
+│   ├── genomes
+│   │   └── GRCh38
+│   │       ├── Homo_sapiens.GRCh38.115.gtf.gz
+│   │       ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+│   │       └── salmon
+│   │           ├── complete_ref_lens.bin
+│   │           ├── ctable.bin
+│   │           ├── ctg_offsets.bin
+│   │           ├── duplicate_clusters.tsv
+│   │           ├── info.json
+│   │           ├── mphf.bin
+│   │           ├── pos.bin
+│   │           ├── pre_indexing.log
+│   │           ├── rank.bin
+│   │           ├── refAccumLengths.bin
+│   │           ├── ref_indexing.log
+│   │           ├── reflengths.bin
+│   │           ├── refseq.bin
+│   │           ├── seq.bin
+│   │           └── versionInfo.json
+│   └── reads
+│       ├── ENCSR000COQ1_1.clean.fastq.gz
+│       ├── ENCSR000COQ1_2.clean.fastq.gz
+│       ├── ENCSR000COQ2_1.clean.fastq.gz
+│       ├── ENCSR000COQ2_2.clean.fastq.gz
+│       ├── ENCSR000COR1_1.clean.fastq.gz
+│       ├── ENCSR000COR1_2.clean.fastq.gz
+│       ├── ENCSR000COR2_1.clean.fastq.gz
+│       ├── ENCSR000COR2_2.clean.fastq.gz
+│       ├── ENCSR000CPO1_1.clean.fastq.gz
+│       ├── ENCSR000CPO1_2.clean.fastq.gz
+│       ├── ENCSR000CPO2_1.clean.fastq.gz
+│       ├── ENCSR000CPO2_2.clean.fastq.gz
+│       ├── SRR27320663_1.fastq.gz
+│       └── SRR27320663_2.fastq.gz
+├── hpc.config
+├── nextflow.slurm
+├── params_rnaseq.yaml
+├── README.md
+├── reports_salmon_6samples
+│   ├── multiqc_report.html
+│   ├── nextflow.txt
+│   ├── report.html
+│   ├── rnaseq-salmon-hpc-167514.txt
+│   ├── salmon-check-index.slurm
+│   ├── timeline.html
+│   └── trace.txt
+├── results
+│   ├── fastqc
+│   │   ├── raw
+│   │   │   ├── encsr000coq1_raw_1_fastqc.html
+│   │   │   ├── encsr000coq1_raw_1_fastqc.zip
+│   │   │   ├── encsr000coq1_raw_2_fastqc.html
+│   │   │   ├── encsr000coq1_raw_2_fastqc.zip
+│   │   │   ├── encsr000coq2_raw_1_fastqc.html
+│   │   │   ├── encsr000coq2_raw_1_fastqc.zip
+│   │   │   ├── encsr000coq2_raw_2_fastqc.html
+│   │   │   ├── encsr000coq2_raw_2_fastqc.zip
+│   │   │   ├── encsr000cor1_raw_1_fastqc.html
+│   │   │   ├── encsr000cor1_raw_1_fastqc.zip
+│   │   │   ├── encsr000cor1_raw_2_fastqc.html
+│   │   │   ├── encsr000cor1_raw_2_fastqc.zip
+│   │   │   ├── encsr000cor2_raw_1_fastqc.html
+│   │   │   ├── encsr000cor2_raw_1_fastqc.zip
+│   │   │   ├── encsr000cor2_raw_2_fastqc.html
+│   │   │   ├── encsr000cor2_raw_2_fastqc.zip
+│   │   │   ├── encsr000cpo1_raw_1_fastqc.html
+│   │   │   ├── encsr000cpo1_raw_1_fastqc.zip
+│   │   │   ├── encsr000cpo1_raw_2_fastqc.html
+│   │   │   ├── encsr000cpo1_raw_2_fastqc.zip
+│   │   │   ├── encsr000cpo2_raw_1_fastqc.html
+│   │   │   ├── encsr000cpo2_raw_1_fastqc.zip
+│   │   │   ├── encsr000cpo2_raw_2_fastqc.html
+│   │   │   └── encsr000cpo2_raw_2_fastqc.zip
+│   │   └── trim
+│   │       ├── encsr000coq1_trimmed_1_val_1_fastqc.html
+│   │       ├── encsr000coq1_trimmed_1_val_1_fastqc.zip
+│   │       ├── encsr000coq1_trimmed_2_val_2_fastqc.html
+│   │       ├── encsr000coq1_trimmed_2_val_2_fastqc.zip
+│   │       ├── encsr000coq2_trimmed_1_val_1_fastqc.html
+│   │       ├── encsr000coq2_trimmed_1_val_1_fastqc.zip
+│   │       ├── encsr000coq2_trimmed_2_val_2_fastqc.html
+│   │       ├── encsr000coq2_trimmed_2_val_2_fastqc.zip
+│   │       ├── encsr000cor1_trimmed_1_val_1_fastqc.html
+│   │       ├── encsr000cor1_trimmed_1_val_1_fastqc.zip
+│   │       ├── encsr000cor1_trimmed_2_val_2_fastqc.html
+│   │       ├── encsr000cor1_trimmed_2_val_2_fastqc.zip
+│   │       ├── encsr000cor2_trimmed_1_val_1_fastqc.html
+│   │       ├── encsr000cor2_trimmed_1_val_1_fastqc.zip
+│   │       ├── encsr000cor2_trimmed_2_val_2_fastqc.html
+│   │       ├── encsr000cor2_trimmed_2_val_2_fastqc.zip
+│   │       ├── encsr000cpo1_trimmed_1_val_1_fastqc.html
+│   │       ├── encsr000cpo1_trimmed_1_val_1_fastqc.zip
+│   │       ├── encsr000cpo1_trimmed_2_val_2_fastqc.html
+│   │       ├── encsr000cpo1_trimmed_2_val_2_fastqc.zip
+│   │       ├── encsr000cpo2_trimmed_1_val_1_fastqc.html
+│   │       ├── encsr000cpo2_trimmed_1_val_1_fastqc.zip
+│   │       ├── encsr000cpo2_trimmed_2_val_2_fastqc.html
+│   │       └── encsr000cpo2_trimmed_2_val_2_fastqc.zip
+│   ├── fq_lint
+│   │   ├── raw
+│   │   │   ├── encsr000coq1.fq_lint.txt
+│   │   │   ├── encsr000coq2.fq_lint.txt
+│   │   │   ├── encsr000cor1.fq_lint.txt
+│   │   │   ├── encsr000cor2.fq_lint.txt
+│   │   │   ├── encsr000cpo1.fq_lint.txt
+│   │   │   └── encsr000cpo2.fq_lint.txt
+│   │   └── trimmed
+│   │       ├── encsr000coq1.fq_lint.txt
+│   │       ├── encsr000coq2.fq_lint.txt
+│   │       ├── encsr000cor1.fq_lint.txt
+│   │       ├── encsr000cor2.fq_lint.txt
+│   │       ├── encsr000cpo1.fq_lint.txt
+│   │       └── encsr000cpo2.fq_lint.txt
+│   ├── genome
+│   │   ├── genome.transcripts.fa
+│   │   ├── Homo_sapiens.GRCh38.115.filtered.bed
+│   │   ├── Homo_sapiens.GRCh38.115.filtered.gtf
+│   │   ├── Homo_sapiens.GRCh38.115.gtf
+│   │   ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa
+│   │   ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+│   │   ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa.sizes
+│   │   ├── index
+│   │   │   ├── inspect-salmon-idx-167573.err
+│   │   │   ├── inspect-salmon-idx-167573.out
+│   │   │   ├── salmon
+│   │   │   │   ├── complete_ref_lens.bin
+│   │   │   │   ├── ctable.bin
+│   │   │   │   ├── ctg_offsets.bin
+│   │   │   │   ├── duplicate_clusters.tsv
+│   │   │   │   ├── info.json
+│   │   │   │   ├── mphf.bin
+│   │   │   │   ├── pos.bin
+│   │   │   │   ├── pre_indexing.log
+│   │   │   │   ├── rank.bin
+│   │   │   │   ├── refAccumLengths.bin
+│   │   │   │   ├── ref_indexing.log
+│   │   │   │   ├── reflengths.bin
+│   │   │   │   ├── refseq.bin
+│   │   │   │   ├── seq.bin
+│   │   │   │   └── versionInfo.json
+│   │   │   └── salmon-check-index.slurm
+│   │   └── rsem
+│   │       ├── genome.chrlist
+│   │       ├── genome.grp
+│   │       ├── genome.idx.fa
+│   │       ├── genome.n2g.idx.fa
+│   │       ├── genome.seq
+│   │       ├── genome.ti
+│   │       ├── genome.transcripts.fa
+│   │       └── Homo_sapiens.GRCh38.dna.primary_assembly.fa
+│   ├── multiqc
+│   │   ├── multiqc_report_data
+│   │   │   ├── cutadapt_filtered_reads_plot.txt
+│   │   │   ├── cutadapt_trimmed_sequences_plot_3_Counts.txt
+│   │   │   ├── cutadapt_trimmed_sequences_plot_3_Obs_Exp.txt
+│   │   │   ├── fastqc_raw_adapter_content_plot.txt
+│   │   │   ├── fastqc_raw_overrepresented_sequences_plot.txt
+│   │   │   ├── fastqc_raw_per_base_n_content_plot.txt
+│   │   │   ├── fastqc_raw_per_base_sequence_quality_plot.txt
+│   │   │   ├── fastqc_raw_per_sequence_gc_content_plot_Counts.txt
+│   │   │   ├── fastqc_raw_per_sequence_gc_content_plot_Percentages.txt
+│   │   │   ├── fastqc_raw_per_sequence_quality_scores_plot.txt
+│   │   │   ├── fastqc_raw_sequence_counts_plot.txt
+│   │   │   ├── fastqc_raw_sequence_duplication_levels_plot.txt
+│   │   │   ├── fastqc_raw-status-check-heatmap.txt
+│   │   │   ├── fastqc_raw_top_overrepresented_sequences_table.txt
+│   │   │   ├── fastqc_sequence_length_distribution_plot.txt
+│   │   │   ├── fastqc_trimmed_adapter_content_plot.txt
+│   │   │   ├── fastqc_trimmed_overrepresented_sequences_plot.txt
+│   │   │   ├── fastqc_trimmed_per_base_n_content_plot.txt
+│   │   │   ├── fastqc_trimmed_per_base_sequence_quality_plot.txt
+│   │   │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Counts.txt
+│   │   │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Percentages.txt
+│   │   │   ├── fastqc_trimmed_per_sequence_quality_scores_plot.txt
+│   │   │   ├── fastqc_trimmed_sequence_counts_plot.txt
+│   │   │   ├── fastqc_trimmed_sequence_duplication_levels_plot.txt
+│   │   │   ├── fastqc_trimmed-status-check-heatmap.txt
+│   │   │   ├── fastqc_trimmed_top_overrepresented_sequences_table.txt
+│   │   │   ├── llms-full.txt
+│   │   │   ├── multiqc_citations.txt
+│   │   │   ├── multiqc_cutadapt.txt
+│   │   │   ├── multiqc_data.json
+│   │   │   ├── multiqc_fastqc_fastqc_raw.txt
+│   │   │   ├── multiqc_fastqc_fastqc_trimmed.txt
+│   │   │   ├── multiqc_general_stats.txt
+│   │   │   ├── multiqc.log
+│   │   │   ├── multiqc.parquet
+│   │   │   ├── multiqc_salmon_deseq2_clustering.txt
+│   │   │   ├── multiqc_salmon_deseq2_pca.txt
+│   │   │   ├── multiqc_salmon.txt
+│   │   │   ├── multiqc_software_versions.txt
+│   │   │   ├── multiqc_sources.txt
+│   │   │   └── salmon_plot.txt
+│   │   ├── multiqc_report.html
+│   │   └── multiqc_report_plots
+│   │       ├── pdf
+│   │       │   ├── cutadapt_filtered_reads_plot-cnt.pdf
+│   │       │   ├── cutadapt_filtered_reads_plot-pct.pdf
+│   │       │   ├── cutadapt_trimmed_sequences_plot_3_Counts.pdf
+│   │       │   ├── cutadapt_trimmed_sequences_plot_3_Obs_Exp.pdf
+│   │       │   ├── fastqc_raw_adapter_content_plot.pdf
+│   │       │   ├── fastqc_raw_overrepresented_sequences_plot.pdf
+│   │       │   ├── fastqc_raw_per_base_n_content_plot.pdf
+│   │       │   ├── fastqc_raw_per_base_sequence_quality_plot.pdf
+│   │       │   ├── fastqc_raw_per_sequence_gc_content_plot_Counts.pdf
+│   │       │   ├── fastqc_raw_per_sequence_gc_content_plot_Percentages.pdf
+│   │       │   ├── fastqc_raw_per_sequence_quality_scores_plot.pdf
+│   │       │   ├── fastqc_raw_sequence_counts_plot-cnt.pdf
+│   │       │   ├── fastqc_raw_sequence_counts_plot-pct.pdf
+│   │       │   ├── fastqc_raw_sequence_duplication_levels_plot.pdf
+│   │       │   ├── fastqc_raw-status-check-heatmap.pdf
+│   │       │   ├── fastqc_raw_top_overrepresented_sequences_table.pdf
+│   │       │   ├── fastqc_sequence_length_distribution_plot.pdf
+│   │       │   ├── fastqc_trimmed_adapter_content_plot.pdf
+│   │       │   ├── fastqc_trimmed_overrepresented_sequences_plot.pdf
+│   │       │   ├── fastqc_trimmed_per_base_n_content_plot.pdf
+│   │       │   ├── fastqc_trimmed_per_base_sequence_quality_plot.pdf
+│   │       │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Counts.pdf
+│   │       │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Percentages.pdf
+│   │       │   ├── fastqc_trimmed_per_sequence_quality_scores_plot.pdf
+│   │       │   ├── fastqc_trimmed_sequence_counts_plot-cnt.pdf
+│   │       │   ├── fastqc_trimmed_sequence_counts_plot-pct.pdf
+│   │       │   ├── fastqc_trimmed_sequence_duplication_levels_plot.pdf
+│   │       │   ├── fastqc_trimmed-status-check-heatmap.pdf
+│   │       │   ├── fastqc_trimmed_top_overrepresented_sequences_table.pdf
+│   │       │   ├── salmon_deseq2_clustering.pdf
+│   │       │   ├── salmon_deseq2_pca.pdf
+│   │       │   └── salmon_plot.pdf
+│   │       ├── png
+│   │       │   ├── cutadapt_filtered_reads_plot-cnt.png
+│   │       │   ├── cutadapt_filtered_reads_plot-pct.png
+│   │       │   ├── cutadapt_trimmed_sequences_plot_3_Counts.png
+│   │       │   ├── cutadapt_trimmed_sequences_plot_3_Obs_Exp.png
+│   │       │   ├── fastqc_raw_adapter_content_plot.png
+│   │       │   ├── fastqc_raw_overrepresented_sequences_plot.png
+│   │       │   ├── fastqc_raw_per_base_n_content_plot.png
+│   │       │   ├── fastqc_raw_per_base_sequence_quality_plot.png
+│   │       │   ├── fastqc_raw_per_sequence_gc_content_plot_Counts.png
+│   │       │   ├── fastqc_raw_per_sequence_gc_content_plot_Percentages.png
+│   │       │   ├── fastqc_raw_per_sequence_quality_scores_plot.png
+│   │       │   ├── fastqc_raw_sequence_counts_plot-cnt.png
+│   │       │   ├── fastqc_raw_sequence_counts_plot-pct.png
+│   │       │   ├── fastqc_raw_sequence_duplication_levels_plot.png
+│   │       │   ├── fastqc_raw-status-check-heatmap.png
+│   │       │   ├── fastqc_raw_top_overrepresented_sequences_table.png
+│   │       │   ├── fastqc_sequence_length_distribution_plot.png
+│   │       │   ├── fastqc_trimmed_adapter_content_plot.png
+│   │       │   ├── fastqc_trimmed_overrepresented_sequences_plot.png
+│   │       │   ├── fastqc_trimmed_per_base_n_content_plot.png
+│   │       │   ├── fastqc_trimmed_per_base_sequence_quality_plot.png
+│   │       │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Counts.png
+│   │       │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Percentages.png
+│   │       │   ├── fastqc_trimmed_per_sequence_quality_scores_plot.png
+│   │       │   ├── fastqc_trimmed_sequence_counts_plot-cnt.png
+│   │       │   ├── fastqc_trimmed_sequence_counts_plot-pct.png
+│   │       │   ├── fastqc_trimmed_sequence_duplication_levels_plot.png
+│   │       │   ├── fastqc_trimmed-status-check-heatmap.png
+│   │       │   ├── fastqc_trimmed_top_overrepresented_sequences_table.png
+│   │       │   ├── salmon_deseq2_clustering.png
+│   │       │   ├── salmon_deseq2_pca.png
+│   │       │   └── salmon_plot.png
+│   │       └── svg
+│   │           ├── cutadapt_filtered_reads_plot-cnt.svg
+│   │           ├── cutadapt_filtered_reads_plot-pct.svg
+│   │           ├── cutadapt_trimmed_sequences_plot_3_Counts.svg
+│   │           ├── cutadapt_trimmed_sequences_plot_3_Obs_Exp.svg
+│   │           ├── fastqc_raw_adapter_content_plot.svg
+│   │           ├── fastqc_raw_overrepresented_sequences_plot.svg
+│   │           ├── fastqc_raw_per_base_n_content_plot.svg
+│   │           ├── fastqc_raw_per_base_sequence_quality_plot.svg
+│   │           ├── fastqc_raw_per_sequence_gc_content_plot_Counts.svg
+│   │           ├── fastqc_raw_per_sequence_gc_content_plot_Percentages.svg
+│   │           ├── fastqc_raw_per_sequence_quality_scores_plot.svg
+│   │           ├── fastqc_raw_sequence_counts_plot-cnt.svg
+│   │           ├── fastqc_raw_sequence_counts_plot-pct.svg
+│   │           ├── fastqc_raw_sequence_duplication_levels_plot.svg
+│   │           ├── fastqc_raw-status-check-heatmap.svg
+│   │           ├── fastqc_raw_top_overrepresented_sequences_table.svg
+│   │           ├── fastqc_sequence_length_distribution_plot.svg
+│   │           ├── fastqc_trimmed_adapter_content_plot.svg
+│   │           ├── fastqc_trimmed_overrepresented_sequences_plot.svg
+│   │           ├── fastqc_trimmed_per_base_n_content_plot.svg
+│   │           ├── fastqc_trimmed_per_base_sequence_quality_plot.svg
+│   │           ├── fastqc_trimmed_per_sequence_gc_content_plot_Counts.svg
+│   │           ├── fastqc_trimmed_per_sequence_gc_content_plot_Percentages.svg
+│   │           ├── fastqc_trimmed_per_sequence_quality_scores_plot.svg
+│   │           ├── fastqc_trimmed_sequence_counts_plot-cnt.svg
+│   │           ├── fastqc_trimmed_sequence_counts_plot-pct.svg
+│   │           ├── fastqc_trimmed_sequence_duplication_levels_plot.svg
+│   │           ├── fastqc_trimmed-status-check-heatmap.svg
+│   │           ├── fastqc_trimmed_top_overrepresented_sequences_table.svg
+│   │           ├── salmon_deseq2_clustering.svg
+│   │           ├── salmon_deseq2_pca.svg
+│   │           └── salmon_plot.svg
+│   ├── pipeline_info
+│   │   ├── nf_core_rnaseq_software_mqc_versions.yml
+│   │   ├── params_2025-10-16_17-26-37.json
+│   │   └── pipeline_dag_2025-10-16_17-26-13.html
+│   ├── salmon
+│   │   ├── deseq2_qc
+│   │   │   ├── deseq2.dds.RData
+│   │   │   ├── deseq2.pca.vals.txt
+│   │   │   ├── deseq2.plots.pdf
+│   │   │   ├── deseq2.sample.dists.txt
+│   │   │   ├── R_sessionInfo.log
+│   │   │   └── size_factors
+│   │   │       ├── deseq2.size_factors.RData
+│   │   │       ├── encsr000coq1.txt
+│   │   │       ├── encsr000coq2.txt
+│   │   │       ├── encsr000cor1.txt
+│   │   │       ├── encsr000cor2.txt
+│   │   │       ├── encsr000cpo1.txt
+│   │   │       └── encsr000cpo2.txt
+│   │   ├── encsr000coq1
+│   │   │   ├── aux_info
+│   │   │   │   ├── ambig_info.tsv
+│   │   │   │   ├── expected_bias.gz
+│   │   │   │   ├── fld.gz
+│   │   │   │   ├── meta_info.json
+│   │   │   │   ├── observed_bias_3p.gz
+│   │   │   │   └── observed_bias.gz
+│   │   │   ├── cmd_info.json
+│   │   │   ├── lib_format_counts.json
+│   │   │   ├── libParams
+│   │   │   │   └── flenDist.txt
+│   │   │   ├── logs
+│   │   │   │   └── salmon_quant.log
+│   │   │   ├── quant.genes.sf
+│   │   │   └── quant.sf
+│   │   ├── encsr000coq2
+│   │   │   ├── aux_info
+│   │   │   │   ├── ambig_info.tsv
+│   │   │   │   ├── expected_bias.gz
+│   │   │   │   ├── fld.gz
+│   │   │   │   ├── meta_info.json
+│   │   │   │   ├── observed_bias_3p.gz
+│   │   │   │   └── observed_bias.gz
+│   │   │   ├── cmd_info.json
+│   │   │   ├── lib_format_counts.json
+│   │   │   ├── libParams
+│   │   │   │   └── flenDist.txt
+│   │   │   ├── logs
+│   │   │   │   └── salmon_quant.log
+│   │   │   ├── quant.genes.sf
+│   │   │   └── quant.sf
+│   │   ├── encsr000cor1
+│   │   │   ├── aux_info
+│   │   │   │   ├── ambig_info.tsv
+│   │   │   │   ├── expected_bias.gz
+│   │   │   │   ├── fld.gz
+│   │   │   │   ├── meta_info.json
+│   │   │   │   ├── observed_bias_3p.gz
+│   │   │   │   └── observed_bias.gz
+│   │   │   ├── cmd_info.json
+│   │   │   ├── lib_format_counts.json
+│   │   │   ├── libParams
+│   │   │   │   └── flenDist.txt
+│   │   │   ├── logs
+│   │   │   │   └── salmon_quant.log
+│   │   │   ├── quant.genes.sf
+│   │   │   └── quant.sf
+│   │   ├── encsr000cor2
+│   │   │   ├── aux_info
+│   │   │   │   ├── ambig_info.tsv
+│   │   │   │   ├── expected_bias.gz
+│   │   │   │   ├── fld.gz
+│   │   │   │   ├── meta_info.json
+│   │   │   │   ├── observed_bias_3p.gz
+│   │   │   │   └── observed_bias.gz
+│   │   │   ├── cmd_info.json
+│   │   │   ├── lib_format_counts.json
+│   │   │   ├── libParams
+│   │   │   │   └── flenDist.txt
+│   │   │   ├── logs
+│   │   │   │   └── salmon_quant.log
+│   │   │   ├── quant.genes.sf
+│   │   │   └── quant.sf
+│   │   ├── encsr000cpo1
+│   │   │   ├── aux_info
+│   │   │   │   ├── ambig_info.tsv
+│   │   │   │   ├── expected_bias.gz
+│   │   │   │   ├── fld.gz
+│   │   │   │   ├── meta_info.json
+│   │   │   │   ├── observed_bias_3p.gz
+│   │   │   │   └── observed_bias.gz
+│   │   │   ├── cmd_info.json
+│   │   │   ├── lib_format_counts.json
+│   │   │   ├── libParams
+│   │   │   │   └── flenDist.txt
+│   │   │   ├── logs
+│   │   │   │   └── salmon_quant.log
+│   │   │   ├── quant.genes.sf
+│   │   │   └── quant.sf
+│   │   ├── encsr000cpo2
+│   │   │   ├── aux_info
+│   │   │   │   ├── ambig_info.tsv
+│   │   │   │   ├── expected_bias.gz
+│   │   │   │   ├── fld.gz
+│   │   │   │   ├── meta_info.json
+│   │   │   │   ├── observed_bias_3p.gz
+│   │   │   │   └── observed_bias.gz
+│   │   │   ├── cmd_info.json
+│   │   │   ├── lib_format_counts.json
+│   │   │   ├── libParams
+│   │   │   │   └── flenDist.txt
+│   │   │   ├── logs
+│   │   │   │   └── salmon_quant.log
+│   │   │   ├── quant.genes.sf
+│   │   │   └── quant.sf
+│   │   ├── salmon.merged.gene_counts_length_scaled.tsv
+│   │   ├── salmon.merged.gene_counts_scaled.tsv
+│   │   ├── salmon.merged.gene_counts.tsv
+│   │   ├── salmon.merged.gene_lengths.tsv
+│   │   ├── salmon.merged.gene.SummarizedExperiment.rds
+│   │   ├── salmon.merged.gene_tpm.tsv
+│   │   ├── salmon.merged.transcript_counts.tsv
+│   │   ├── salmon.merged.transcript_lengths.tsv
+│   │   ├── salmon.merged.transcript.SummarizedExperiment.rds
+│   │   ├── salmon.merged.transcript_tpm.tsv
+│   │   └── tx2gene.tsv
+│   └── trimgalore
+│       ├── encsr000coq1_trimmed_1.fastq.gz_trimming_report.txt
+│       ├── encsr000coq1_trimmed_2.fastq.gz_trimming_report.txt
+│       ├── encsr000coq2_trimmed_1.fastq.gz_trimming_report.txt
+│       ├── encsr000coq2_trimmed_2.fastq.gz_trimming_report.txt
+│       ├── encsr000cor1_trimmed_1.fastq.gz_trimming_report.txt
+│       ├── encsr000cor1_trimmed_2.fastq.gz_trimming_report.txt
+│       ├── encsr000cor2_trimmed_1.fastq.gz_trimming_report.txt
+│       ├── encsr000cor2_trimmed_2.fastq.gz_trimming_report.txt
+│       ├── encsr000cpo1_trimmed_1.fastq.gz_trimming_report.txt
+│       ├── encsr000cpo1_trimmed_2.fastq.gz_trimming_report.txt
+│       ├── encsr000cpo2_trimmed_1.fastq.gz_trimming_report.txt
+│       └── encsr000cpo2_trimmed_2.fastq.gz_trimming_report.txt
+├── rnaseq-salmon-hpc-167514.err
+├── rnaseq-salmon-hpc-167514.out
+├── samplesheet-6samples.csv
+├── singularity_images
+│   ├── community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-23-23651ffd6a171ef3ba867cb97ef615f6dd6be39158df9466fe92b5e844cd7d59-data.img
+│   ├── community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-52-52ccce28d2ab928ab862e25aae26314d69c8e38bd41ca9431c67ef05221348aa-data.img
+│   ├── community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-9b-9becad054093ad4083a961d12733f2a742e11728fe9aa815d678b882b3ede520-data.img
+│   ├── community-cr-prod.seqera.io-docker-registry-v2-blobs-sha256-ef-eff0eafe78d5f3b65a6639265a16b89fdca88d06d18894f90fcdb50142004329-data.img
+│   ├── depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.32.0--r43hdfd78af_0.img
+│   ├── depot.galaxyproject.org-singularity-bioconductor-tximeta%3A1.20.1--r43hdfd78af_0.img
+│   ├── depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img
+│   ├── depot.galaxyproject.org-singularity-fq-0.12.0--h9ee0642_0.img
+│   ├── depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img
+│   ├── depot.galaxyproject.org-singularity-perl-5.26.2.img
+│   ├── depot.galaxyproject.org-singularity-python-3.10.4.img
+│   ├── depot.galaxyproject.org-singularity-python-3.9--1.img
+│   ├── depot.galaxyproject.org-singularity-salmon-1.10.3--h6dccd9a_2.img
+│   └── depot.galaxyproject.org-singularity-samtools-1.21--h50ea8bc_0.img
+└── work
+    ├── 02
+    │   └── d3e3b2f9ba71bac6914b5717b96cff
+    │       ├── encsr000cpo1_raw_1_fastqc.html
+    │       ├── encsr000cpo1_raw_1_fastqc.zip
+    │       ├── encsr000cpo1_raw_2_fastqc.html
+    │       ├── encsr000cpo1_raw_2_fastqc.zip
+    │       └── versions.yml
+    ├── 0c
+    │   └── d10a7bc1f84c17ecf140f2f70a7223
+    │       ├── encsr000cor1_trimmed_1.fastq.gz_trimming_report.txt
+    │       ├── encsr000cor1_trimmed_1_val_1_fastqc.html
+    │       ├── encsr000cor1_trimmed_1_val_1_fastqc.zip
+    │       ├── encsr000cor1_trimmed_1_val_1.fq.gz
+    │       ├── encsr000cor1_trimmed_2.fastq.gz_trimming_report.txt
+    │       ├── encsr000cor1_trimmed_2_val_2_fastqc.html
+    │       ├── encsr000cor1_trimmed_2_val_2_fastqc.zip
+    │       ├── encsr000cor1_trimmed_2_val_2.fq.gz
+    │       └── versions.yml
+    ├── 0f
+    │   └── aac47185ff2689bf1222fe8a3842cc
+    │       ├── encsr000cpo1.fq_lint.txt
+    │       └── versions.yml
+    ├── 12
+    │   └── b915a8ab191d8d69e7d737af5f3668
+    │       ├── genome.transcripts.fa
+    │       ├── rsem
+    │       │   ├── genome.chrlist
+    │       │   ├── genome.grp
+    │       │   ├── genome.idx.fa
+    │       │   ├── genome.n2g.idx.fa
+    │       │   ├── genome.seq
+    │       │   ├── genome.ti
+    │       │   ├── genome.transcripts.fa
+    │       │   └── Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    │       └── versions.yml
+    ├── 14
+    │   └── 38a1851ecc4fdc62312b5f623196d0
+    │       ├── encsr000cpo2_raw_1_fastqc.html
+    │       ├── encsr000cpo2_raw_1_fastqc.zip
+    │       ├── encsr000cpo2_raw_2_fastqc.html
+    │       ├── encsr000cpo2_raw_2_fastqc.zip
+    │       └── versions.yml
+    ├── 1d
+    │   └── 38f706f73e1d12cc6cb5ab4bca2e57
+    │       ├── salmon
+    │       │   ├── complete_ref_lens.bin
+    │       │   ├── ctable.bin
+    │       │   ├── ctg_offsets.bin
+    │       │   ├── duplicate_clusters.tsv
+    │       │   ├── info.json
+    │       │   ├── mphf.bin
+    │       │   ├── pos.bin
+    │       │   ├── pre_indexing.log
+    │       │   ├── rank.bin
+    │       │   ├── refAccumLengths.bin
+    │       │   ├── ref_indexing.log
+    │       │   ├── reflengths.bin
+    │       │   ├── refseq.bin
+    │       │   ├── seq.bin
+    │       │   └── versionInfo.json
+    │       └── versions.yml
+    ├── 22
+    │   ├── 8559550f8c1497b7932f99c2bcd6f7
+    │   │   ├── encsr000coq2_raw_1_fastqc.html
+    │   │   ├── encsr000coq2_raw_1_fastqc.zip
+    │   │   ├── encsr000coq2_raw_2_fastqc.html
+    │   │   ├── encsr000coq2_raw_2_fastqc.zip
+    │   │   └── versions.yml
+    │   └── a4b150aaf5d7dd2ebfbf3433295078
+    │       ├── encsr000coq1_raw_1_fastqc.html
+    │       ├── encsr000coq1_raw_1_fastqc.zip
+    │       ├── encsr000coq1_raw_2_fastqc.html
+    │       ├── encsr000coq1_raw_2_fastqc.zip
+    │       └── versions.yml
+    ├── 2b
+    │   └── 93b0b4198ce2d17bda0f7387721939
+    │       ├── encsr000coq1_trimmed_1.fastq.gz_trimming_report.txt
+    │       ├── encsr000coq1_trimmed_1_val_1_fastqc.html
+    │       ├── encsr000coq1_trimmed_1_val_1_fastqc.zip
+    │       ├── encsr000coq1_trimmed_1_val_1.fq.gz
+    │       ├── encsr000coq1_trimmed_2.fastq.gz_trimming_report.txt
+    │       ├── encsr000coq1_trimmed_2_val_2_fastqc.html
+    │       ├── encsr000coq1_trimmed_2_val_2_fastqc.zip
+    │       ├── encsr000coq1_trimmed_2_val_2.fq.gz
+    │       └── versions.yml
+    ├── 46
+    │   └── e50303c018bf64e3879908e31ed786
+    │       ├── Homo_sapiens.GRCh38.115.filtered.gtf
+    │       └── versions.yml
+    ├── 53
+    │   └── 44712fd4b135d55a350255b2b2379c
+    │       ├── Homo_sapiens.GRCh38.115.filtered.bed
+    │       └── versions.yml
+    ├── 54
+    │   └── 5696d7f61f936ee272f5f431e3c925
+    │       ├── deseq2.dds.RData
+    │       ├── deseq2.pca.vals.txt
+    │       ├── deseq2.plots.pdf
+    │       ├── deseq2.sample.dists.txt
+    │       ├── R_sessionInfo.log
+    │       ├── salmon.pca.vals_mqc.tsv
+    │       ├── salmon.sample.dists_mqc.tsv
+    │       ├── size_factors
+    │       │   ├── deseq2.size_factors.RData
+    │       │   ├── encsr000coq1.txt
+    │       │   ├── encsr000coq2.txt
+    │       │   ├── encsr000cor1.txt
+    │       │   ├── encsr000cor2.txt
+    │       │   ├── encsr000cpo1.txt
+    │       │   └── encsr000cpo2.txt
+    │       └── versions.yml
+    ├── 5a
+    │   └── bdfeaa1dded75138d0d4e5a29f9a1e
+    │       ├── salmon.merged.gene.R_sessionInfo.log
+    │       ├── salmon.merged.gene.SummarizedExperiment.rds
+    │       └── versions.yml
+    ├── 5b
+    │   └── 899a0413aace5d4fcae76b4e6e5e81
+    │       ├── encsr000coq2_trimmed_1.fastq.gz_trimming_report.txt
+    │       ├── encsr000coq2_trimmed_1_val_1_fastqc.html
+    │       ├── encsr000coq2_trimmed_1_val_1_fastqc.zip
+    │       ├── encsr000coq2_trimmed_1_val_1.fq.gz
+    │       ├── encsr000coq2_trimmed_2.fastq.gz_trimming_report.txt
+    │       ├── encsr000coq2_trimmed_2_val_2_fastqc.html
+    │       ├── encsr000coq2_trimmed_2_val_2_fastqc.zip
+    │       ├── encsr000coq2_trimmed_2_val_2.fq.gz
+    │       └── versions.yml
+    ├── 62
+    │   └── 442a079ca6a3c7adbef78c61f0e832
+    │       ├── encsr000coq1.fq_lint.txt
+    │       └── versions.yml
+    ├── 69
+    │   └── b45be2ae4702a987165cfad25fa990
+    │       ├── encsr000coq1
+    │       │   ├── aux_info
+    │       │   ├── cmd_info.json
+    │       │   ├── lib_format_counts.json
+    │       │   ├── libParams
+    │       │   ├── logs
+    │       │   ├── quant.genes.sf
+    │       │   └── quant.sf
+    │       ├── encsr000coq1_lib_format_counts.json
+    │       ├── encsr000coq1_meta_info.json
+    │       └── versions.yml
+    ├── 6e
+    │   └── be49e1658f18fcd9737d8001f593e0
+    │       ├── encsr000cpo2
+    │       │   ├── aux_info
+    │       │   ├── cmd_info.json
+    │       │   ├── lib_format_counts.json
+    │       │   ├── libParams
+    │       │   ├── logs
+    │       │   ├── quant.genes.sf
+    │       │   └── quant.sf
+    │       ├── encsr000cpo2_lib_format_counts.json
+    │       ├── encsr000cpo2_meta_info.json
+    │       └── versions.yml
+    ├── 71
+    │   └── 45f46aff6f8dc8bcf128cd785a0338
+    │       ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+    │       ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa.sizes
+    │       └── versions.yml
+    ├── 76
+    │   └── 0abbf4feef578895066270abebba0c
+    │       ├── encsr000cpo1
+    │       │   ├── aux_info
+    │       │   ├── cmd_info.json
+    │       │   ├── lib_format_counts.json
+    │       │   ├── libParams
+    │       │   ├── logs
+    │       │   ├── quant.genes.sf
+    │       │   └── quant.sf
+    │       ├── encsr000cpo1_lib_format_counts.json
+    │       ├── encsr000cpo1_meta_info.json
+    │       └── versions.yml
+    ├── 7a
+    │   └── c250a462b2986a2e8205c3e9dff752
+    │       ├── encsr000cpo2.fq_lint.txt
+    │       └── versions.yml
+    ├── 7f
+    │   └── b06228fe0bf49f34e3894d823bca59
+    │       ├── encsr000cpo1.fq_lint.txt
+    │       └── versions.yml
+    ├── 87
+    │   └── 015b21181d53639eef53b3527838ed
+    │       ├── encsr000cpo2.fq_lint.txt
+    │       └── versions.yml
+    ├── 8b
+    │   └── 7c0878faf764f79240126abb151870
+    │       ├── encsr000cor2
+    │       │   ├── aux_info
+    │       │   ├── cmd_info.json
+    │       │   ├── lib_format_counts.json
+    │       │   ├── libParams
+    │       │   ├── logs
+    │       │   ├── quant.genes.sf
+    │       │   └── quant.sf
+    │       ├── encsr000cor2_lib_format_counts.json
+    │       ├── encsr000cor2_meta_info.json
+    │       └── versions.yml
+    ├── 8f
+    │   └── 4f73abfa5ae18b7dd56f4ee2c07057
+    │       ├── encsr000cor2_trimmed_1.fastq.gz_trimming_report.txt
+    │       ├── encsr000cor2_trimmed_1_val_1_fastqc.html
+    │       ├── encsr000cor2_trimmed_1_val_1_fastqc.zip
+    │       ├── encsr000cor2_trimmed_1_val_1.fq.gz
+    │       ├── encsr000cor2_trimmed_2.fastq.gz_trimming_report.txt
+    │       ├── encsr000cor2_trimmed_2_val_2_fastqc.html
+    │       ├── encsr000cor2_trimmed_2_val_2_fastqc.zip
+    │       ├── encsr000cor2_trimmed_2_val_2.fq.gz
+    │       └── versions.yml
+    ├── 93
+    │   └── d2a99726011949b521a1cd18a53ed5
+    │       ├── encsr000coq1.fq_lint.txt
+    │       └── versions.yml
+    ├── 97
+    │   └── 066d5fb6b15283d3a6591774294dfb
+    │       ├── Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    │       └── versions.yml
+    ├── a7
+    │   └── 77568bbafc78c9a23930d49299a74e
+    │       ├── salmon.merged.gene_counts_length_scaled.tsv
+    │       ├── salmon.merged.gene_counts_scaled.tsv
+    │       ├── salmon.merged.gene_counts.tsv
+    │       ├── salmon.merged.gene_lengths.tsv
+    │       ├── salmon.merged.gene_tpm.tsv
+    │       ├── salmon.merged.transcript_counts.tsv
+    │       ├── salmon.merged.transcript_lengths.tsv
+    │       ├── salmon.merged.transcript_tpm.tsv
+    │       └── versions.yml
+    ├── b7
+    │   └── 2ac7e31d1f9487d44152579d100e17
+    │       ├── encsr000cor2.fq_lint.txt
+    │       └── versions.yml
+    ├── ba
+    │   └── 7a784bf93862a0439b87d56e9d01c1
+    │       ├── encsr000cor1_raw_1_fastqc.html
+    │       ├── encsr000cor1_raw_1_fastqc.zip
+    │       ├── encsr000cor1_raw_2_fastqc.html
+    │       ├── encsr000cor1_raw_2_fastqc.zip
+    │       └── versions.yml
+    ├── c6
+    │   └── 89b5ac9a76fee38823ca747f0d7b2f
+    │       ├── encsr000cor2_raw_1_fastqc.html
+    │       ├── encsr000cor2_raw_1_fastqc.zip
+    │       ├── encsr000cor2_raw_2_fastqc.html
+    │       ├── encsr000cor2_raw_2_fastqc.zip
+    │       └── versions.yml
+    ├── collect-file
+    │   ├── 0e78c311526fcd509e961d01e30412fe
+    │   ├── 1dd5ea9313e942f94c2f4b6090742b21
+    │   ├── 6749a20f20ee3d71e8b1414c7947a0fa
+    │   └── fe56b2b9de0e0412f023c0601a112059
+    ├── d0
+    │   └── 0cdcc57274a9eb43619c835eedec10
+    │       ├── encsr000cpo2_trimmed_1.fastq.gz_trimming_report.txt
+    │       ├── encsr000cpo2_trimmed_1_val_1_fastqc.html
+    │       ├── encsr000cpo2_trimmed_1_val_1_fastqc.zip
+    │       ├── encsr000cpo2_trimmed_1_val_1.fq.gz
+    │       ├── encsr000cpo2_trimmed_2.fastq.gz_trimming_report.txt
+    │       ├── encsr000cpo2_trimmed_2_val_2_fastqc.html
+    │       ├── encsr000cpo2_trimmed_2_val_2_fastqc.zip
+    │       ├── encsr000cpo2_trimmed_2_val_2.fq.gz
+    │       └── versions.yml
+    ├── d3
+    │   └── 56e1d0f3add0ca0a0b3778cef4e37b
+    │       ├── Homo_sapiens.GRCh38.115.gtf
+    │       └── versions.yml
+    ├── d6
+    │   └── 04e4b8507bb6ae1afc135e69cf4f76
+    │       ├── encsr000coq2.fq_lint.txt
+    │       └── versions.yml
+    ├── d9
+    │   └── 9b6e741858dfe2154fdf7e66934b28
+    │       ├── encsr000cor1.fq_lint.txt
+    │       └── versions.yml
+    ├── da
+    │   └── b2a7dc3a8df63366a5237881f8d0b6
+    │       ├── salmon.merged.transcript.R_sessionInfo.log
+    │       ├── salmon.merged.transcript.SummarizedExperiment.rds
+    │       └── versions.yml
+    ├── de
+    │   └── ecc1bba54289a37c4730a8ecc865b8
+    │       ├── encsr000cor1.fq_lint.txt
+    │       └── versions.yml
+    ├── e7
+    │   └── 07a052078db8181963bf3c4a24ddd6
+    │       ├── encsr000coq2
+    │       │   ├── aux_info
+    │       │   ├── cmd_info.json
+    │       │   ├── lib_format_counts.json
+    │       │   ├── libParams
+    │       │   ├── logs
+    │       │   ├── quant.genes.sf
+    │       │   └── quant.sf
+    │       ├── encsr000coq2_lib_format_counts.json
+    │       ├── encsr000coq2_meta_info.json
+    │       └── versions.yml
+    ├── e8
+    │   └── 8694527b70d4921412d5300d089b1a
+    │       ├── encsr000coq2.fq_lint.txt
+    │       └── versions.yml
+    ├── e9
+    │   └── b6e80839f2e7ab086b1c3f6a758655
+    │       ├── encsr000cor2.fq_lint.txt
+    │       └── versions.yml
+    ├── f1
+    │   └── dbf70024dcd1509f97aa089a7578ef
+    │       ├── encsr000cpo1_trimmed_1.fastq.gz_trimming_report.txt
+    │       ├── encsr000cpo1_trimmed_1_val_1_fastqc.html
+    │       ├── encsr000cpo1_trimmed_1_val_1_fastqc.zip
+    │       ├── encsr000cpo1_trimmed_1_val_1.fq.gz
+    │       ├── encsr000cpo1_trimmed_2.fastq.gz_trimming_report.txt
+    │       ├── encsr000cpo1_trimmed_2_val_2_fastqc.html
+    │       ├── encsr000cpo1_trimmed_2_val_2_fastqc.zip
+    │       ├── encsr000cpo1_trimmed_2_val_2.fq.gz
+    │       └── versions.yml
+    ├── f9
+    │   └── ad109c114dca70383cee56a916c25c
+    │       ├── tx2gene.tsv
+    │       └── versions.yml
+    ├── fa
+    │   └── 1f80d4fcaefb43d908fdace366fab6
+    │       ├── encsr000cor1
+    │       │   ├── aux_info
+    │       │   ├── cmd_info.json
+    │       │   ├── lib_format_counts.json
+    │       │   ├── libParams
+    │       │   ├── logs
+    │       │   ├── quant.genes.sf
+    │       │   └── quant.sf
+    │       ├── encsr000cor1_lib_format_counts.json
+    │       ├── encsr000cor1_meta_info.json
+    │       └── versions.yml
+    ├── ff
+    │   └── 1fc4320dac1f08ea150cf1e97819ae
+    │       ├── multiqc_report_data
+    │       │   ├── cutadapt_filtered_reads_plot.txt
+    │       │   ├── cutadapt_trimmed_sequences_plot_3_Counts.txt
+    │       │   ├── cutadapt_trimmed_sequences_plot_3_Obs_Exp.txt
+    │       │   ├── fastqc_raw_adapter_content_plot.txt
+    │       │   ├── fastqc_raw_overrepresented_sequences_plot.txt
+    │       │   ├── fastqc_raw_per_base_n_content_plot.txt
+    │       │   ├── fastqc_raw_per_base_sequence_quality_plot.txt
+    │       │   ├── fastqc_raw_per_sequence_gc_content_plot_Counts.txt
+    │       │   ├── fastqc_raw_per_sequence_gc_content_plot_Percentages.txt
+    │       │   ├── fastqc_raw_per_sequence_quality_scores_plot.txt
+    │       │   ├── fastqc_raw_sequence_counts_plot.txt
+    │       │   ├── fastqc_raw_sequence_duplication_levels_plot.txt
+    │       │   ├── fastqc_raw-status-check-heatmap.txt
+    │       │   ├── fastqc_raw_top_overrepresented_sequences_table.txt
+    │       │   ├── fastqc_sequence_length_distribution_plot.txt
+    │       │   ├── fastqc_trimmed_adapter_content_plot.txt
+    │       │   ├── fastqc_trimmed_overrepresented_sequences_plot.txt
+    │       │   ├── fastqc_trimmed_per_base_n_content_plot.txt
+    │       │   ├── fastqc_trimmed_per_base_sequence_quality_plot.txt
+    │       │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Counts.txt
+    │       │   ├── fastqc_trimmed_per_sequence_gc_content_plot_Percentages.txt
+    │       │   ├── fastqc_trimmed_per_sequence_quality_scores_plot.txt
+    │       │   ├── fastqc_trimmed_sequence_counts_plot.txt
+    │       │   ├── fastqc_trimmed_sequence_duplication_levels_plot.txt
+    │       │   ├── fastqc_trimmed-status-check-heatmap.txt
+    │       │   ├── fastqc_trimmed_top_overrepresented_sequences_table.txt
+    │       │   ├── llms-full.txt
+    │       │   ├── multiqc_citations.txt
+    │       │   ├── multiqc_cutadapt.txt
+    │       │   ├── multiqc_data.json
+    │       │   ├── multiqc_fastqc_fastqc_raw.txt
+    │       │   ├── multiqc_fastqc_fastqc_trimmed.txt
+    │       │   ├── multiqc_general_stats.txt
+    │       │   ├── multiqc.log
+    │       │   ├── multiqc.parquet
+    │       │   ├── multiqc_salmon_deseq2_clustering.txt
+    │       │   ├── multiqc_salmon_deseq2_pca.txt
+    │       │   ├── multiqc_salmon.txt
+    │       │   ├── multiqc_software_versions.txt
+    │       │   ├── multiqc_sources.txt
+    │       │   └── salmon_plot.txt
+    │       ├── multiqc_report.html
+    │       ├── multiqc_report_plots
+    │       │   ├── pdf
+    │       │   ├── png
+    │       │   └── svg
+    │       └── versions.yml
+    └── tmp
+        ├── 0d
+        │   └── b8ec959323eb8bfdea3650aa1ae674
+        │       └── methods_description_mqc.yaml
+        ├── 32
+        │   └── b52ab7fa9e114fc631aeca7df71b35
+        ├── 43
+        │   └── 7ba0deb6bce0a32f00894841ae2601
+        ├── 47
+        │   └── efc9f4de8ae348fe674c1f31a45b71
+        │       └── workflow_summary_mqc.yaml
+        ├── 82
+        │   └── 687115b5a53eba128cdbcaa95b5ad8
+        └── cc
+            └── ac4514daa5b4340da39552a9dbfc91
+                └── name_replacement.txt
+
+185 directories, 669 files
