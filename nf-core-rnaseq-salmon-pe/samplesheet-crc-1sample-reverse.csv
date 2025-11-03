@@ -1,0 +1,2 @@
+sample,fastq_1,fastq_2,strandedness
+srr27320663_sigmoid_control,data/reads/SRR27320663_1.fastq.gz,data/reads/SRR27320663_2.fastq.gz,reverse

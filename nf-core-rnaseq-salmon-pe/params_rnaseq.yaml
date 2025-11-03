@@ -21,7 +21,6 @@ skip_alignment: true                   # skip alignment since we’re using salm
 save_reference: false                  # store index file for reuse
 #transcript_fasta: "data/genomes/GRCh38/Homo_sapiens.GRCh38.cdna.all.fa"
 
-
 # -----------------------------------------------------------
 # WORKFLOW OPTIONS
 # -----------------------------------------------------------
@@ -29,7 +28,6 @@ skip_trimming: false                   # enable or disable adapter trimming
 trimmer: "trimgalore"                 # options: fastp or trimgalore
 skip_qc: false                         # if true, skips FastQC/MultiQC
 save_trimmed: false                    # whether to keep trimmed reads
-skip_fastq_lint: true
 #validate_samplesheet: true             # ensures proper sample sheet formatting
 
 # -----------------------------------------------------------
