@@ -7,7 +7,7 @@
 # -----------------------------------------------------------
 # INPUTS
 # -----------------------------------------------------------
-input: "samplesheet.csv"               # nf-core formatted sample sheet
+input: "samplesheet_eocrc.csv"         # nf-core formatted sample sheet
 outdir: "results"                      # output directory
 pseudo_aligner: "salmon"             # could be salmon, STAR, HISAT2, etc.
 

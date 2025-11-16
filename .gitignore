@@ -44,11 +44,11 @@ nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-kallisto-pe/.nextflow.log
 
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/data/genomes/GRCh38/*
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/data/reads/*.fastq.gz
-nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/.nextflow
+nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/.nextflow*
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/singularity_images/
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/results_sra_srp479528_samples_44/
+nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/results_sra_srp357925_samples_42/
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/work/
-nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/.nextflow.log
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/reports-pipeline-setup/reports_salmon_crc_1sample/salmon
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/reports-pipeline-setup/reports_salmon_crc_1sample_autostranded/salmon
 
