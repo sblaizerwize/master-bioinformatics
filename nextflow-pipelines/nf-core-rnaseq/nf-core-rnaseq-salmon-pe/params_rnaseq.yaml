@@ -7,19 +7,34 @@
 # -----------------------------------------------------------
 # INPUTS
 # -----------------------------------------------------------
-input: "samplesheet_eocrc.csv"         # nf-core formatted sample sheet
+input: "samplesheet_eocrc.csv"               # nf-core formatted sample sheet
 outdir: "results"                      # output directory
-pseudo_aligner: "salmon"             # could be salmon, STAR, HISAT2, etc.
+pseudo_aligner: "salmon"               # could be salmon, STAR, HISAT2, etc.
 
 # -----------------------------------------------------------
 # REFERENCES
 # -----------------------------------------------------------
-fasta: "data/genomes/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz"
-gtf: "data/genomes/GRCh38/Homo_sapiens.GRCh38.115.gtf.gz"
-salmon_index: "data/genomes/GRCh38/salmon"
-skip_alignment: true                   # skip alignment since we’re using salmon
-save_reference: false                  # store index file for reuse
-#transcript_fasta: "data/genomes/GRCh38/Homo_sapiens.GRCh38.cdna.all.fa"
+# Genome FASTA from Ensembl
+#fasta: "data/genomes/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz"
+
+# Matching GTF from Ensemble
+#gtf: "data/genomes/GRCh38/Homo_sapiens.GRCh38.115.gtf.gz"
+
+# Genome FASTA from GENCODE
+fasta: "data/genomes/GRCh38/GRCh38.primary_assembly.genome.fa.gz"
+
+# Matching GTF from GENCODE
+gtf: "data/genomes/GRCh38/gencode.v49.primary_assembly.annotation.gtf.gz"
+
+# To specify if your GTF annotation is in GENCODE format
+gencode: true  
+
+skip_alignment: true
+save_reference: false   # true: to create a new salmon index; false: to reuse an existing one
+
+# Define path to an existing salmon_index
+salmon_index: "data/genomes/GRCh38/genome_gencode/index/salmon"
+
 
 # -----------------------------------------------------------
 # WORKFLOW OPTIONS
@@ -28,16 +43,11 @@ skip_trimming: false                   # enable or disable adapter trimming
 trimmer: "trimgalore"                 # options: fastp or trimgalore
 skip_qc: false                         # if true, skips FastQC/MultiQC
 save_trimmed: false                    # whether to keep trimmed reads
-#validate_samplesheet: true             # ensures proper sample sheet formatting
 
 # -----------------------------------------------------------
 # PERFORMANCE / RESOURCES
 # -----------------------------------------------------------
 multiqc_title: "crc-rna-seq-salmon"
-#max_cpus: "32"
-#max_memory: "128 GB"
-#max_time: "72h"
-#email_on_fail: true
 
 # -----------------------------------------------------------
 # OUTPUT AND REPORTING
@@ -52,6 +62,3 @@ igenomes_ignore: true                  # use local reference paths only
 # -----------------------------------------------------------
 singularity_pull_docker_container: false
 download_reference: false              # use local reference instead of iGenomes
-#container_engine: "singularity"        # docker, singularity, or conda
-#singularity_cache_dir: "singularity_images"
-#igenomes_base: "/path/to/nfcore_references"
