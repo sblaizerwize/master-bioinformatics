@@ -48,6 +48,9 @@ nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/.nextflow*
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/singularity_images/
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/results_sra_srp479528_samples_44/
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/results_sra_srp357925_samples_42/
+nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/results_gencode_samples_42/
+nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/results_gencode_samples_44/
+
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/work/
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/reports-pipeline-setup/reports_salmon_crc_1sample/salmon
 nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/reports-pipeline-setup/reports_salmon_crc_1sample_autostranded/salmon

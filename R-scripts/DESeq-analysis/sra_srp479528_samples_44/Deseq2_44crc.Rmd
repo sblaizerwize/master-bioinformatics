@@ -1,0 +1,952 @@
+---
+title: "Differential Gene Expression of 44 colorectal cancer samples in R"
+author: "Salomón Marquez"
+date: "`r Sys.Date()`"
+output:
+   html_document:
+    code_folding: hide
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    toc_depth: 3
+    number_sections: true
+    self-contained: true
+#output:
+#   pdf_document:
+#   latex_engine: xelatex  # o lualatex
+#   keep_tex: yes
+#   toc: yes
+editor_options: 
+  markdown: 
+    wrap: 72
+#editor_options: 
+#  chunk_output_type: console
+---
+
+**Acknowledgement**: this report has been inspired by materials used in the `Advanced Bioinformatics` course taught by Igor Ruiz de los Mozos at UPNA.  
+
+```{r setup, include=FALSE}
+# Load knitr
+library(knitr)
+
+# Global R options
+options(max.print = 50)
+options(repos = c(CRAN = "https://cloud.r-project.org")) 
+
+# Global chunk options
+opts_chunk$set(
+  echo = TRUE,     # show code
+  cache = TRUE,    # caching
+  prompt = FALSE,   # don’t show ">" in code
+  tidy = TRUE,      # clean code formatting
+  comment = NA,     # no extra comment symbols
+  message = FALSE,  # hide package load messages
+  warning = FALSE   # hide warnings
+)
+
+# Knitr rendering width
+opts_knit$set(width = 100)
+```
+
+```{r, include=FALSE}
+# Install and load modules and libraries 
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("SummarizedExperiment", force=TRUE)
+BiocManager::install("DESeq2")
+BiocManager::install("DelayedArray")
+
+install.packages("skimr")
+install.packages("scales")
+install.packages("ggfortify")
+install.packages("corrplot")
+install.packages("factoextra")
+
+library(skimr)
+library(scales)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(S4Vectors)
+library("SummarizedExperiment")
+library(reshape2)
+library(ggfortify)
+library(corrplot)
+library(factoextra)
+library("DESeq2")
+```
+
+# Data preparation
+## Load dataset
+After completing the `nf-core/rnaseq` pipeline using Salmon pseudoalignment for the analysis of 44 colorectal samples from SRA study SRP479528 will obtain the `salmon.merged.gene.SummarizedExperiment.rds`
+file. This file contains gene-level quantification matrices (counts, TPMs, effective lengths) plus sample metadata and annotations produced from the merged Salmon quantifications.
+
+Let's load the `salmon.merged.gene.SummarizedExperiment.rds` file. The content of the file has a `SummarizedExperiment` representation, which is an R/Bioconductor container that stores assay matrices (e.g., counts), feature metadata, and sample metadata in one coherent object.
+
+```{r}
+# Specify a working directory
+directory <- "/Volumes/DataWinBackup/00_MASTER UOC BIOINFORMATICA - TEMPORAL/TFM-UOC"
+setwd(directory)
+#list.files()
+
+# Read 'se' object obtained from nfcore/rnaseq
+se <- readRDS("salmon.merged.gene.SummarizedExperiment.rds")
+
+# Display se object
+print(se)
+```
+
+We focus on the `counts` assay matrix and check information on columns and rows. 
+
+```{r}
+# Check the first elements of the counts matrix
+head(assay(se, "counts")[ , 1:2], 5)
+
+# Collect sample information 
+head(colData(se)[ , 2:3], 5)
+
+# Collect gene information 
+head(rowData(se), 3)
+
+# Collect genomic ranges 
+head(rowRanges(se), 3)
+
+```
+
+Below, we can obtain the name of the 44 samples. 
+
+```{r}
+# Display colNames 
+colData(se)$sample
+```
+
+Since the `colData` field in the `se` object is limited to data from the original FASTQ files, it would be useful to supplement it with metadata from the SRA study, such as patient age and tissue type.
+
+## Preparation of .csv files 
+In this section we describe the steps to add metadata from the SRA study into the `colData` field of the `SummarizedExperiment` object obtained from the `nf-core/rnaseq` pipeline: 
+
+- Go to [SRA study SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/sra?study=SRP479528)
+- Download metadata of 44 runs
+- Open the downloaded `SraRunTable.csv` file in Google Sheets
+- Convert the spreadsheet into a table 
+- Order data by run number SRR27320655, SRR27320656, SRR27320657…
+- Download it as `.csv` file and rename it `sraruntable_srp479528_crc44.csv`
+
+Here are the first lines of the `sraruntable_srp479528_crc44.csv` file.
+```
+Run,age_at_surgery,tissue,tumor_stage,Sample Name,SRA Study,Assay Type,AvgSpotLen,Bases,BioProject,BioSample,Bytes,Center Name,Collection_Date,Consent,DATASTORE filetype,DATASTORE provider,DATASTORE region,Experiment,geo_loc_name_country,geo_loc_name_country_continent,geo_loc_name,Instrument,Library Name,LibraryLayout,LibrarySelection,LibrarySource,Organism,Platform,ReleaseDate,create_date,version,Column 1,source_name
+SRR27320655,88.75,Rectum,NA,GSM7989032,SRP479528,RNA-Seq,117,2304341839,PRJNA1055547,SAMN39058850,870996594,"BIOCHEMISTRY, COLORECTAL SURGERY, PENN STATE COLLEGE OF MEDICINE",missing,public,"fastq,run.zq,sra","ncbi,gs,s3","s3.us-east-1,ncbi.public,gs.us-east1",SRX22997924,uncalculated,uncalculated,missing,Illumina NovaSeq 6000,GSM7989032,PAIRED,cDNA,TRANSCRIPTOMIC,Homo sapiens,ILLUMINA,2024-04-11T00:00:00Z,2023-12-21T21:33:00Z,1,,Rectum
+```
+
+As follows, a metadata `.csv` file was created using information from [BioProject PRJNA1055547](https://www.ncbi.nlm.nih.gov/bioproject/1055547). Here are the first lines of the created `sraruntable_srp479528_crc44_metadata.csv` file. 
+
+```
+key,values
+abstract,"The incidence of colorectal cancer (CRC) has been steadily increasing in younger individuals over the past several decades for reasons that are incompletely defined..."
+Accession,PRJNA1055547; GEO: GSE251845
+Data Type,Transcriptome or Gene expression
+```
+
+## Update SummarizedExperiment object
+Let's add metadata contained in the previously created `sraruntable_srp479528_crc44.csv` and `sraruntable_srp479528_crc44_metadata.csv` files into the `se` object. 
+
+After loading the .csv files, here we can see the samples metadata represented as a dataframe named `df_coldata`:
+```{r}
+# Load files
+df_coldata <- read.csv("sraruntable_srp479528_crc44.csv", header=TRUE, row.names = 1, check.names = FALSE)
+
+# Display first rows
+head(df_coldata[,1:5], n=3) 
+```
+
+and below is the metadata corresponding to the SRA study represented as a dataframe named `df_metadata` with two columns: `key` and `values`. 
+```{r}
+# Load files
+df_metadata <- read.csv("sraruntable_srp479528_crc44_metadata.csv", header=TRUE, check.names = FALSE)
+  
+# Display first rows
+head(df_metadata, n=3) 
+```
+
+The `lower_underscore_nospaces()` function will help us standardize the format of character-type data. 
+```{r}
+# Define the lower_underscore_nospaces() function
+lower_underscore_nospaces <- function(df){
+  non_numeric_col <- names(df)[!sapply(df,is.numeric)]
+  for(col in non_numeric_col) {
+    df[[col]] <- tolower(df[[col]])                   # lowercase
+    df[[col]] <- gsub("[^a-z0-9]+", "_", df[[col]])   # replace non-alphanumeric with underscores
+    df[[col]] <- gsub("_$", "", df[[col]])            # remove trailing underscores
+  }
+  if (!is.null(names(df))){
+    names(df) <- tolower(names(df))                   
+    names(df) <- gsub("[^a-z0-9]+", "_", names(df))   
+    names(df) <- gsub("_$", "", names(df))            
+  }
+  if (!is.null(rownames(df))){
+    rownames(df) <- tolower(rownames(df))                   
+    rownames(df) <- gsub("[^a-z0-9]+", "_", rownames(df))   
+    rownames(df) <- gsub("_$", "", rownames(df))            
+  }
+  return (df)
+}
+
+# Apply lower_underscore_nospaces to all datasets
+df_coldata <- lower_underscore_nospaces(df_coldata)
+
+# Display last changes on dataframes
+head(df_coldata[,1:5], n=3) 
+```
+
+Since the `metadata(se)` field in a `SummarizedExperiment` object stores data as a named list, let's convert `df_metadata` to this format.
+```{r}
+# Convert metadata dataframe into a named list
+list_metadata <- as.list(df_metadata$values)
+names(list_metadata) <- df_metadata$key 
+list_metadata
+```
+
+Now let's convert R regular dataframes into Bioconductor S4 DataFrame objects. 
+```{r}
+# Convert regular R dataframes to Bioconductor S4 DataFrame objects
+colData  <- DataFrame(df_coldata)
+
+# Visualize data converted to S4 DataFrame S4 type
+print(colData) 
+```
+
+and verify that their dimensions match. 
+```{r}
+# Check dimmensions of each dataset
+cat("Dimensions of counts assay:", dim(assay(se, "counts")), "\n",
+    "Dimensions of colData:", dim(colData), "\n",
+    "Dimensions of metadata:", length(list_metadata), "\n")
+```
+
+Finally, let's update the `SummarizedExperiment` object to include information on `colData` and `metadata` fields.
+```{r}
+# Update SE object
+colData(se) <- colData
+
+# Add metadata
+metadata(se) <- list_metadata
+se
+```
+
+We're on the right track. To move on, let's include a column named `condition`, which will convert the `tumor_stage` column of `colData` into a binary factor variable with levels `normal` and `tumor`. A good practice in R is that the first level be the reference one (e.g. normal, control, or untreated samples). This will come handy when conducting the differential expression analysis with the volcano plots. 
+```{r}
+# Create new colData column named condition
+colData(se)$condition <- ifelse(is.na(colData(se)$tumor_stage), "normal_locrc","tumor_locrc")
+colData(se)$condition <- as.factor(colData(se)$condition)
+colData(se)$condition
+```
+
+We can now save the `se` object for reuse, eliminating the need to rerun this section.
+```{r}
+# Save the updated `se` object to a new file 
+saveRDS(se, file="gene.SummarizedExperiment.metadata_44.rds" )
+```
+
+## Create a DESeqDataSet data object
+
+A `DESeqDataSet` (dds) object encapsulates all components needed for DE analysis. It ensures statistical correctness and handles data integrity by combining: 
+
+- Count data (from assays)
+- Sample metadata (from colData)
+- Experimental design (formula)
+- Gene metadata (from rowData)
+
+The first step to convert our `se` into `DESeqDataSet` is to ensure that count data from the assay be a matrix data type. Currently, `assay(se)` is dataframe class containing lists. 
+```{r}
+# Check class and mode of each assay in se
+sapply(assays(se),class)
+sapply(assays(se),mode)
+```
+
+Let's convert `assay(se, "counts")` into a numeric matrix and round count data. 
+```{r}
+# Extract the counts assay as a matrix
+counts_mat <- as.matrix(assay(se, "counts"))
+assay(se,"counts") <- round(counts_mat)
+
+# Keep only the 'counts' assay
+assays(se) <- assays(se)["counts"]
+
+# Check class and mode of each assay in se
+sapply(assays(se),class)
+sapply(assays(se),mode)
+```
+
+Now, we'll remove genes with less than 10 reads on all samples. This practice will save computational resources when conducting the DE analysis. It is preferable to run this task before converting from `se` to a `DESeqDataSet` due to memory constraints.
+```{r}
+gene_count_10plus <- rowSums(assay(se)) > 10
+se_filtered <- se[gene_count_10plus, ]
+se_filtered
+```
+
+Finally, we construct `DESeqDataSet` considering `condition` (normal vs. tumor) as part of our experimental design. 
+```{r}
+# Create a DESeqDataSet data object
+deseq2_raw <- DESeqDataSet(se_filtered, design = ~ condition)
+
+# Display first lines of DESeqDataSet data object
+class(deseq2_raw)
+head(counts(deseq2_raw)[ ,1:5], n=3)
+```
+
+In essence, we have the same data but now it is a `DESeqDataSet` data object.
+
+# Exploratory Data Analyisis (EDA)  
+In this section, we explore in more detail the content of the `DESeqDataSet` data object.
+
+```{r}
+# Display DESeqDataSet data object
+deseq2_raw
+
+# Show first lines 
+head(counts(deseq2_raw)[ ,1:5], n=3)
+
+# Validate NAs
+X <- counts(deseq2_raw)
+X <- as.data.frame(X)   # convert to data.frame 
+print(table(is.na(X)))
+```
+
+The dataset comprises 37,239 genes and 44 samples, for a total of 1,638,516 read counts, and contains no missing values (NAs).
+
+## Normalization by sequencing depth 
+To compare raw counts across 44 samples in a DESeq2 analysis, we need to account for library size differences. This is where normalization by sequencing depth comes handy to correct for differences in total read counts per sample. This is the baseline normalization for differential expression testing.
+
+Let's calculate the size factor per sample. 
+
+```{r}
+# Display raw counts
+head(counts(deseq2_raw)[ , 1:5], 5)
+
+# Sum all counts per sample 
+# counts(deseq2_raw) is equivalent to assay(se, "counts") from SummarizedExperiment
+# print(colSums(counts(deseq2_raw))[1:5])
+
+# Calculate the size factor and add it to the dataset
+# It normalizes for sequencing depth differences to compare expression between samples fairly
+# DESeq2 will automatically account for these depth differences in all downstream analyses using these size factors.
+deseq2_raw <- estimateSizeFactors(deseq2_raw)
+print(sizeFactors(deseq2_raw)[1:5])
+```
+
+Remember that,
+
+- Size factor = 1.0: Average sequencing depth
+- Size factor < 1.0: Lower than average sequencing depth
+- Size factor > 1.0: Higher than average sequencing depth
+
+The sizeFactor column was added to the `coldData` field of the `DESeqDataSet` data object.
+
+```{r}
+# Check that the sizeFactor column was added to colData
+deseq2_raw
+```
+
+Now, all raw counts across 44 samples have accounted for library size differences. 
+
+```{r}
+# Now take a look at the sum of the total depth after normalization 
+# print(colSums(counts(deseq2_raw, normalized=TRUE))[1:5])
+
+# To retrieve normalized read counts
+counts_normalized <-counts(deseq2_raw, normalized=TRUE)
+
+# Display normalized counts
+head(counts_normalized[ , 1:5], 5)
+```
+
+## Data transformation
+For RNA-seq counts, the expected variance grows with the mean, making low-count genes contribute excessive noise or making high-count genes dominate. Therefore, it is required to implement variance stabilization so that each gene contributes equally to overall variance patterns making sample relationships and biological signals easier to detect.
+
+### Log2 transformation 
+It consists of a raw counts transformation using the formula `log2(count + 1)`. It is useful for reducing the effect of large counts making distributions more symmetric. Use this transformation for a quick comparisons across samples and conducting exploratory visualization with PCA and heatmaps. 
+
+```{r}
+# Log2 normalization adding 1 pseudocount
+counts_log_normalized <- log2(counts_normalized + 1)
+
+# Create a plot region of 1x2
+# par(mfrow=c(1,2)) 
+
+# Boxplot of non-transformed  read  counts per  sample
+boxplot(counts_normalized, notch = TRUE, las=2, cex.axis = 0.7, col = "lightblue",
+        main = "non-transformed  read  counts", 
+        ylab = "read counts")
+
+# Boxplot of log2-transformed read counts
+boxplot(counts_log_normalized, notch = TRUE, las=2, cex.axis = 0.7, col = "lightblue",
+        main = "log2-transformed read counts",
+        ylab = "log2(read counts)")
+```
+
+### Variance Stabilizing Transformation (VST) and Regularized-logarithm Transformation (rlog)
+DESeq2 offers two transformations to stabilize variance and thus transform data to become approximately homoskedastic (to see a flat trend in the meanSdPlot): the variance stabilizing transformation (VST) for negative binomial data with a dispersion-mean trend (Anders and Huber 2010), and the regularized-logarithm transformation or rlog (Love, Huber, and Anders 2014).
+
+"VST is much faster to compute and is less sensitive to high count outliers than the rlog. Also, VST is recommended for medium-to-large datasets (n > 30). rlog tends to work well on small datasets (n < 30), potentially outperforming VST when there is a wide range of sequencing depth across samples (an order of magnitude difference.)"
+
+
+```{r}
+# If needed, install  the vsn  package
+BiocManager::install("vsn")  # Safe to run even if already installed
+library(vsn)
+
+# If needed, install  the ggplot2 package
+BiocManager::install("ggplot2", force = TRUE)
+library(ggplot2)
+
+# BiocManager::install("hexbin")
+library("hexbin")
+```
+
+
+```{r}
+# Implement VST 
+counts_vst <- vst(deseq2_raw, blind = TRUE)
+# counts_vst is a DESeq2 object type
+#head(assay(counts_vst), 3)
+
+# Implement rlog
+counts_rlog <- rlog(deseq2_raw, blind = TRUE)
+# counts_rlog is a DESeq2 object type
+#head(assay(counts_rlog), 3)
+```
+
+```{r}
+# Load gridExtra to arrange ggplots into a single figure
+library(gridExtra)
+
+# Plot the mean vs variance of genes (37,239) across all samples (44)
+# non-transformed  read  counts
+p1 <- meanSdPlot(counts_normalized, ranks = FALSE, plot = FALSE)$gg +
+      ggtitle("Sequencing depth normalized") +
+      ylab("standard deviation")
+
+# log2-transformed read counts
+p2 <- meanSdPlot(counts_log_normalized, ranks = FALSE, plot = FALSE)$gg +
+      ggtitle("Seq depth norm log2(read counts)") +
+      ylab("standard deviation")
+
+# Variance Stabilizing Transformation (VST)
+p3 <- meanSdPlot(assay(counts_vst), ranks = FALSE, plot = FALSE)$gg +
+      ggtitle("VST(read counts)") +
+      ylab("standard deviation")
+
+# Regularized-logarithm Transformation (rlog)
+p4 <- meanSdPlot(assay(counts_rlog), ranks = FALSE, plot = FALSE)$gg +
+      ggtitle("rlog(read counts)") +
+      ylab("standard deviation")
+
+# Arrange subplots
+grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+```
+
+
+## PCA & Hierarchical Clustering 
+We'll continue an Exploratory Data Analysis (EDA) considering variance-stabilized-transformed counts. 
+
+```{r}
+# If needed, install  the pheatmap and RcolorBrewer packages
+install.packages("pheatmap")
+install.packages("RColorBrewer")
+```
+
+```{r}
+# Load libraries
+library(pheatmap)
+library(RColorBrewer)
+
+# Calculate samples' distances using VST counts
+vst_dist <- dist(t(assay(counts_vst)))
+
+# Transform samples' distances to matrix
+vst_dist_matrix <- as.matrix(vst_dist)
+
+# Modify vst_dist_matrix row names by joining "condition" and "tissue" 
+rownames(vst_dist_matrix) <- paste( counts_vst$condition, counts_vst$tissue, sep = " - " )
+
+# Remove vst_dist_matrix col names
+colnames(vst_dist_matrix) <- NULL
+
+# Create a smooth blue color gradient with 255 shades
+colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
+
+# Draw heatmap
+heatmap <- pheatmap(vst_dist_matrix,
+              clustering_distance_rows = vst_dist,
+              clustering_distance_cols = vst_dist,
+              col = colors)
+```
+
+They often reflect: biological heterogeneity, batch effects, cell-type composition differences, high expression strength, and technical noise. 
+
+```{r}
+# Select the Top 20 variable genes
+# Computes variance per gene across all samples
+top20_var_genes <- head(order(rowVars(assay(counts_vst)), decreasing = TRUE), 20)
+
+# Transform into a matrix and use vsd transformation
+mat  <- assay(counts_vst)[ top20_var_genes, ]
+mat  <- mat - rowMeans(mat)
+anno <- as.data.frame(colData(counts_vst)[, c("tissue","condition")])
+pheatmap(mat, annotation_col = anno)
+```
+
+```{r}
+# Plot PCA on condition type
+# plotPCA(counts_vst)
+#plotPCA(counts_vst, intgroup=c("tissue","condition"))
+
+# Plot PCA on tissue type
+#plotPCA(counts_vst, intgroup="tissue")
+
+# Plot PCA on both condition and tissue type
+#plotPCA(counts_vst, intgroup=c("condition", "tissue"))
+```
+
+```{r}
+install.packages("ggfortify")
+library(ggfortify)
+
+# Calculate prcomp()
+counts_vst_mat <- assay(counts_vst)
+pca <- prcomp(t(counts_vst_mat), scale. = TRUE)
+summary(pca)
+
+# Combine colData content with PCA scores
+# This idea comes from the following post: https://hds-sandbox.github.io/bulk_RNAseq_course/develop/06_exploratory_analysis.html
+meta <- as.data.frame(colData(counts_vst))
+df <- cbind(meta, pca$x)
+
+# Plot PCA score results
+p1 <- ggplot(df) +
+        geom_point(aes(x = PC1, y = PC2, color = condition)) +
+        theme_bw() +
+        ggtitle("PCA per sample")
+
+# Use of ggfortify package to plot PCA results
+p2 <- autoplot(pca, data = t(counts_vst_mat), label = TRUE, label.size = 2)  +
+        ggtitle("PCA per sample") + 
+        theme(plot.title = element_text(hjust = 0.5))
+
+# Arrange subplots
+grid.arrange(p1, p2, ncol = 2)
+
+```
+
+Las dos componentes (PC1 y PC2) explican aproximadamente el 27% de la variabilidad total.
+
+```{r}
+# Plot PCA score results
+ggplot(df) +
+ geom_point(aes(x = PC1, y = PC2, color = tissue)) +
+ theme_bw() +
+ ggtitle("PCA per sample")
+```
+
+# Differential gene expression with DESeq2
+
+*Now after the data exploration we can run the differential expression pipeline on the raw counts with a single call to the function DESeq. The null hypothesis is that there is no systematic difference between the average read count values of the different conditions for a given gene. We will calculate the fold change of read counts, assuming de differences in sequencing depth and variability. We will test normal tissue versus cancerous tissue (normal used as denominator for the fold change calculation)*
+
+```{r}
+# Run DGE DESeq2 pipeline
+dds_DGE <- DESeq(deseq2_raw)
+```
+
+```{r}
+# Mean-dispersion relationship
+par(mfrow=c(1,1))
+plotDispEsts(dds_DGE)
+```
+
+We proceed to extract results obtained from the DESeq2 pipeline to obtain the base means across samples, the log2 fold variation, standard errors, p-value and p-adjusted. 
+
+```{r}
+# Get results from the DESeq2 pipeline 
+dds_DGE_results <- results(dds_DGE)
+head(dds_DGE_results, n=5)
+
+# Inspect the meaning of the columns from the results object
+mcols(dds_DGE_results, use.names = TRUE)
+```
+
+The results object contains the following features: baseMean, log2FoldChange, lfcSE, stat, pvalue, and padj. Let's get a summary of the results object. Now, let's obtain a summary of the results object. 
+
+```{r}
+# Summary of DGE
+summary(dds_DGE_results)
+```
+
+After filtering those genes with p-adjusted < 0.05, we obtained 16.013 significant genes.
+
+```{r}
+# Filter genes with p-adjusted value < 0.05
+# The results object behaves like a dataframe 
+table(dds_DGE_results$padj < 0.05)
+```
+
+and when we order those significant genes by p-adjusted value: 
+
+```{r}
+# Select significant genes with a p-adjusted value lower than 0.05
+resSig <- subset(dds_DGE_results, padj < 0.05)
+
+# Order significant genes by p-adjusted value 
+resSig <- resSig[ order(resSig$padj), ]
+
+head(resSig, n=5)
+```
+
+Let's check those genes with the strongest down-regulation and up-regulation, respectively. 
+
+```{r}
+# Order significant genes with the strongest down-regulation 
+head(resSig[ order(resSig$log2FoldChange), ])
+
+# Order significant genes with the strongest up-regulation 
+head(resSig[ order(resSig$log2FoldChange, decreasing = TRUE), ])
+
+# Save significant DGE results to file
+write.table(resSig, file = "DESeq2_sig_genes_normal_vs_cancer_44_locrc.tab", sep = "\t", quote = FALSE , row.names = FALSE)
+```
+
+### Visualization of results 
+
+#### Individual gene count plot
+To visualize the counts for ENSG00000175832 gene, which showed the lowest p-adjusted value of 6.39988e-100, we'll use the plotCounts function over the feature `condition` to get the normalized counts for this gene. 
+
+```{r}
+BiocManager::install("ggbeeswarm")
+library("ggbeeswarm")
+
+# Set a 1 by 2 plot frame
+# par(mfrow=c(1,2)) 
+
+# Individual gene raw normalized counts
+plotCounts(dds_DGE, gene = "ENSG00000175832", intgroup=c("condition"))
+
+# Individual gene raw counts using ggplot2
+geneCounts <- plotCounts(dds_DGE, 
+                         gene = "ENSG00000175832", 
+                         intgroup = c("condition","tissue"),
+                         returnData = TRUE)
+
+ggplot(geneCounts, aes(x = condition, y = count, color = tissue)) +
+    geom_beeswarm(cex = 1)
+```
+
+#### Histogram of p-value frecuencies 
+```{r}
+# Histogram of p-value frequencies 
+par(mfrow=c(1,1))
+hist(dds_DGE_results$pvalue , col = "blue",  xlab = "", border = "white", ylab = "Frequency", breaks =0:40/40, main = "Frequencies of p-values")
+```
+
+#### MA-plot
+
+*An MA-plot (Dudoit et al. 2002) provides a useful overview for the distribution of the estimated coefficients in the model, e.g. the comparisons of interest, across all genes. On the y-axis, the “M” stands for “minus” – subtraction of log values is equivalent to the log of the ratio – and on the x-axis, the “A” stands for “average”. This plot allows us to evaluate fold changes and the distribution around the mean expression.
+
+Before making the MA-plot, we use the lfcShrink function to shrink the log2 fold changes for the comparison of dex treated vs untreated samples. There are three types of shrinkage estimators in DESeq2, which are covered in the DESeq2 vignette. log2 fold shrinkage remove the noise preserving the large differences.*
+
+```{r}
+# Install modules and libraries 
+# Log^2^ fold shrinkage
+BiocManager::install("apeglm")
+library("apeglm")
+
+par(mfrow=c(1,2))
+
+# MA-plot without shrinkage
+plotMA(dds_DGE_results, alpha = 0.05,  main = "Normal vs. Tumor", ylim = c(-5,5))
+
+# MA-plot with shrinkage
+# Check possible contrast to create the MA-plot
+resultsNames(dds_DGE)
+res <- lfcShrink(dds_DGE, coef="condition_tumor_vs_normal", type="apeglm")
+plotMA(res, alpha = 0.05, main = "Normal vs. Tumor log2 shrink", ylim = c(-5, 5))
+```
+
+#### Volcano plot
+Volcano plot helps to visualize significant differential expressed genes showing the log2 fold change and the significance (p-adjusted).
+
+```{r}
+# Volcano plot of significant genes Normal vs Tumor
+# Good resources to understand volcano plots: https://biostatsquid.com/volcano-plot/
+
+# Order by adjusted p-value
+dds_DGE_volcano <- dds_DGE_results[order(dds_DGE_results$padj),]
+
+##############################################################################
+
+# Load modules and libraries
+BiocManager::install("AnnotationDbi")
+BiocManager::install("org.Hs.eg.db")
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+
+# Add gene symbol column
+dds_DGE_volcano$SYMBOL = mapIds(org.Hs.eg.db,
+                        keys=rownames(dds_DGE_volcano), 
+                        column="SYMBOL",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene name column
+dds_DGE_volcano$GENENAME = mapIds(org.Hs.eg.db,
+                        keys=rownames(dds_DGE_volcano), 
+                        column="GENENAME",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene Entrez ID column
+dds_DGE_volcano$ENTREZID = mapIds(org.Hs.eg.db,
+                        keys=rownames(dds_DGE_volcano), 
+                        column="ENTREZID",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene EGG functional pathway column
+dds_DGE_volcano$PATH = mapIds(org.Hs.eg.db,
+                        keys=rownames(dds_DGE_volcano), 
+                        column="PATH",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+
+##############################################################################
+
+# Categorize genes: Up, Down, Not Sig
+results_order <- as.data.frame(dds_DGE_volcano)
+results_order$category <- dplyr::case_when(
+  results_order$padj < 0.05 & results_order$log2FoldChange > 0 ~ "Upregulated",
+  results_order$padj < 0.05 & results_order$log2FoldChange < 0 ~ "Downregulated",
+  TRUE ~ "Not significant"
+)
+
+# Volcano plot
+p <- ggplot2::ggplot(results_order,
+                     ggplot2::aes(x = log2FoldChange, y = -log10(padj))) +
+  ggplot2::geom_point(ggplot2::aes(color = category)) +
+  ggplot2::scale_color_manual(values = c(
+    "Upregulated" = "red",
+    "Downregulated" = "blue",
+    "Not significant" = "grey"
+  )) +
+  ggplot2::ggtitle("Significant genes Normal vs. Tumor")
+```
+
+```{r}
+# Install modules and libraries
+# Get ENSEMBL gene names
+# Grepel library avoids gene names overlaping
+BiocManager::install("ggrepel")
+library(ggrepel)
+
+# Select genes with |log2FC| > 1 and padj < 0.05
+DEgenes_DESeq <- results_order[abs(results_order$log2FoldChange) > log2(2) &
+                               results_order$padj < 0.05, ]
+
+# Sort by adj p-value
+DEgenes_DESeq <- DEgenes_DESeq[order(DEgenes_DESeq$padj), ]
+
+# Take up to 10 genes 
+top30 <- head(DEgenes_DESeq, 30)
+
+# Add labels using rownames of the subset
+# aes(label = rownames(top10)),
+p + 
+  geom_text_repel(
+    data = top30,
+    aes(label = top30$SYMBOL),
+    size = 2,  
+    max.overlaps = 100
+  )
+```
+
+# Annotation of results
+In this section, we will add the gene symbol, gene name, KEGG pathway, and Entrez ID to our dataset to provide more informative annotations for the DESeq analysis, which currently uses ENSEMBL gene ID nomenclature (e.g., ENSG00000175832).
+
+```{r}
+# Load modules and libraries
+BiocManager::install("AnnotationDbi")
+BiocManager::install("org.Hs.eg.db")
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+```
+
+```{r}
+# Check all potential terms that could be retrieved with AnnotationDbi using mapsIds()
+columns(org.Hs.eg.db)
+
+# Review the most significant genes from our study
+# Previously, we've saved a in a .tab file the significant DGE results 
+# file = "DESeq2_sig_genes_normal_vs_cancer_44_locrc.tab"
+head(resSig)
+```
+
+We proceed by adding annotations starting from ENSEMBL to Entrez and from there to KEGG pathways, gene symbols and gene names. This is because, all major annotation databases (KEGG, org.Hs.eg.db, clusterProfiler) are indexed by Entrez, so doing the conversion first dramatically reduces NA values and gives more complete annotations. 
+
+```{r}
+# Add gene symbol column
+resSig$SYMBOL = mapIds(org.Hs.eg.db,
+                        keys=rownames(resSig), 
+                        column="SYMBOL",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene name column
+resSig$GENENAME = mapIds(org.Hs.eg.db,
+                        keys=rownames(resSig), 
+                        column="GENENAME",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene Entrez ID column
+resSig$ENTREZID = mapIds(org.Hs.eg.db,
+                        keys=rownames(resSig), 
+                        column="ENTREZID",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene EGG functional pathway column
+resSig$PATH = mapIds(org.Hs.eg.db,
+                        keys=rownames(resSig), 
+                        column="PATH",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene ENSEMBL ID column
+resSig$ENSEMBL <- rownames(resSig)
+
+# Convert to dataframe
+resSig_df <- as.data.frame(resSig)
+print(head(resSig_df), 5)
+
+# Save data frame including annotations
+write.table(resSig_df, file=("DESeq2_sig_genes_normal_vs_cancer_44_locrc_annotated.tab"), row.names = F,col.names = TRUE, sep="\t")
+```
+
+I see many NAs under PATH, is there an alternative as for example KEGGREST. 
+
+## Functional Gene Ontology (GO) Analysis
+```{r}
+# Load modules and libraries
+BiocManager::install("clusterProfiler")
+BiocManager::install("ggnewscale")
+
+library("clusterProfiler")
+library("enrichplot")
+library("ggnewscale")
+```
+
+```{r}
+# Assign the human gene annotation database
+org_db <- org.Hs.eg.db
+
+# Create an gene vector containing ENTREZIDs
+genes <- as.character(resSig$ENTREZID)
+
+# Run GO classification using groupGO
+# It answers the question: How many DE genes belong to each GO category?
+# It classifies genes into GO categories at a particular hierarchical level
+# CC = cel comp, MF = mol func, and BP = bio process
+ggo <- clusterProfiler::groupGO(gene     = genes,
+                                OrgDb    = org_db,
+                                ont      = "BP",
+                                level    = 3,
+                                readable = TRUE)
+
+# Convert to dataframe
+ggo_df <- as.data.frame(ggo)
+
+# Visualize the last columns 
+head(ggo_df[-5])
+
+# Horizontal plot of cell component categories 
+barplot(ggo, drop=TRUE, showCategory=30, font.size = 5)
+```
+
+
+```{r}
+# Run GO over-representation test enrichGO
+ego <- clusterProfiler::enrichGO(gene          = genes,
+                                 OrgDb         = org_db,
+                                 ont           = "BP",
+                                 pAdjustMethod = "BH",
+                                 pvalueCutoff  = 0.05,
+                                 qvalueCutoff  = 0.05,
+                                 readable      = TRUE)
+
+# Horizontal plot of biological process categories 
+# Alternative representations https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html
+barplot(ego, drop=TRUE, showCategory=30, font.size = 5)
+```
+
+```{r}
+# Convert to dataframe
+ego_df <- as.data.frame(ego)
+
+# Visualize the last columns 
+head(ego_df, 1)
+
+# Get dataframe dimmensions 
+dim(ego_df)
+```
+
+## Gene-Concept Network and Enrichment Map 
+The Gene-Concept Network displays which genes are associated with which biological processes, making it easy to see gene-function relationships. Meanwhile, the enrichment map groups similar terms together. Terms that share genes are connected, making related functions easy to spot.
+
+```{r}
+# Load modules and libraries
+library(DOSE)
+```
+
+```{r}
+# Convert gene ID to Symbol
+egox <- setReadable(ego, 'org.Hs.eg.db', 'ENTREZID')
+
+# Generate geneList with Log2FoldChange data
+geneList <- resSig$log2FoldChange
+names(geneList) <- as.character(unique(resSig$ENTREZID))
+geneList <- sort(geneList, decreasing = TRUE)
+
+head(geneList)
+```
+
+```{r}
+# Network plot of enriched terms
+# CategorySize can be scaled by 'pvalue' or 'geneNum'
+p1 <- cnetplot(egox, categorySize="pvalue", foldChange=geneList)
+
+# Display the plot
+print(p1)
+```
+
+```{r}
+# Calculate pairwise similarities of enriched terms 
+egox_pairwise <- pairwise_termsim(egox)
+
+# Creates an enrichment map visualization from pairwise enrichment analysis results
+p2 <- emapplot(egox_pairwise, layout="kk")
+
+# Display the plot
+print(p2)
+```
+
+```{r}
+# Plot Gene-Concept Network and Enrichment Map in a PDF file 
+# Start PDF device
+pdf(file=paste("Merge_GO_Gene_Set_Enrichment_Analysis", "CC", ".pdf", sep="_"),
+    width=25, height=10)
+
+# Create the plot
+cowplot::plot_grid(p1, p2, ncol=2, labels=LETTERS[1:3], rel_widths=c(.8, .8, 1.2))
+
+# Close PDF device 
+dev.off()
+```

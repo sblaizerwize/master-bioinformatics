@@ -1,0 +1,278 @@
+
+Attaching package: ‘BiocGenerics’
+
+The following object is masked from ‘package:limma’:
+
+    plotMA
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, table,
+    tapply, union, unique, unsplit, which.max, which.min
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘matrixStats’
+
+The following objects are masked from ‘package:Biobase’:
+
+    anyMissing, rowMedians
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following object is masked from ‘package:Biobase’:
+
+    rowMedians
+
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:IRanges’:
+
+    collapse
+
+This is mgcv 1.9-1. For overview type 'help("mgcv-package")'.
+
+Attaching package: ‘genefilter’
+
+The following objects are masked from ‘package:MatrixGenerics’:
+
+    rowSds, rowVars
+
+The following objects are masked from ‘package:matrixStats’:
+
+    rowSds, rowVars
+
+
+Attaching package: ‘readr’
+
+The following object is masked from ‘package:genefilter’:
+
+    spec
+
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:nlme’:
+
+    collapse
+
+The following object is masked from ‘package:AnnotationDbi’:
+
+    select
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:GenomeInfoDb’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    first, intersect, rename, setdiff, setequal, union
+
+The following object is masked from ‘package:matrixStats’:
+
+    count
+
+The following object is masked from ‘package:Biobase’:
+
+    combine
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'scales'
+
+The following object is masked from 'package:readr':
+
+    col_factor
+
+
+Attaching package: 'tidyr'
+
+The following object is masked from 'package:S4Vectors':
+
+    expand
+
+
+Attaching package: 'reshape2'
+
+The following object is masked from 'package:tidyr':
+
+    smiths
+
+corrplot 0.92 loaded
+Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ purrr     1.0.2
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ lubridate::%within%() masks IRanges::%within%()
+✖ scales::col_factor()  masks readr::col_factor()
+✖ dplyr::collapse()     masks nlme::collapse(), IRanges::collapse()
+✖ dplyr::combine()      masks Biobase::combine(), BiocGenerics::combine()
+✖ dplyr::count()        masks matrixStats::count()
+✖ dplyr::desc()         masks IRanges::desc()
+✖ purrr::discard()      masks scales::discard()
+✖ tidyr::expand()       masks S4Vectors::expand()
+✖ dplyr::filter()       masks stats::filter()
+✖ dplyr::first()        masks S4Vectors::first()
+✖ dplyr::lag()          masks stats::lag()
+✖ ggplot2::Position()   masks BiocGenerics::Position(), base::Position()
+✖ purrr::reduce()       masks GenomicRanges::reduce(), IRanges::reduce()
+✖ dplyr::rename()       masks S4Vectors::rename()
+✖ lubridate::second()   masks S4Vectors::second()
+✖ lubridate::second<-() masks S4Vectors::second<-()
+✖ dplyr::select()       masks AnnotationDbi::select()
+✖ dplyr::slice()        masks IRanges::slice()
+✖ readr::spec()         masks genefilter::spec()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: 'dbplyr'
+
+The following objects are masked from 'package:dplyr':
+
+    ident, sql
+
+Loading required package: XVector
+
+Attaching package: 'XVector'
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+
+Attaching package: 'Biostrings'
+
+The following object is masked from 'package:base':
+
+    strsplit
+
+Step 1 of 10: Checking data...
+Step 2 of 10: Obtaining annotation...
+    importing GTF (this may take a while)...
+    108166 ( 21.33%) isoforms were removed since they were not expressed in any samples.
+Step 3 of 10: Fixing StringTie gene annoation problems...
+    There were no need to rescue any annotation
+    58752 genes_id were assigned their original gene_id instead of the StringTie gene_id.
+        This was only done when it could be done unambiguous.
+Step 4 of 10: Calculating expression estimates from count data...
+    Skipped as user supplied expression via the "isoformRepExpression" argument...
+Step 5 of 10: Testing for unwanted effects...
+    Data was not corrected for unwanted effects
+Step 6 of 10: Batch correcting expression estimates...
+    Skipped as no batch effects were found or annoated...
+Step 7 of 10: Extracting data from each condition...
+Step 8 of 10: Making comparisons...
+Step 9 of 10: Making switchAnalyzeRlist object...
+Step 10 of 10: Guestimating differential usage...
+    The GUESSTIMATED number of genes with differential isoform usage are:
+Done
+
+Warning messages:
+1: In importRdata(isoformCountMatrix = salmonQuant$counts, isoformRepExpression = salmonQuant$abundance,  :
+  The annotation and quantification (count/abundance matrix and isoform annotation) Seem to be slightly different. 
+Specifically:
+ 629 isoforms were only found in the annotation
+ 
+Please make sure this is on purpouse since differences will cause inaccurate quantification and thereby skew all analysis.
+ If you have quantified with Salmon this could be normal since it as default only keep one copy of identical sequnces (can be prevented using the --keepDuplicates option)
+ We strongly encurage you to go back and figure out why this is the case.
+
+
+2: In importRdata(isoformCountMatrix = salmonQuant$counts, isoformRepExpression = salmonQuant$abundance,  :
+  
+We found MANY unwanted effects in your dataset!
+To many for IsoformSwitchAnalyzeR to be trusted with the correction.
+We therefore highly reccomend you run sva yourself and add
+the nessesary surrogate variables as extra columns in the "designMatrix"
+
+3: In createSwitchAnalyzeRlist(isoformFeatures = isoAnnot, exons = isoformExonStructure,  :
+  The gene_ids or isoform_ids were not unique - we identified multiple instances of the same gene_id/isoform_id on different chromosomes. To solve this we removed 16 gene_id. Please note there might still be duplicated gene_id located on the same chromosome. Some of these could be due to fusion transcripts which IsoformSwitchAnalyzeR cannot handle.
+The filtering removed 279381 ( 70.1% of ) transcripts. There is now 119137 isoforms left
+
+Step 1 of 4: Creating SummarizedExperiment data object...
+Step 2 of 4: Fitting linear models...
+Step 3 of 4: Testing pairwise comparison(s)...
+
+Step 4 of 4: Preparing output...
+Result added switchAnalyzeRlist
+Done
+Step 1 of 3 : Extracting transcript sequences...
+Step 2 of 3 : Locating potential ORFs...
+Step 3 of 3 : Scanning for PTCs...
+892 putative ORFs were identified, analyzed and added.
+Done
+Step 1 of 3 : Extracting transcript nucleotide sequences...
+Step 2 of 3 : Extracting ORF AA sequences...
+Step 3 of 3 : Preparing output...
+The 'removeLongAAseq' and 'removeShortAAseq' arguments:
+ Removed : 0 isoforms.
+ Trimmed : 0 isoforms (to only contain the first 1000 AA)
+Done
+Step 1 of 4: Extracting genes with isoform switches...
+Step 2 of 4: Analyzing 128 pairwise isoforms comparisons...
+Step 3 of 4: Massaging isoforms comparisons results...
+Step 4 of 4: Preparing output...
+Identified  genes with containing isoforms switching with functional consequences...
