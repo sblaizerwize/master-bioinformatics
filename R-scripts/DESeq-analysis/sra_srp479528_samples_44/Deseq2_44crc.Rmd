@@ -20,6 +20,7 @@ output:
 editor_options: 
   markdown: 
     wrap: 72
+  chunk_output_type: inline
 #editor_options: 
 #  chunk_output_type: console
 ---
@@ -56,12 +57,18 @@ if (!require("BiocManager", quietly = TRUE))
 BiocManager::install("SummarizedExperiment", force=TRUE)
 BiocManager::install("DESeq2")
 BiocManager::install("DelayedArray")
+BiocManager::install("ggrepel") # Grepel library avoids gene names overlaping
+BiocManager::install("vsn")  # Safe to run even if already installed
+BiocManager::install("limma")
 
 install.packages("skimr")
 install.packages("scales")
 install.packages("ggfortify")
 install.packages("corrplot")
 install.packages("factoextra")
+install.packages("pheatmap")
+install.packages("RColorBrewer")
+install.packages("ggfortify")
 
 library(skimr)
 library(scales)
@@ -75,6 +82,13 @@ library(ggfortify)
 library(corrplot)
 library(factoextra)
 library("DESeq2")
+library(vsn)
+library("hexbin")
+library(ggrepel)
+library(pheatmap)
+library(RColorBrewer)
+library(ggfortify)
+library(limma)
 ```
 
 # Data preparation
@@ -88,10 +102,10 @@ Let's load the `salmon.merged.gene.SummarizedExperiment.rds` file. The content o
 # Specify a working directory
 directory <- "/Volumes/DataWinBackup/00_MASTER UOC BIOINFORMATICA - TEMPORAL/TFM-UOC"
 setwd(directory)
-#list.files()
+list.files()
 
 # Read 'se' object obtained from nfcore/rnaseq
-se <- readRDS("salmon.merged.gene.SummarizedExperiment.rds")
+se <- readRDS("salmon.merged.gene.SummarizedExperiment_gencode.rds")
 
 # Display se object
 print(se)
@@ -239,6 +253,7 @@ We're on the right track. To move on, let's include a column named `condition`, 
 # Create new colData column named condition
 colData(se)$condition <- ifelse(is.na(colData(se)$tumor_stage), "normal_locrc","tumor_locrc")
 colData(se)$condition <- as.factor(colData(se)$condition)
+colData(se)$condition <- relevel(colData(se)$condition, ref = "normal_locrc")
 colData(se)$condition
 ```
 
@@ -288,7 +303,7 @@ se_filtered
 Finally, we construct `DESeqDataSet` considering `condition` (normal vs. tumor) as part of our experimental design. 
 ```{r}
 # Create a DESeqDataSet data object
-deseq2_raw <- DESeqDataSet(se_filtered, design = ~ condition)
+deseq2_raw <- DESeqDataSet(se_filtered, design = ~ 1)
 
 # Display first lines of DESeqDataSet data object
 class(deseq2_raw)
@@ -313,7 +328,7 @@ X <- as.data.frame(X)   # convert to data.frame
 print(table(is.na(X)))
 ```
 
-The dataset comprises 37,239 genes and 44 samples, for a total of 1,638,516 read counts, and contains no missing values (NAs).
+The dataset comprises 37,241 genes and 44 samples, for a total of 1,638,604 read counts, and contains no missing values (NAs).
 
 ## Normalization by sequencing depth 
 To compare raw counts across 44 samples in a DESeq2 analysis, we need to account for library size differences. This is where normalization by sequencing depth comes handy to correct for differences in total read counts per sample. This is the baseline normalization for differential expression testing.
@@ -367,7 +382,7 @@ For RNA-seq counts, the expected variance grows with the mean, making low-count 
 ### Log2 transformation 
 It consists of a raw counts transformation using the formula `log2(count + 1)`. It is useful for reducing the effect of large counts making distributions more symmetric. Use this transformation for a quick comparisons across samples and conducting exploratory visualization with PCA and heatmaps. 
 
-```{r}
+```{r, normal_log2_transformed_counts, echo=FALSE, fig.width=8.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Log2 normalization adding 1 pseudocount
 counts_log_normalized <- log2(counts_normalized + 1)
 
@@ -390,21 +405,6 @@ DESeq2 offers two transformations to stabilize variance and thus transform data 
 
 "VST is much faster to compute and is less sensitive to high count outliers than the rlog. Also, VST is recommended for medium-to-large datasets (n > 30). rlog tends to work well on small datasets (n < 30), potentially outperforming VST when there is a wide range of sequencing depth across samples (an order of magnitude difference.)"
 
-
-```{r}
-# If needed, install  the vsn  package
-BiocManager::install("vsn")  # Safe to run even if already installed
-library(vsn)
-
-# If needed, install  the ggplot2 package
-BiocManager::install("ggplot2", force = TRUE)
-library(ggplot2)
-
-# BiocManager::install("hexbin")
-library("hexbin")
-```
-
-
 ```{r}
 # Implement VST 
 counts_vst <- vst(deseq2_raw, blind = TRUE)
@@ -417,11 +417,11 @@ counts_rlog <- rlog(deseq2_raw, blind = TRUE)
 #head(assay(counts_rlog), 3)
 ```
 
-```{r}
+```{r, normalization_transformation_summary_counts, echo=FALSE, fig.width=8.0, fig.height=6.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Load gridExtra to arrange ggplots into a single figure
 library(gridExtra)
 
-# Plot the mean vs variance of genes (37,239) across all samples (44)
+# Plot the mean vs variance of genes across all samples
 # non-transformed  read  counts
 p1 <- meanSdPlot(counts_normalized, ranks = FALSE, plot = FALSE)$gg +
       ggtitle("Sequencing depth normalized") +
@@ -446,21 +446,10 @@ p4 <- meanSdPlot(assay(counts_rlog), ranks = FALSE, plot = FALSE)$gg +
 grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
 ```
 
-
 ## PCA & Hierarchical Clustering 
 We'll continue an Exploratory Data Analysis (EDA) considering variance-stabilized-transformed counts. 
 
-```{r}
-# If needed, install  the pheatmap and RcolorBrewer packages
-install.packages("pheatmap")
-install.packages("RColorBrewer")
-```
-
-```{r}
-# Load libraries
-library(pheatmap)
-library(RColorBrewer)
-
+```{r, distance_pheatmap, echo=FALSE, fig.width=8.0, fig.height=6.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Calculate samples' distances using VST counts
 vst_dist <- dist(t(assay(counts_vst)))
 
@@ -483,20 +472,6 @@ heatmap <- pheatmap(vst_dist_matrix,
               col = colors)
 ```
 
-They often reflect: biological heterogeneity, batch effects, cell-type composition differences, high expression strength, and technical noise. 
-
-```{r}
-# Select the Top 20 variable genes
-# Computes variance per gene across all samples
-top20_var_genes <- head(order(rowVars(assay(counts_vst)), decreasing = TRUE), 20)
-
-# Transform into a matrix and use vsd transformation
-mat  <- assay(counts_vst)[ top20_var_genes, ]
-mat  <- mat - rowMeans(mat)
-anno <- as.data.frame(colData(counts_vst)[, c("tissue","condition")])
-pheatmap(mat, annotation_col = anno)
-```
-
 ```{r}
 # Plot PCA on condition type
 # plotPCA(counts_vst)
@@ -509,10 +484,7 @@ pheatmap(mat, annotation_col = anno)
 #plotPCA(counts_vst, intgroup=c("condition", "tissue"))
 ```
 
-```{r}
-install.packages("ggfortify")
-library(ggfortify)
-
+```{r, pca_per_sample, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Calculate prcomp()
 counts_vst_mat <- assay(counts_vst)
 pca <- prcomp(t(counts_vst_mat), scale. = TRUE)
@@ -523,25 +495,73 @@ summary(pca)
 meta <- as.data.frame(colData(counts_vst))
 df <- cbind(meta, pca$x)
 
-# Plot PCA score results
-p1 <- ggplot(df) +
-        geom_point(aes(x = PC1, y = PC2, color = condition)) +
-        theme_bw() +
-        ggtitle("PCA per sample")
-
 # Use of ggfortify package to plot PCA results
-p2 <- autoplot(pca, data = t(counts_vst_mat), label = TRUE, label.size = 2)  +
-        ggtitle("PCA per sample") + 
-        theme(plot.title = element_text(hjust = 0.5))
+autoplot(pca, data = t(counts_vst_mat), label = FALSE, colour="blue")  +
+  ggtitle("PCA per sample") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  geom_text_repel(
+    aes(label = rownames(t(counts_vst_mat))),
+    size = 2.5,
+    box.padding = 0.4,
+    point.padding = 0.2,
+    max.overlaps = Inf
+  )
+
+# p0 <- autoplot(pca, data = t(counts_vst_mat), label = FALSE, colour="blue")  +
+#   ggtitle("PCA per sample") +
+#   theme(plot.title = element_text(hjust = 0.5)) +
+#   geom_text_repel(
+#     aes(label = rownames(t(counts_vst_mat))),
+#     size = 2.5,
+#     box.padding = 0.4,
+#     point.padding = 0.2,
+#     max.overlaps = Inf
+#   )
+
+# Save to file
+# ggsave("images/pca_per_sample.png", 
+#        plot = p0,
+#        width = 8,
+#        height = 6,
+#        dpi = 300) 
+```
+```{r, pca_condition, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Plot PCA score results
+ggplot(df) +
+      geom_point(aes(x = PC1, y = PC2, color = condition)) +
+      theme_bw() +
+      ggtitle("PCA per sample")
+```
+```{r, pca_clusterization, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Obtain clusters
+pca_scores <- pca$x[, 1:2]
+kclust <- kmeans(pca_scores, centers = 3)
+
+df_pca <- data.frame(
+  PC1 = pca_scores[,1],
+  PC2 = pca_scores[,2],
+  cluster = factor(kclust$cluster)
+)
+
+ggplot(df_pca, aes(PC1, PC2, color = cluster)) +
+  geom_point(size = 2) +
+  theme_bw() +
+  ggtitle("k-means Clusterization of PCA results")
 
 # Arrange subplots
-grid.arrange(p1, p2, ncol = 2)
+# grid.arrange(p1, p2, ncol = 2)
 
+# subplots <- grid.arrange(p1, p2, ncol = 2)
+#   
+# # Save to file
+# ggsave("images/pca_clusterization.png", 
+#        plot = subplots,
+#        width = 8,
+#        height = 6,
+#        dpi = 300)
 ```
 
-Las dos componentes (PC1 y PC2) explican aproximadamente el 27% de la variabilidad total.
-
-```{r}
+```{r, pcatissue, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Plot PCA score results
 ggplot(df) +
  geom_point(aes(x = PC1, y = PC2, color = tissue)) +
@@ -549,16 +569,101 @@ ggplot(df) +
  ggtitle("PCA per sample")
 ```
 
+PC1 and PC2 components explains approximately 27.4% of the total variability. We also identified 3 potential outliers from both conditions, which corresponds to rectum samples. 
+
+The Mahalanobis distance (MD) can identify outliers beyond the 99.9th percentile. According to this criterion, only the srr27320659 sample appears to be a potential outlier. However, we decided not to remove it since its paired sample, srr27320660, does not represent an outlier for the `tumor_locrc` condition.
+
+```{r}
+# Detect outliers in PCA
+pc_scores <- pca$x[,1:5]     # Use first PCs
+d <- mahalanobis(pc_scores,
+                 colMeans(pc_scores),
+                 cov(pc_scores))
+
+# Set threshold at 99.9 percentile
+thr <- quantile(d, 0.999)
+
+# Enumerate outliers
+outliers <- names(d[d > thr])
+outliers
+```
+
+Before conducting the DESeq2 analysis, let's build the design matrix and evaluate which variables are potential confounded ones (condition, tissue, age_at_surgery). 
+
+```{r, include=FALSE}
+# Convert variables to their correct data type
+colData(se_filtered)$age_at_surgery     <- as.numeric(colData(se_filtered)$age_at_surgery)
+colData(se_filtered)$tissue             <- factor(colData(se_filtered)$tissue)
+colData(se_filtered)$tumor_stage[is.na(colData(se_filtered)$tumor_stage)] <- 0
+
+# Detect outliers in PCA
+#str(colData(se_filtered))
+```
+
+```{r, pca_condition_tissue_age_stage, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Combine colData content with PCA scores
+meta <- as.data.frame(colData(se_filtered))
+df <- cbind(meta, pca$x)
+
+# Plot Condition vs Tissue
+ggplot(df, aes(PC1, PC2)) + 
+  geom_point(aes(color = condition,      
+                 shape = tissue,
+                 size = 2)) +  
+  labs(color = "Condition", 
+       shape = "Tissue") +
+  theme_bw() +
+  ggtitle("Condition vs Tissue") +
+  scale_color_manual(values = c("normal_locrc" = "green", 
+                                "tumor_locrc" = "red"))
+
+# Plot Condition vs Tissue vs Age at Surgery
+ggplot(df, aes(PC1, PC2)) + 
+  geom_point(aes(color = condition,      
+                 shape = tissue,      
+                 size  = age_at_surgery)) +      
+  labs(color = "Condition", 
+       shape = "Tissue", 
+       size = "Age at Surgery") +
+  theme_bw() +
+  ggtitle("Condition vs Tissue vs Age at Surgery") +
+  scale_color_manual(values = c("normal_locrc" = "green", 
+                                "tumor_locrc" = "red"))
+
+# Plot Condition vs Tumor Stage
+ggplot(df, aes(PC1, PC2)) + 
+  geom_point(aes(color = condition,   
+                 size = tumor_stage)) +     
+  labs(color = "Condition", 
+       shape = "Tumor Stage") +
+  theme_bw() +
+  ggtitle("Condition vs Tumor Stage") +
+  scale_color_manual(values = c("normal_locrc" = "green", 
+                                "tumor_locrc" = "red"))
+```
+Since each tissue has distinct transcriptional profiles and the `normal vs tumor` comparison is made within the same tissue, `tissue` is a potential confounded variable.
+
 # Differential gene expression with DESeq2
 
 *Now after the data exploration we can run the differential expression pipeline on the raw counts with a single call to the function DESeq. The null hypothesis is that there is no systematic difference between the average read count values of the different conditions for a given gene. We will calculate the fold change of read counts, assuming de differences in sequencing depth and variability. We will test normal tissue versus cancerous tissue (normal used as denominator for the fold change calculation)*
 
 ```{r}
+# Run DGE DESeq2 pipeline     
+# Display se_filtered
+#se_filtered
+
+# Create a DESeqDataSet data object
+dds <- DESeqDataSet(se_filtered, design = ~ condition)
+
+# Account for sequencing depth differences to compare expression between samples fairly
+dds <- estimateSizeFactors(dds)
+
 # Run DGE DESeq2 pipeline
-dds_DGE <- DESeq(deseq2_raw)
+dds_DGE <- DESeq(dds)
+dds_DGE
 ```
 
-```{r}
+```{r, mean_dispersion_relationship, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Mean-dispersion relationship
 par(mfrow=c(1,1))
 plotDispEsts(dds_DGE)
@@ -618,9 +723,9 @@ write.table(resSig, file = "DESeq2_sig_genes_normal_vs_cancer_44_locrc.tab", sep
 ### Visualization of results 
 
 #### Individual gene count plot
-To visualize the counts for ENSG00000175832 gene, which showed the lowest p-adjusted value of 6.39988e-100, we'll use the plotCounts function over the feature `condition` to get the normalized counts for this gene. 
+To visualize the counts for ENSG00000175832.14 gene, which showed the lowest p-adjusted value of 6.41918e-100, we'll use the plotCounts function over the feature `condition` to get the normalized counts for this gene. 
 
-```{r}
+```{r, single_gene_counts_lowest_pvalue, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 BiocManager::install("ggbeeswarm")
 library("ggbeeswarm")
 
@@ -628,11 +733,11 @@ library("ggbeeswarm")
 # par(mfrow=c(1,2)) 
 
 # Individual gene raw normalized counts
-plotCounts(dds_DGE, gene = "ENSG00000175832", intgroup=c("condition"))
+plotCounts(dds_DGE, gene = "ENSG00000175832.14", intgroup=c("condition"))
 
 # Individual gene raw counts using ggplot2
 geneCounts <- plotCounts(dds_DGE, 
-                         gene = "ENSG00000175832", 
+                         gene = "ENSG00000175832.14", 
                          intgroup = c("condition","tissue"),
                          returnData = TRUE)
 
@@ -641,7 +746,7 @@ ggplot(geneCounts, aes(x = condition, y = count, color = tissue)) +
 ```
 
 #### Histogram of p-value frecuencies 
-```{r}
+```{r, histogram_pvalue_frequencies, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Histogram of p-value frequencies 
 par(mfrow=c(1,1))
 hist(dds_DGE_results$pvalue , col = "blue",  xlab = "", border = "white", ylab = "Frequency", breaks =0:40/40, main = "Frequencies of p-values")
@@ -653,7 +758,7 @@ hist(dds_DGE_results$pvalue , col = "blue",  xlab = "", border = "white", ylab =
 
 Before making the MA-plot, we use the lfcShrink function to shrink the log2 fold changes for the comparison of dex treated vs untreated samples. There are three types of shrinkage estimators in DESeq2, which are covered in the DESeq2 vignette. log2 fold shrinkage remove the noise preserving the large differences.*
 
-```{r}
+```{r, ma_plots, echo=FALSE, fig.width=8.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Install modules and libraries 
 # Log^2^ fold shrinkage
 BiocManager::install("apeglm")
@@ -666,20 +771,21 @@ plotMA(dds_DGE_results, alpha = 0.05,  main = "Normal vs. Tumor", ylim = c(-5,5)
 
 # MA-plot with shrinkage
 # Check possible contrast to create the MA-plot
-resultsNames(dds_DGE)
-res <- lfcShrink(dds_DGE, coef="condition_tumor_vs_normal", type="apeglm")
+#resultsNames(dds_DGE)
+res <- lfcShrink(dds_DGE, coef="condition_tumor_locrc_vs_normal_locrc", type="apeglm")
 plotMA(res, alpha = 0.05, main = "Normal vs. Tumor log2 shrink", ylim = c(-5, 5))
 ```
 
 #### Volcano plot
 Volcano plot helps to visualize significant differential expressed genes showing the log2 fold change and the significance (p-adjusted).
 
-```{r}
+```{r, volcano_plot_locrc, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Volcano plot of significant genes Normal vs Tumor
 # Good resources to understand volcano plots: https://biostatsquid.com/volcano-plot/
 
 # Order by adjusted p-value
 dds_DGE_volcano <- dds_DGE_results[order(dds_DGE_results$padj),]
+rownames(dds_DGE_volcano) <- sub("\\..*$", "", rownames(dds_DGE_volcano))
 
 ##############################################################################
 
@@ -723,8 +829,8 @@ dds_DGE_volcano$PATH = mapIds(org.Hs.eg.db,
 # Categorize genes: Up, Down, Not Sig
 results_order <- as.data.frame(dds_DGE_volcano)
 results_order$category <- dplyr::case_when(
-  results_order$padj < 0.05 & results_order$log2FoldChange > 0 ~ "Upregulated",
-  results_order$padj < 0.05 & results_order$log2FoldChange < 0 ~ "Downregulated",
+  results_order$padj < 0.05 & results_order$log2FoldChange > 1 ~ "Upregulated",
+  results_order$padj < 0.05 & results_order$log2FoldChange < -1 ~ "Downregulated",
   TRUE ~ "Not significant"
 )
 
@@ -738,34 +844,61 @@ p <- ggplot2::ggplot(results_order,
     "Not significant" = "grey"
   )) +
   ggplot2::ggtitle("Significant genes Normal vs. Tumor")
-```
-
-```{r}
-# Install modules and libraries
-# Get ENSEMBL gene names
-# Grepel library avoids gene names overlaping
-BiocManager::install("ggrepel")
-library(ggrepel)
 
 # Select genes with |log2FC| > 1 and padj < 0.05
-DEgenes_DESeq <- results_order[abs(results_order$log2FoldChange) > log2(2) &
+DEgenes_DESeq <- results_order[abs(results_order$log2FoldChange) > 1 &
                                results_order$padj < 0.05, ]
 
 # Sort by adj p-value
 DEgenes_DESeq <- DEgenes_DESeq[order(DEgenes_DESeq$padj), ]
 
-# Take up to 10 genes 
-top30 <- head(DEgenes_DESeq, 30)
+# Take top genes 
+top <- head(DEgenes_DESeq, 30)
 
 # Add labels using rownames of the subset
 # aes(label = rownames(top10)),
 p + 
   geom_text_repel(
-    data = top30,
-    aes(label = top30$SYMBOL),
+    data = top,
+    aes(label = top$SYMBOL),
     size = 2,  
     max.overlaps = 100
   )
+```
+
+
+To export a .tex table having the top significantly differentiated genes of the LOCRC cohort
+
+```{r, echo=FALSE}
+# Rename "SYMBOL" column by "Gene"
+colnames(DEgenes_DESeq)[colnames(DEgenes_DESeq) == "SYMBOL"] <- "Gene"
+
+# Select columns of interest
+cols <- c("Gene","baseMean", "log2FoldChange", "padj")
+
+# Take top genes 
+top_genes <- head(DEgenes_DESeq[cols], 30)
+
+# Format decimals of top_genes dataframe
+top_genes <- top_genes %>%
+  mutate(
+    padj = ifelse(padj < 0.001, 
+                  formatC(padj, format = "e", digits = 2),
+                  round(padj, 4)),
+    baseMean = round(baseMean, 1),
+    log2FoldChange = round(log2FoldChange, 3)
+  ) 
+top_genes
+
+# Export table to .tex format
+table_tex <- kable(
+  top_genes,
+  format = "latex",
+  booktabs = TRUE,
+  linesep = ""
+)
+
+writeLines(table_tex, "tables/Top_DEG_genes_volcano_plot_locrc.tex")
 ```
 
 # Annotation of results
@@ -792,6 +925,9 @@ head(resSig)
 We proceed by adding annotations starting from ENSEMBL to Entrez and from there to KEGG pathways, gene symbols and gene names. This is because, all major annotation databases (KEGG, org.Hs.eg.db, clusterProfiler) are indexed by Entrez, so doing the conversion first dramatically reduces NA values and gives more complete annotations. 
 
 ```{r}
+# Strip version 
+rownames(resSig) <- sub("\\..*$", "", rownames(resSig))
+
 # Add gene symbol column
 resSig$SYMBOL = mapIds(org.Hs.eg.db,
                         keys=rownames(resSig), 
@@ -831,7 +967,19 @@ print(head(resSig_df), 5)
 write.table(resSig_df, file=("DESeq2_sig_genes_normal_vs_cancer_44_locrc_annotated.tab"), row.names = F,col.names = TRUE, sep="\t")
 ```
 
-I see many NAs under PATH, is there an alternative as for example KEGGREST. 
+They often reflect: biological heterogeneity, batch effects, cell-type composition differences, high expression strength, and technical noise. 
+
+```{r, hierachical_pheatmap, echo=FALSE, fig.width=8.0, fig.height=6.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Select the Top 20 variable genes
+# Computes variance per gene across all samples
+top20_var_genes <- head(order(rowVars(assay(counts_vst)), decreasing = TRUE), 20)
+
+# Transform into a matrix and use vsd transformation
+mat  <- assay(counts_vst)[ top20_var_genes, ]
+mat  <- mat - rowMeans(mat)
+anno <- as.data.frame(colData(counts_vst)[, c("tissue","condition")])
+pheatmap(mat, annotation_col = anno)
+```
 
 ## Functional Gene Ontology (GO) Analysis
 ```{r}
@@ -844,12 +992,13 @@ library("enrichplot")
 library("ggnewscale")
 ```
 
-```{r}
+```{r, gene_go_terms, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Assign the human gene annotation database
 org_db <- org.Hs.eg.db
 
 # Create an gene vector containing ENTREZIDs
 genes <- as.character(resSig$ENTREZID)
+dim(resSig)
 
 # Run GO classification using groupGO
 # It answers the question: How many DE genes belong to each GO category?
@@ -864,15 +1013,21 @@ ggo <- clusterProfiler::groupGO(gene     = genes,
 # Convert to dataframe
 ggo_df <- as.data.frame(ggo)
 
-# Visualize the last columns 
-head(ggo_df[-5])
+# Order by count 
+ggo_df <- ggo_df[order(ggo_df$Count, decreasing = TRUE), ]
+
+# Select and visualize top N
+top_n <- 25
+head(ggo_df[-5], top_n)
 
 # Horizontal plot of cell component categories 
-barplot(ggo, drop=TRUE, showCategory=30, font.size = 5)
+barplot(ggo,
+        drop = TRUE,
+        showCategory = 25,
+        font.size = 5) +
+  labs(title = "GO classification of genes")
 ```
-
-
-```{r}
+```{r, go_enrichment_bp, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Run GO over-representation test enrichGO
 ego <- clusterProfiler::enrichGO(gene          = genes,
                                  OrgDb         = org_db,
@@ -882,9 +1037,14 @@ ego <- clusterProfiler::enrichGO(gene          = genes,
                                  qvalueCutoff  = 0.05,
                                  readable      = TRUE)
 
+
 # Horizontal plot of biological process categories 
 # Alternative representations https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html
-barplot(ego, drop=TRUE, showCategory=30, font.size = 5)
+barplot(ego,
+        drop = TRUE,
+        showCategory = 25,
+        font.size = 4) +
+  labs(title = "Gene Ontology Enrichment - Biological Processes")
 ```
 
 ```{r}
@@ -892,7 +1052,7 @@ barplot(ego, drop=TRUE, showCategory=30, font.size = 5)
 ego_df <- as.data.frame(ego)
 
 # Visualize the last columns 
-head(ego_df, 1)
+head(ego_df, 25)
 
 # Get dataframe dimmensions 
 dim(ego_df)
@@ -940,13 +1100,448 @@ print(p2)
 
 ```{r}
 # Plot Gene-Concept Network and Enrichment Map in a PDF file 
-# Start PDF device
-pdf(file=paste("Merge_GO_Gene_Set_Enrichment_Analysis", "CC", ".pdf", sep="_"),
-    width=25, height=10)
 
-# Create the plot
-cowplot::plot_grid(p1, p2, ncol=2, labels=LETTERS[1:3], rel_widths=c(.8, .8, 1.2))
-
-# Close PDF device 
+# Plot 1
+pdf("gene_concept_network_plot.pdf",
+    width = 12, height = 10)
+print(p1)
 dev.off()
+
+# Plot 2
+pdf("enrichment_map.pdf",
+    width = 12, height = 10)
+print(p2)
+dev.off()
+
+# # Start PDF device
+# pdf(file=paste("Merge_GO_Gene_Set_Enrichment_Analysis", "CC", ".pdf", sep="_"),
+#     width=25, height=10)
+# 
+# # Create the plot
+# cowplot::plot_grid(p1, p2, ncol=2, labels=LETTERS[1:3], rel_widths=c(.8, .8, 1.2))
+# 
+# # Close PDF device 
+# dev.off()
+```
+
+# Comparison of results using Venn diagrams
+
+```{r}
+# Get results from the DESeq2 pipeline by contrast
+tumor_vs_normal_44_dds <- results(dds_DGE,
+                           contrast = c("condition", "tumor_locrc", "normal_locrc"))
+
+summary(tumor_vs_normal_44_dds)
+```
+
+Get differentially expressed genes by contrast `tumor_locrc_vs_normal_locrc`:
+
+```{r, echo=FALSE}
+# Select significant genes with p-adjusted < 0.05 and LFC > 1.0
+DE_tumor_vs_normal_44 <- subset(tumor_vs_normal_44_dds,
+                  padj < 0.05 & abs(log2FoldChange) >= 1.0)
+
+# Order significant genes by p-adjusted value 
+DE_tumor_vs_normal_44 <- DE_tumor_vs_normal_44[ order(DE_tumor_vs_normal_44$padj) ,  ]
+head(DE_tumor_vs_normal_44[ , -1], 5)
+
+# Save results
+write.csv(DE_tumor_vs_normal_44, "DE_tumor_vs_normal_44.csv")
+```
+
+Get differentially expressed genes by contrast `tumor_eocrc_vs_normal_eocrc`:
+
+```{r, echo=FALSE}
+# Read .csv file 
+DE_tumor_vs_normal_42 <- read.csv("DE_tumor_vs_normal_42.csv", header=TRUE, row.names = 1, check.names = FALSE)
+DE_tumor_vs_normal_42
+
+# Read .csv file 
+tumor_vs_normal_42_dds <- read.csv("tumor_vs_normal_42_dds.csv", header=TRUE, row.names = 1, check.names = FALSE)
+tumor_vs_normal_42_dds
+
+dds_DGE_42 <- readRDS(file ="dds_DGE_42.rds")
+dds_DGE_42
+```
+
+## Generate Venn Diagrams 
+
+```{r, venn_diagrams_locrc_eocrc, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+all_genes <- intersect(
+  rownames(tumor_vs_normal_44_dds),
+  rownames(tumor_vs_normal_42_dds)
+)
+#length(all_genes)  # 35533
+#length(rownames(tumor_vs_normal_44_dds)) # 37241 
+#length(rownames(tumor_vs_normal_42_dds)) # 37865
+
+res_locrc <- as.data.frame(tumor_vs_normal_44_dds[all_genes, ]) # 35533     6
+#dim(res_locrc)
+res_eocrc <- as.data.frame(tumor_vs_normal_42_dds[all_genes, ]) # 35533     6
+#dim(res_eocrc)
+
+locrc_NS <- subset(res_locrc,
+                  padj > 0.2 & abs(log2FoldChange) < 0.7 & baseMean > 50)
+#locrc_NS  # 3,560 genes
+
+eocrc_up <- subset(res_eocrc,
+                   padj < 0.05 & log2FoldChange > 1 & baseMean > 50)
+#eocrc_up  # 1,293 genes
+
+eocrc_down <- subset(res_eocrc,
+                   padj < 0.05 & log2FoldChange < -1 & baseMean > 50)
+
+#eocrc_down # 1,190 genes
+
+# Build a binary matrix for eocrc_up vs locrc_NS
+venn_mat_up <- cbind(
+  EOCRC_UP = all_genes %in% rownames(eocrc_up),
+  LOCRC_NS  = all_genes %in% rownames(locrc_NS)
+)
+# dim(venn_mat)
+# 
+rownames(venn_mat_up) <- all_genes
+# dim(venn_mat)
+#venn_mat_up
+
+# Create a Venn diagram
+vc_up <- vennCounts(venn_mat_up)
+vc_up
+
+vennDiagram(
+  vc_up,
+  circle.col = c("red", "blue"),
+  counts.col = c("red", "blue"),
+  cex = 1
+)
+
+# Build a binary matrix for eocrc_down vs locrc_NS
+venn_mat_down <- cbind(
+  EOCRC_DOWN = all_genes %in% rownames(eocrc_down),
+  LOCRC_NS  = all_genes %in% rownames(locrc_NS)
+)
+# dim(venn_mat)
+# 
+rownames(venn_mat_down) <- all_genes
+# dim(venn_mat)
+#venn_mat_down
+
+# Create a Venn diagram
+vc_down <- vennCounts(venn_mat_down)
+vc_down
+
+vennDiagram(
+  vc_down,
+  circle.col = c("red", "blue"),
+  counts.col = c("red", "blue"),
+  cex = 1
+)
+#title("DEG obtained with deseq2", cex.main = 1.2)
+
+
+# lfc_diff <- abs(res_eocrc$log2FoldChange - res_locrc$log2FoldChange) >= 1.5
+# 
+# EOCRC_up_unique <- eocrc_up & locrc_NS & lfc_diff
+# EOCRC_down_unique <- eocrc_down & locrc_NS & lfc_diff
+# 
+# # Up-regulated genes
+# venn_up <- cbind(
+#   EOCRC_up = EOCRC_up_unique,
+#   LOCRC_up = with(res_locrc,
+#                   padj < 0.05 & log2FoldChange > 1 & baseMean > 50)
+# )
+# 
+# rownames(venn_up) <- all_genes
+# vc_up <- vennCounts(venn_up)
+# vennDiagram(vc_up, circle.col = c("blue", "grey40"))
+# title("Upregulated genes: EOCRC vs LOCRC")
+# 
+# # Down-regulated genes
+# venn_down <- cbind(
+#   EOCRC_down = EOCRC_down_unique,
+#   LOCRC_down = with(res_locrc,
+#                     padj < 0.05 & log2FoldChange < -1 & baseMean > 50)
+# )
+# 
+# rownames(venn_down) <- all_genes
+# vc_down <- vennCounts(venn_down)
+# vennDiagram(vc_down, circle.col = c("red", "grey40"))
+# title("Downregulated genes: EOCRC vs LOCRC")
+```
+Extract genes significantly differentially expressed in EOCRC
+
+```{r, echo=FALSE}
+# Extract genes significantly up-regulated
+genes_EOCRC_UP_specific <- rownames(
+  venn_mat_up[venn_mat_up[, "EOCRC_UP"] & venn_mat_up[, "LOCRC_NS"], ]
+)
+
+length(genes_EOCRC_UP_specific)
+genes_EOCRC_UP_specific
+
+# Extract genes significantly down-regulated
+genes_EOCRC_DOWN_specific <- rownames(
+  venn_mat_down[venn_mat_down[, "EOCRC_DOWN"] & venn_mat_down[, "LOCRC_NS"], ]
+)
+
+length(genes_EOCRC_DOWN_specific)
+genes_EOCRC_DOWN_specific
+```
+Create a table with the genes significantly differentially expressed in EOCRC
+
+```{r, echo=FALSE}
+# Create a table with the genes significantly differentially up-expressed in EOCRC
+EOCRC_UP_table <- res_eocrc[genes_EOCRC_UP_specific,
+                            c("baseMean", "log2FoldChange", "padj")]
+
+LOCRC_UP_table <- res_locrc[genes_EOCRC_UP_specific,
+                            c("baseMean", "log2FoldChange", "padj")]
+
+final_EOCRC_UP <- cbind(
+  ENSEMBL_ID     = rownames(EOCRC_UP_table),
+  EOCRC_baseMean = EOCRC_UP_table$baseMean,
+  EOCRC_log2FC   = EOCRC_UP_table$log2FoldChange,
+  EOCRC_padj     = EOCRC_UP_table$padj,
+  LOCRC_baseMean = LOCRC_UP_table$baseMean,
+  LOCRC_log2FC   = LOCRC_UP_table$log2FoldChange,
+  LOCRC_padj     = LOCRC_UP_table$padj,
+  Direction      = "Up"
+)
+
+# Create a table with the genes significantly differentially down-expressed in EOCRC
+EOCRC_DOWN_table <- res_eocrc[genes_EOCRC_DOWN_specific,
+                            c("baseMean", "log2FoldChange", "padj")]
+
+LOCRC_DOWN_table <- res_locrc[genes_EOCRC_DOWN_specific,
+                            c("baseMean", "log2FoldChange", "padj")]
+
+final_EOCRC_DOWN <- cbind(   
+  ENSEMBL_ID     = rownames(EOCRC_DOWN_table),
+  EOCRC_baseMean = EOCRC_DOWN_table$baseMean,
+  EOCRC_log2FC   = EOCRC_DOWN_table$log2FoldChange,
+  EOCRC_padj     = EOCRC_DOWN_table$padj,
+  LOCRC_baseMean = LOCRC_DOWN_table$baseMean,
+  LOCRC_log2FC   = LOCRC_DOWN_table$log2FoldChange,
+  LOCRC_padj     = LOCRC_DOWN_table$padj,
+  Direction      = "Down"
+)
+
+final_table <- rbind(final_EOCRC_UP, final_EOCRC_DOWN)
+#final_table
+
+final_table <- as.data.frame(final_table)
+
+# Strip version 
+final_table$ENSEMBL_ID <- sub("\\..*$", "", final_table$ENSEMBL_ID)
+
+# Add gene symbol column
+final_table$Gene  = mapIds(org.Hs.eg.db,
+                        keys=final_table$ENSEMBL_ID, 
+                        column="SYMBOL",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene Entrez ID column
+final_table$ENTREZID = mapIds(org.Hs.eg.db,
+                        keys=final_table$ENSEMBL_ID, 
+                        column="ENTREZID",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+# Add gene EGG functional pathway column
+final_table$PATH = mapIds(org.Hs.eg.db,
+                        keys=final_table$ENSEMBL_ID, 
+                        column="PATH",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+
+cols <- c(
+  "EOCRC_baseMean", "EOCRC_log2FC", "EOCRC_padj",
+  "LOCRC_baseMean", "LOCRC_log2FC", "LOCRC_padj"
+)
+
+final_table[cols] <- lapply(final_table[cols], function(x) round(as.numeric(x), 3))
+final_table
+```
+
+baseMean gives the mean counts for the gene in each cohort. log2FC is the log2 fold change in tumors compared to normal samples. padj is the adjusted p-value. Values rounded to 3 decimal points.
+
+```{r, echo=FALSE}
+# Select columns 
+cols <- c(
+  "Gene","EOCRC_baseMean", "EOCRC_log2FC", "EOCRC_padj",
+  "LOCRC_baseMean", "LOCRC_log2FC", "LOCRC_padj", "Direction"
+)
+
+# Export table to .tex format
+table_tex <- kable(
+  final_table,
+  format = "latex",
+  booktabs = TRUE,
+  linesep = ""
+)
+
+writeLines(table_tex, "tables/Top20_DEG_genes.tex")
+
+```
+
+# Revamped GO terms and Enrichment plots 
+
+```{r, gene_go_terms_30genes, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Run GO classification using groupGO
+ggo <- clusterProfiler::groupGO(gene     = final_table$ENTREZID,
+                                OrgDb    = org_db,
+                                ont      = "BP",
+                                level    = 3,
+                                readable = TRUE)
+
+# Convert to dataframe
+ggo_df <- as.data.frame(ggo)
+
+# Order by count 
+ggo_df <- ggo_df[order(ggo_df$Count, decreasing = TRUE), ]
+
+# Select and visualize top N
+top_n <- 25
+head(ggo_df[-5], top_n)
+
+# Horizontal plot of cell component categories 
+barplot(ggo,
+        drop = TRUE,
+        showCategory = 15,
+        font.size = 7) +
+  labs(title = "GO classification of genes")
+```
+
+
+```{r, go_enrichment_bp_30genes, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Run GO over-representation test enrichGO
+ego <- clusterProfiler::enrichGO(gene          = final_table$ENTREZID,
+                                 OrgDb         = org_db,
+                                 ont           = "BP",
+                                 pAdjustMethod = "BH",
+                                 pvalueCutoff  = 0.05,
+                                 qvalueCutoff  = 0.05,
+                                 readable      = TRUE)
+
+
+# Horizontal plot of biological process categories 
+# Alternative representations https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html
+barplot(ego,
+        drop = TRUE,
+        showCategory = 15,
+        font.size = 6) +
+  labs(title = "Gene Ontology Enrichment - Biological Processes")
+```
+
+```{r, go_enrichment_dotplot_30genes, echo=FALSE, fig.width=6.0, fig.height=5.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+library(enrichplot)
+
+dotplot(
+  ego,
+  showCategory = 15,
+  x = "GeneRatio",
+  color = "p.adjust"
+) +
+  labs(
+    title = "GO Enrichment Analysis (Biological Processes)",
+    color = "Adjusted p-value"
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.y  = element_text(size = 7))
+
+head(ego, 15)
+
+```
+
+
+```{r}
+# Convert to dataframe
+ego_df <- as.data.frame(ego)
+
+# Visualize the top cateogories 
+ego_head15 <- head(ego_df, 15)
+
+# Save file
+write.csv(
+  ego_head15,
+  file = "ego_top15_GO_BP.csv",
+  row.names = FALSE
+)
+
+```
+
+## Gene-Concept Network and Enrichment Map 
+The Gene-Concept Network displays which genes are associated with which biological processes, making it easy to see gene-function relationships. Meanwhile, the enrichment map groups similar terms together. Terms that share genes are connected, making related functions easy to spot.
+
+```{r}
+# Load modules and libraries
+library(DOSE)
+```
+
+```{r}
+# Convert gene ID to Symbol
+egox <- setReadable(ego, 'org.Hs.eg.db', 'ENTREZID')
+
+# Generate geneList with Log2FoldChange data
+geneList <- final_table$EOCRC_log2FC
+names(geneList) <- as.character(unique(final_table$ENTREZID))
+geneList <- sort(geneList, decreasing = TRUE)
+
+head(geneList)
+```
+
+```{r}
+# Network plot of enriched terms
+# CategorySize can be scaled by 'pvalue' or 'geneNum'
+p1 <- cnetplot(egox, categorySize="pvalue", foldChange=geneList)
+
+# Display the plot
+print(p1)
+```
+
+```{r}
+# Calculate pairwise similarities of enriched terms 
+egox_pairwise <- pairwise_termsim(egox)
+
+# Creates an enrichment map visualization from pairwise enrichment analysis results
+p2 <- emapplot(egox_pairwise, layout="kk", node_label_size = 3)
+
+# Display the plot
+print(p2)
+```
+
+```{r}
+# Plot Gene-Concept Network and Enrichment Map in a PDF file 
+
+# Plot 1
+pdf("gene_concept_network_plot_30genes.pdf",
+    width = 6, height = 4)
+print(p1)
+dev.off()
+
+# Plot 2
+pdf("enrichment_map_30genes.pdf",
+    width = 6, height = 4)
+print(p2)
+dev.off()
+
+# # Start PDF device
+# pdf(file=paste("Merge_GO_Gene_Set_Enrichment_Analysis", "CC", ".pdf", sep="_"),
+#     width=25, height=10)
+# 
+# # Create the plot
+# cowplot::plot_grid(p1, p2, ncol=2, labels=LETTERS[1:3], rel_widths=c(.8, .8, 1.2))
+# 
+# # Close PDF device 
+# dev.off()
+```
+
+
+# R Session Information 
+
+```{r, echo=FALSE}
+# Session info
+devtools::session_info()
 ```
