@@ -1,8 +1,18 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1.1}{\ignorespaces Risk Assessment and Mitigation Strategies}}{10}{table.1.1}%
+\contentsline {table}{\numberline {1.1}{\ignorespaces Retrospective analysis of major challenges to implement the project, their impact, and mitigation strategies adopted.}}{15}{table.caption.9}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Top DEGs between EOCRC and LOCRC samples. Significance cutoffs were as follows: LOCRC: \texttt {adjusted p-value > 0.2, LFC < 0.7, mean counts>50}; EOCRC Up: \texttt {adjusted p-value < 0.05, LFC > 1, mean counts > 50}; EOCRC Down: \texttt {adjusted p-value < 0.05, LFC < -1, mean counts>50}.}}{23}{table.caption.14}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Summary of isoform switching statistics.}}{26}{table.caption.17}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Overlapped isoforms and genes with DTU between EOCRC and LOCRC samples.}}{27}{table.caption.19}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Top DEGs of the EOCRC cohort.}}{57}{table.caption.35}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Top DEGs of the LOCRC cohort.}}{64}{table.caption.41}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {C.1}{\ignorespaces Top isoforms from each comparison \texttt {normal\_eocrc vs tumor\_eocrc and normal\_locrc vs tumor\_locrc} ordered by \texttt {q-value}.}}{65}{table.C.1}%
 \addvspace {10\p@ }
