@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{vogelsteinCancerGenomeLandscapes2013}
 Bert Vogelstein, Nickolas Papadopoulos, Victor~E. Velculescu, Shibin Zhou, Luis~A. Diaz, and Kenneth~W. Kinzler.
@@ -10,24 +10,239 @@ Olivia~M. Marx, Marc~M. Mankarious, Walter~A. Koltun, and Gregory~S. Yochum.
 \newblock Identification of differentially expressed genes and splicing events in early-onset colorectal cancer.
 \newblock {\em Frontiers in Oncology}, 14, April 2024.
 
+\bibitem{willauerClinicalMolecularCharacterization2019}
+Alexandra~N. Willauer, Yusha Liu, Allan A.~L. Pereira, Michael Lam, Jeffrey~S. Morris, Kanwal P.~S. Raghav, Van~K. Morris, David Menter, Russell Broaddus, Funda {Meric-Bernstam}, Andrea {Hayes-Jordan}, Winston Huh, Michael~J. Overman, Scott Kopetz, and Jonathan~M. Loree.
+\newblock Clinical and molecular characterization of early-onset colorectal cancer.
+\newblock {\em Cancer}, 125(12):2002--2010, 2019.
+
+\bibitem{burnett-hartmanTreatmentPatternsSurvival2019}
+Andrea~N. {Burnett-Hartman}, J.~David Powers, Jessica Chubak, Douglas~A. Corley, Nirupa~R. Ghai, Carmit~K. McMullen, Pamala~A. Pawloski, Andrew~T. Sterrett, and Heather~Spencer Feigelson.
+\newblock Treatment patterns and survival differ between early-onset and late-onset colorectal cancer patients: The patient outcomes to advance learning network.
+\newblock {\em Cancer Causes \& Control}, 30(7):747--755, July 2019.
+
+\bibitem{xuGermlineProfilingMolecular2020}
+Ting Xu, Yinjie Zhang, Jing Zhang, Changsong Qi, Dan Liu, Zhenghang Wang, Yanyan Li, Congcong Ji, Jian Li, Xuan Lin, Ting Hou, Hao Liu, Lu~Zhang, Han {Han-Zhang}, Lin Shen, and Xicheng Wang.
+\newblock Germline {{Profiling}} and {{Molecular Characterization}} of {{Early Onset Metastatic Colorectal Cancer}}.
+\newblock {\em Frontiers in Oncology}, 10, October 2020.
+
+\bibitem{vermaniExpressionPatternAldh12020}
+Litika Vermani, Rajeev Kumar, Rengaswamy~R Kannan, Monoj~K Deka, Anuradha Talukdar, and Nachimuthu~S Kumar.
+\newblock Expression {{Pattern}} of {{Aldh1}}, {{E-Cadherin}}, {{Vimentin}} and {{Twist}} in {{Early}} and {{Late Onset Sporadic Colorectal Cancer}}.
+\newblock {\em Biomarkers in Medicine}, 14(14):1371--1382, October 2020.
+
+\bibitem{watsonDifferentialExpressionPEG102020}
+Katherine~M. Watson, Ivy~H. Gardner, Raphael~M. Byrne, Rebecca~R. Ruhl, Christian~P. Lanciault, Elizabeth~N. Dewey, Sudarshan Anand, and Vassiliki~Liana Tsikitis.
+\newblock Differential {{Expression}} of {{PEG10 Contributes}} to {{Aggressive Disease}} in {{Early Versus Late-Onset Colorectal Cancer}}.
+\newblock {\em Diseases of the Colon \& Rectum}, 63(12):1610, December 2020.
+
+\bibitem{haReducedExpressionAlanyl2023}
+Ye~Jin Ha, Yun~Jae Shin, Ka~Hee Tak, Jong~Lyul Park, Jeong~Hwan Kim, Jong~Lyul Lee, Yong~Sik Yoon, Chan~Wook Kim, Seon~Young Kim, and Jin~Cheon Kim.
+\newblock Reduced expression of alanyl aminopeptidase is a robust biomarker of non-familial adenomatous polyposis and non-hereditary nonpolyposis colorectal cancer syndrome early-onset colorectal cancer.
+\newblock {\em Cancer Medicine}, 12(8):10091--10104, 2023.
+
+\bibitem{yanOrganoidCulturesEarlyonset2020}
+Helen H.~N. Yan, Hoi~Cheong Siu, Siu~Lun Ho, Sarah S.~K. Yue, Yang Gao, Wai~Yin Tsui, Dessy Chan, April~S. Chan, Jason W.~H. Wong, Alice H.~Y. Man, Bernard C.~H. Lee, Annie S.~Y. Chan, Anthony K.~W. Chan, Ho~Sang Hui, Arthur K.~L. Cheung, Wai~Lun Law, Oswens S.~H. Lo, Siu~Tsan Yuen, Hans Clevers, and Suet~Yi Leung.
+\newblock Organoid cultures of early-onset colorectal cancers reveal distinct and rare genetic profiles.
+\newblock December 2020.
+
+\bibitem{marxMolecularGeneticsEarlyonset2023}
+Olivia Marx, Marc Mankarious, and Gregory Yochum.
+\newblock Molecular genetics of early-onset colorectal cancer.
+\newblock {\em World Journal of Biological Chemistry}, 14(2):13--27, March 2023.
+
+\bibitem{hallRNASplicingKey2022}
+Adam~E. Hall, Sebastian {\"O}ther-Gee Pohl, Patrizia Cammareri, Stuart Aitken, Nicholas~T. Younger, Michela Raponi, Caroline~V. Billard, Alfonso~Bolado Carrancio, Aslihan Bastem, Paz Freile, Fiona Haward, Ian~R. Adams, Javier~F. Caceres, Paula Preyzner, Alex {von Kriegsheim}, Malcolm~G. Dunlop, Farhat~V. Din, and Kevin~B. Myant.
+\newblock {{RNA}} splicing is a key mediator of tumour cell plasticity and a therapeutic vulnerability in colorectal cancer.
+\newblock {\em Nature Communications}, 13(1):2791, May 2022.
+
+\bibitem{bhadraAlternativeSplicingAging2020}
+Malini Bhadra, Porsha Howell, Sneha Dutta, Caroline Heintz, and William~B. Mair.
+\newblock Alternative splicing in aging and longevity.
+\newblock {\em Human Genetics}, 139(3):357--369, March 2020.
+
+\bibitem{martinez-montielMicrobialNaturalMetabolites2016}
+Nancy {Mart{\'i}nez-Montiel}, Nora~Hilda {Rosas-Murrieta}, M{\'o}nica {Mart{\'i}nez-Montiel}, Mayra~Patricia {Gaspariano-Cholula}, and Rebeca~D. {Mart{\'i}nez-Contreras}.
+\newblock Microbial and {{Natural Metabolites That Inhibit Splicing}}: {{A Powerful Alternative}} for {{Cancer Treatment}}.
+\newblock {\em BioMed Research International}, 2016(1):3681094, 2016.
+
+\bibitem{vitting-seerupIsoformSwitchAnalyzeRAnalysisChanges2019}
+Kristoffer {Vitting-Seerup} and Albin Sandelin.
+\newblock {{IsoformSwitchAnalyzeR}}: Analysis of changes in genome-wide patterns of alternative splicing and its functional consequences.
+\newblock {\em Bioinformatics}, 35(21):4469--4471, November 2019.
+
+\bibitem{caoIdentificationRNAStructures2024}
+Xinang Cao, Yueying Zhang, Yiliang Ding, and Yue Wan.
+\newblock Identification of {{RNA}} structures and their roles in {{RNA}} functions.
+\newblock {\em Nature Reviews Molecular Cell Biology}, 25(10):784--801, October 2024.
+
+\bibitem{reuterRNAstructureSoftwareRNA2010}
+Jessica~S. Reuter and David~H. Mathews.
+\newblock {{RNAstructure}}: Software for {{RNA}} secondary structure prediction and analysis.
+\newblock {\em BMC Bioinformatics}, 11(1):129, March 2010.
+
+\bibitem{lorenzViennaRNAPackage202011}
+Ronny Lorenz, Stephan~H. Bernhart, Christian {H{\"o}ner zu Siederdissen}, Hakim Tafer, Christoph Flamm, Peter~F. Stadler, and Ivo~L. Hofacker.
+\newblock {{ViennaRNA Package}} 2.0.
+\newblock {\em Algorithms for Molecular Biology}, 6(1):26, November 2011.
+
+\bibitem{hofackerSecondaryStructurePrediction2002}
+Ivo~L. Hofacker, Martin Fekete, and Peter~F. Stadler.
+\newblock Secondary {{Structure Prediction}} for {{Aligned RNA Sequences}}.
+\newblock {\em Journal of Molecular Biology}, 319(5):1059--1066, June 2002.
+
+\bibitem{washietlFastReliablePrediction2005}
+Stefan Washietl, Ivo~L. Hofacker, and Peter~F. Stadler.
+\newblock Fast and reliable prediction of noncoding {{RNAs}}.
+\newblock {\em Proceedings of the National Academy of Sciences}, 102(7):2454--2459, February 2005.
+
+\bibitem{rivasStatisticalTestConserved2017}
+Elena Rivas, Jody Clements, and Sean~R. Eddy.
+\newblock A statistical test for conserved {{RNA}} structure shows lack of evidence for structure in {{lncRNAs}}.
+\newblock {\em Nature Methods}, 14(1):45--48, January 2017.
+
+\bibitem{satoRecentTrendsRNA2023a}
+Kengo Sato and Michiaki Hamada.
+\newblock Recent trends in {{RNA}} informatics: A review of machine learning and deep learning for {{RNA}} secondary structure prediction and {{RNA}} drug discovery.
+\newblock {\em Briefings in Bioinformatics}, 24(4):bbad186, July 2023.
+
+\bibitem{linBridgingArtificialIntelligence2025}
+Anqi Lin, Junpu Ye, Chang Qi, Lingxuan Zhu, Weiming Mou, Wenyi Gan, Dongqiang Zeng, Bufu Tang, Mingjia Xiao, Guangdi Chu, Shengkun Peng, Hank Z~H Wong, Lin Zhang, Hengguo Zhang, Xinpei Deng, Kailai Li, Jian Zhang, Aimin Jiang, Zhengrui Li, and Peng Luo.
+\newblock Bridging artificial intelligence and biological sciences: A comprehensive review of large language models in bioinformatics.
+\newblock {\em Briefings in Bioinformatics}, 26(4):bbaf357, July 2025.
+
+\bibitem{zablockiComprehensiveBenchmarkingLarge2025}
+Luciano~I Zablocki, Leandro~A Bugnon, Matias Gerard, Leandro Di~Persia, Georgina Stegmayer, and Diego~H Milone.
+\newblock Comprehensive benchmarking of large language models for {{RNA}} secondary structure prediction.
+\newblock {\em Briefings in Bioinformatics}, 26(2):bbaf137, March 2025.
+
+\bibitem{leinonenSequenceReadArchive2011}
+Rasko Leinonen, Hideaki Sugawara, Martin Shumway, and {on behalf of the International Nucleotide Sequence Database Collaboration}.
+\newblock The {{Sequence Read Archive}}.
+\newblock {\em Nucleic Acids Research}, 39(suppl\_1):D19--D21, January 2011.
+
+\bibitem{ewelsNfcoreFrameworkCommunitycurated2020}
+Philip~A. Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime~Ulysse Garcia, Paolo Di~Tommaso, and Sven Nahnsen.
+\newblock The nf-core framework for community-curated bioinformatics pipelines.
+\newblock {\em Nature Biotechnology}, 38(3):276--278, March 2020.
+
+\bibitem{patroSalmonProvidesFast2017}
+Rob Patro, Geet Duggal, Michael~I. Love, Rafael~A. Irizarry, and Carl Kingsford.
+\newblock Salmon provides fast and bias-aware quantification of transcript expression.
+\newblock {\em Nature Methods}, 14(4):417--419, April 2017.
+
+\bibitem{loveModeratedEstimationFold2014}
+Michael~I. Love, Wolfgang Huber, and Simon Anders.
+\newblock Moderated estimation of fold change and dispersion for {{RNA-seq}} data with {{DESeq2}}.
+\newblock {\em Genome Biology}, 15(12):550, December 2014.
+
+\bibitem{wuClusterProfiler40Universal2021}
+Tianzhi Wu, Erqiang Hu, Shuangbin Xu, Meijun Chen, Pingfan Guo, Zehan Dai, Tingze Feng, Lang Zhou, Wenli Tang, Li~Zhan, Xiaocong Fu, Shanshan Liu, Xiaochen Bo, and Guangchuang Yu.
+\newblock {{clusterProfiler}} 4.0: {{A}} universal enrichment tool for interpreting omics data.
+\newblock {\em The Innovation}, 2(3):100141, August 2021.
+
+\bibitem{andersDetectingDifferentialUsage2012}
+Simon Anders, Alejandro Reyes, and Wolfgang Huber.
+\newblock Detecting differential usage of exons from {{RNA-seq}} data.
+\newblock {\em Genome Research}, 22(10):2008--2017, January 2012.
+
+\bibitem{danaeeBpRNALargescaleAutomated2018}
+Padideh Danaee, Mason Rouches, Michelle Wiley, Dezhong Deng, Liang Huang, and David Hendrix.
+\newblock {{bpRNA}}: Large-scale automated annotation and analysis of {{RNA}} secondary structure.
+\newblock {\em Nucleic Acids Research}, 46(11):5381--5394, June 2018.
+
+\bibitem{luMolecularCharacteristicsMicrosatellite2023}
+Can Lu, Xiaopeng Zhang, Josefine Schardey, Ulrich Wirth, Kathrin Heinrich, Luca Massiminio, Giulia~Martina Cavestro, Jens Neumann, Alexandr~V. Bazhin, Jens Werner, and Florian K{\"u}hn.
+\newblock Molecular characteristics of microsatellite stable early-onset colorectal cancer as predictors of prognosis and immunotherapeutic response.
+\newblock {\em npj Precision Oncology}, 7(1):63, July 2023.
+
+\bibitem{gardnerDistinctInnateImmune2021}
+Ivy~H Gardner, Ragavan Siddharthan, Katherine Watson, Elizabeth Dewey, Rebecca Ruhl, Sokchea Khou, Xiangnan Guan, Zheng Xia, V~Liana Tsikitis, and Sudarshan Anand.
+\newblock A {{Distinct Innate Immune Signature}} of {{Early Onset Colorectal Cancer}}.
+\newblock {\em ImmunoHorizons}, 5(6):489--499, June 2021.
+
+\bibitem{duIntegratedMultiomicsApproach2023a}
+Mulong Du, Dongying Gu, Junyi Xin, Ulrike Peters, Mingyang Song, Guoshuai Cai, Shuwei Li, Shuai Ben, Yixuan Meng, Haiyan Chu, Lianmin Chen, Qianghu Wang, Lingjun Zhu, Zan Fu, Zhengdong Zhang, and Meilin Wang.
+\newblock Integrated multi-omics approach to distinct molecular characterization and classification of early-onset colorectal cancer.
+\newblock {\em Cell Reports Medicine}, 4(3):100974, March 2023.
+
+\bibitem{kongIntegratedMetagenomicMetabolomic2023}
+Cheng Kong, Lei Liang, Guang Liu, Lutao Du, Yongzhi Yang, Jianqiang Liu, Debing Shi, Xinxiang Li, and Yanlei Ma.
+\newblock Integrated metagenomic and metabolomic analysis reveals distinct gut-microbiome-derived phenotypes in early-onset colorectal cancer.
+\newblock {\em Gut}, 72(6):1129--1142, June 2023.
+
+\bibitem{zhengComprehensiveAssessmentDiet2021}
+Xiaobin Zheng, Jinhee Hur, Long~H Nguyen, Jie Liu, Mingyang Song, Kana Wu, Stephanie~A {Smith-Warner}, Shuji Ogino, Walter~C Willett, Andrew~T Chan, Edward Giovannucci, and Yin Cao.
+\newblock Comprehensive {{Assessment}} of {{Diet Quality}} and {{Risk}} of {{Precursors}} of~{{Early-Onset Colorectal Cancer}}.
+\newblock {\em JNCI: Journal of the National Cancer Institute}, 113(5):543--552, May 2021.
+
+\bibitem{gorrono-etxebarriaWnt11PotentialPrognostic2019}
+Irantzu {Gorro{\~n}o-Etxebarria}, Urko Aguirre, Saray Sanchez, Nerea Gonz{\'a}lez, Antonio Escobar, Ignacio Zabalza, Jos{\'e}~Maria Quintana, Maria dM~Vivanco, Jonathan Waxman, and Robert~M. Kypta.
+\newblock Wnt-11 as a {{Potential Prognostic Biomarker}} and {{Therapeutic Target}} in {{Colorectal Cancer}}.
+\newblock {\em Cancers}, 11(7):908, June 2019.
+
+\bibitem{jiangWNT11PromotesImmune2025}
+Weiliang Jiang, Bingjie Guan, Hongcheng Sun, Yushuai Mi, Sanjun Cai, Rong Wan, Xinxiang Li, Peng Lian, Dawei Li, and Senlin Zhao.
+\newblock {{WNT11 Promotes}} immune evasion and resistance to {{Anti-PD-1}} therapy in liver metastasis.
+\newblock {\em Nature Communications}, 16(1):1429, February 2025.
+
+\bibitem{mallaMesothelinExpressionCorrelates2024}
+Midhun Malla, Sachin~Kumar Deshmukh, Sharon Wu, Timothy Samec, Dane~C. Olevian, Reima El~Naili, Bassel {El-Rayes}, Joanne Xiu, Alex Farrell, Heinz-Josef Lenz, Emil Lou, Sanjay Goel, David Spetzler, Richard~M. Goldberg, and Lori Hazlehurst.
+\newblock Mesothelin expression correlates with elevated inhibitory immune activity in patients with colorectal cancer.
+\newblock {\em Cancer Gene Therapy}, 31(10):1547--1558, October 2024.
+
+\bibitem{mantovaniIL1IL1Regulatory2018}
+Alberto Mantovani, Isabella Barajon, and Cecilia Garlanda.
+\newblock {{IL-1}} and {{IL-1}} regulatory pathways in cancer progression and therapy.
+\newblock {\em Immunological Reviews}, 281(1):57--61, 2018.
+
+\bibitem{wangIL1RNPRRX1Prognostic2022}
+Qi~Wang, Xufeng Huang, Shujing Zhou, Yuntao Ding, Huizhi Wang, Weiye Jiang, and Min Xu.
+\newblock {{IL1RN}} and {{PRRX1}} as a {{Prognostic Biomarker Correlated}} with {{Immune Infiltrates}} in {{Colorectal Cancer}}: {{Evidence}} from {{Bioinformatic Analysis}}.
+\newblock {\em International Journal of Genomics}, 2022(1):2723264, 2022.
+
+\bibitem{garrettEarlyonsetColorectalCancer2022}
+Celine Garrett, Daniel Steffens, Michael Solomon, and Cherry Koh.
+\newblock Early-onset colorectal cancer: Why it should be high on our list of differentials.
+\newblock {\em ANZ Journal of Surgery}, 92(7-8):1638--1643, 2022.
+
+\bibitem{zhangIsoformLevelExpression2013}
+ZhongFa Zhang, Sharmistha Pal, Yingtao Bi, Julia Tchou, and Ramana~V. Davuluri.
+\newblock Isoform level expression profiles provide better cancer signatures than gene level expression profiles.
+\newblock {\em Genome Medicine}, 5(4):33, April 2013.
+
+\bibitem{merinoBenchmarkingWorkflowsDetecting2019}
+Gabriela~A Merino, Ana Conesa, and Elmer~A Fern{\'a}ndez.
+\newblock A benchmarking of workflows for detecting differential splicing and differential expression at isoform level in human {{RNA-seq}} studies.
+\newblock {\em Briefings in Bioinformatics}, 20(2):471--481, March 2019.
+
+\bibitem{innesGeneExpressionAlternative2024}
+Peter~A. Innes, April~M. Goebl, Chris C.~R. Smith, Kaylee Rosenberger, and Nolan~C. Kane.
+\newblock Gene expression and alternative splicing contribute to adaptive divergence of ecotypes.
+\newblock {\em Heredity}, 132(3):120--132, March 2024.
+
+\bibitem{meleIdentificationTPM2CNN12022}
+Valentina Mele, Camilla Basso, Valeria Governa, Jesus~F. Glaus~Garzon, Manuele~G. Muraro, Silvio D{\"a}ster, Christian~A. Nebiker, Robert Mechera, Martin Bolli, Alexander Schmidt, Roger Geiger, Giulio~C. Spagnoli, Dimitri Christoforidis, Pietro~E. Majno, Lubor Borsig, and Giandomenica Iezzi.
+\newblock Identification of {{TPM2}} and {{CNN1}} as {{Novel Prognostic Markers}} in {{Functionally Characterized Human Colon Cancer-Associated Stromal Cells}}.
+\newblock {\em Cancers}, 14(8):2024, January 2022.
+
+\bibitem{dongLMNB2PromotesProgression2021}
+Chen-Hua Dong, Tao Jiang, Hang Yin, Hu~Song, Yi~Zhang, Hao Geng, Pei-Cong Shi, Yi-Xin Xu, Hong Gao, Lian-Yu Liu, Lei Zhou, Zhao-Hui Zhang, and Jun Song.
+\newblock {{LMNB2}} promotes the progression of colorectal cancer by silencing p21 expression.
+\newblock {\em Cell Death \& Disease}, 12(4):331, March 2021.
+
+\bibitem{huangPeptideEncodedPutative2017}
+Jin-Zhou Huang, Min Chen, De~Chen, Xing-Cheng Gao, Song Zhu, Hongyang Huang, Min Hu, Huifang Zhu, and Guang-Rong Yan.
+\newblock A {{Peptide Encoded}} by a {{Putative lncRNA HOXB-AS3 Suppresses Colon Cancer Growth}}.
+\newblock {\em Molecular Cell}, 68(1):171--184.e6, October 2017.
+
+\bibitem{liuAnalysisSecondaryStructural2016}
+Biao Liu, Jessica~L. {Childs-Disney}, Brent~M. Znosko, Dan Wang, Mohammad Fallahi, Steven~M. Gallo, and Matthew~D. Disney.
+\newblock Analysis of secondary structural elements~in human {{microRNA}} hairpin precursors.
+\newblock {\em BMC Bioinformatics}, 17(1):112, March 2016.
+
 \bibitem{nunesPrognosticGenomeTranscriptome2024}
 Lu{\'i}s Nunes, Fuqiang Li, Meizhen Wu, Tian Luo, Klara Hammarstr{\"o}m, Emma Torell, Ingrid Ljuslinder, Artur Mezheyeuski, Per-Henrik Edqvist, Anna {L{\"o}fgren-Burstr{\"o}m}, Carl Zingmark, Sofia Edin, Chatarina Larsson, Lucy Mathot, Erik Osterman, Emerik Osterlund, Viktor Ljungstr{\"o}m, In{\^e}s Neves, Nicole Yacoub, Unnur Gudnad{\'o}ttir, Helgi Birgisson, Malin Enblad, Fredrik Ponten, Richard Palmqvist, Xun Xu, Mathias Uhl{\'e}n, Kui Wu, Bengt Glimelius, Cong Lin, and Tobias Sj{\"o}blom.
 \newblock Prognostic genome and transcriptome signatures in colorectal cancers.
 \newblock {\em Nature}, 633(8028):137--146, September 2024.
-
-\bibitem{vaziri-moghadamIntegratingMachineLearning2024}
-Ayoub {Vaziri-Moghadam} and Mohammad-Hadi {Foroughmand-Araabi}.
-\newblock Integrating machine learning and bioinformatics approaches for identifying novel diagnostic gene biomarkers in colorectal cancer.
-\newblock {\em Scientific Reports}, 14(1):24786, October 2024.
-
-\bibitem{cornishGenomicLandscape20232024a}
-Alex~J. Cornish, Andreas~J. Gruber, Ben Kinnersley, Daniel Chubb, Anna Frangou, Giulio Caravagna, Boris Noyvert, Eszter Lakatos, Henry~M. Wood, Steve Thorn, Richard Culliford, Claudia {Arnedo-Pac}, Jacob Househam, William Cross, Amit Sud, Philip Law, Maire~Ni Leathlobhair, Aliah Hawari, Connor Woolley, Kitty Sherwood, Nathalie Feeley, G{\"u}ler G{\"u}l, Juan {Fernandez-Tajes}, Luis Zapata, Ludmil~B. Alexandrov, Nirupa Murugaesu, Alona Sosinsky, Jonathan Mitchell, Nuria {Lopez-Bigas}, Philip Quirke, David~N. Church, Ian P.~M. Tomlinson, Andrea Sottoriva, Trevor~A. Graham, David~C. Wedge, and Richard~S. Houlston.
-\newblock The genomic landscape of 2,023 colorectal cancers.
-\newblock {\em Nature}, 633(8028):127--136, September 2024.
-
-\bibitem{penicRiNALMoGeneralpurposeRNA2025}
-Rafael~Josip Peni{\'c}, Tin Vla{\v s}i{\'c}, Roland~G. Huber, Yue Wan, and Mile {\v S}iki{\'c}.
-\newblock {{RiNALMo}}: General-purpose {{RNA}} language models can generalize well on structure prediction tasks.
-\newblock {\em Nature Communications}, 16(1):5671, July 2025.
 
 \end{thebibliography}

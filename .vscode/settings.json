@@ -1,0 +1,4 @@
+{
+  "latex-workshop.latexmk.path": "/usr/local/texlive/2025/bin/universal-darwin/latexmk",
+  "editor.fontSize": 13
+}
