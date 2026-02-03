@@ -5,12 +5,14 @@ This repository contains the requirements, code, and backlog of my bioinformatic
 
 For a quick overview of the project, you can check the following resources:
 
-🎬 [YouTube video](https://youtu.be/atpuYKZB7xI) describing the project.
+📄 [Thesis document](/docs/reports/project-progress/tfm-bioinformatics-semv-manuscript.pdf)
+
+🎬 [YouTube video](https://youtu.be/atpuYKZB7xI) describing the project
+
+📊 [Main results](https://sblaizerwize.github.io/master-bioinformatics/)
 
 🏁 [Project's roadmap](https://github.com/users/sblaizerwize/projects/5/views/4?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Milestone%22%2C224733603%2C224733604%5D&sortedBy%5Bdirection%5D=desc&sortedBy%5BcolumnId%5D=224733604) to keep up with the progress and latest 
 changes.
-
-📊 Project's main results. 
 
 ## **Introduction**
 Colorectal cancer (CRC) is one of the leading causes of cancer-related morbidity and mortality
@@ -37,7 +39,7 @@ upon a previously conducted gene-level study from [Marx et al.](https://www.fron
 isoform-level regulation and RNA secondary structure prediction, thereby moving beyond expression
 changes alone to explore post-transcriptional and structural layers of regulation. The overall integrative analysis workflow is summarized below:
 
-![tfm-workflow](/docs-static-website/images/tfm-schematics.svg)
+![tfm-workflow](/docs/images/tfm-schematics.svg)
 **Figure** Schematic overview of the integrative transcriptomic analysis workflow implemented
 in this study.
 
@@ -46,7 +48,7 @@ The following table describes the content of this repository.
 
 | Directory | Description |
 |----------|-------------|
-| `docs-static-website` | Materials used to generate the static website of this project. |
+| `docs` | Materials used to generate the static website of this project. |
 | `nextflow-pipelines` | Nextflow-based workflows for RNA-seq data processing and analysis using Kallisto and Salmon. |
 | `R-scripts` | R scripts for differential gene expression analysis (DESeq2) and differential transcript usage (DTU) analysis using IsoformSwitchAnalyzeR. |
 | `rna-structure-prediction` | Tools and scripts for predicting and analyzing RNA secondary structures using RNAstructure. |

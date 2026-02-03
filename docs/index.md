@@ -3,59 +3,114 @@ layout: default
 title: Home
 nav_order: 1
 ---
+# Master in Bioinformatics Project
 
-# Introduction
+This site contains a summary of my bioinformatics master's thesis developed at CIMA University of Navarra under the supervision of Fernando Pastor Rodriguez and Igor Ruiz de los Mozos.
 
-This project provides a cloud-based implementation of RNA-seq workflows for training and experimentation purposes 📚. It combines content from the official [Nextflow for RNA-seq training course](https://training.nextflow.io/latest/nf4_science/rnaseq/) with real-world RNA-seq data from the [DIY Transcriptomics course](https://diytranscriptomics.com/), executed entirely on AWS infrastructure.
+For a quick overview of the project, you can check the following resources:
 
-The goal is to demonstrate how to run scalable and reproducible RNA-seq pipelines using Nextflow, while leveraging AWS compute resources for performance, flexibility, and cost optimization.
+📄 [Thesis document](/docs/reports/project-progress/tfm-bioinformatics-semv-manuscript.pdf)
 
-We would like to thank AWS and the University of Navarra for providing cloud resources (1,000 AWS credits) to support this project 💰.
+🎬 [YouTube video](https://youtu.be/atpuYKZB7xI) describing the project
 
-⚡ Click [here](https://github.com/sblaizerwize/nextflow-for-rnaseq-training/tree/main) to view this project on GitHub. 
-
----
-
-# Motivation
-
-Nextflow is an open-source tool used to run bioinformatics pipelines for analyzing multiple samples in parallel. As of 2025, Nextflow has established a solid community that actively contributes to its well-documented pipelines and templates for building custom workflows. It has become a popular and practical tool among bioinformaticians.
-
-One of Nextflow’s key strengths is its portability. Whether you're running workflows on your laptop, a high-performance computing (HPC) cluster, or cloud platforms like AWS, Nextflow abstracts the complexity of the compute environment so you can focus on your analysis. 
-
-This project began after we received $1,000 in AWS Cloud credits. Our goal was to lay the foundation for running a Bulk RNA-seq analysis 🧬 using AWS infrastructure 💻. To avoid discarding valuable insights that could benefit newcomers to Nextflow, we created this practical guide for running RNA-seq analyses on the AWS Cloud.
-
----
-
-# RNA-seq Pipelines
-
-The content of this [project](https://github.com/sblaizerwize/nextflow-for-rnaseq-training/tree/main) is structured as follows:
-
-| **Pipeline** | **Description** |
-| ------ | ------ |
-| `nextflow-for-rnaseq-aws` | Includes a reproduction of the [Nextflow for RNA-seq](https://training.nextflow.io/latest/nf4_science/rnaseq/) pipeline, adapted for AWS execution. |
-| `rnaseq-aws-diy-transcriptomics` | Implements an RNA-seq pipeline using skin tissue data (10 samples) from the [DIY Transcriptomics](https://diytranscriptomics.com/) course. It builds a real-world workflow using **HISAT2** for the alignment of reads, and explores AWS insfrastructure setup.  |
-| `rnaseq-aws-diy-kallisto` | Adapts the `rnaseq-aws-diy-transcriptomics` workflow to use **Kallisto**, a pseudoaligner, for lightweight RNA-seq analysis. This pipeline generates expression quantification (`abundance.tsv`) files for the same dataset.  |
-
----
-
-# RNA-seq Pipelines: Results
-This is a summary of results 🎯 from RNA-seq pipelines run with Nextflow on AWS Batch.
-
-## **PIPELINE 1: nextflow-for-rnaseq-aws pipeline**
-- [MULTIQC Report](/reports/nextflow-for-rnaseq-aws/all_single-end.html)
-- [Nextflow Report](/reports/nextflow-for-rnaseq-aws/nextflow-for-rnaseq-aws.report-config.html)
-
-## **PIPELINE 2: rnaseq-aws-diy-transcriptomics pipeline**
-- [MULTIQC Report](/reports/rnaseq-aws-diy-transcriptomics/all_single-end.html)
-- [Nextflow Report](/reports/rnaseq-aws-diy-transcriptomics/rnaseq-aws-diy-transcriptomics-report-config.html)
-- [Nextflow Timeline Report](/reports/rnaseq-aws-diy-transcriptomics/rnaseq-aws-diy-transcriptomics-timeline.html)
-
-## **PIPELINE 3: rnaseq-aws-diy-kallisto pipeline**
-- [MULTIQC Report](/reports/rnaseq-aws-diy-kallisto/all_single-end.html)
-- [Nextflow Report](/reports/rnaseq-aws-diy-kallisto/rnaseq-aws-diy-kallisto-report-config.html)
-- [Nextflow Timeline Report](/reports/rnaseq-aws-diy-kallisto/rnaseq-aws-diy-kallisto-timeline.html)
+📊 [Main results](#results) 
 
 
-Feel free to explore the code and run the pipeline directly from the repository 🙌.
+## Abstract
+
+Colorectal cancer is increasingly diagnosed in individuals younger than 50 years, a
+trend referred to as early-onset colorectal cancer. This study applied an integrative
+transcriptomic workflow to characterize molecular differences between early-onset
+and late-onset colorectal cancer. A total of 86 matched tumor and normal samples
+were analyzed using a combination of differential gene expression, differential
+transcript usage, and RNA secondary structure prediction.
+
+Differential gene expression analysis identified a 40-gene signature uniquely deregulated
+in early-onset colorectal cancer, enriched in immune-related, inflammatory, and
+cell-matrix adhesion processes. Differential transcript usage analysis revealed substantial
+differences in transcript-level complexity between cohorts, with late-onset
+colorectal cancer showing extensive isoform remodeling, whereas early-onset tumors
+displayed a more restricted pattern of transcript usage. Despite these global differences,
+six conserved isoform switches were consistently detected in both cohorts,
+including TPM2, LMNB2, MAP3K20, and the long non-coding RNA HOXB-AS3.
+RNA secondary structure prediction further characterized significant isoforms, revealing
+a predominance of stem motifs.
+
+These results indicate that gene-level and isoform-level analyses capture complementary
+aspects of colorectal cancer transcriptomic variation. The integrative framework
+presented here provides a methodological basis for future large-scale studies
+and supports the exploration of RNA structural features as potential biomarkers
+and therapeutic targets in colorectal cancer.
+
+**keywords**: colorectal-cancer, deseq2-analysis, dtu-analysis, rna-structure-prediction, nf-core-rnaseq, isoformSwitchAnalyzeR, hpc-cluster, nextflow
+
+## Objective  
+
+The primary goal of this project is to identify genes and transcripts that are differentially
+regulated in early-onset and late-onset colorectal cancer, and to evaluate whether changes
+in isoform usage are associated with differences in their RNA secondary structure through
+computational prediction.
+
+## Proposed solution
+We adopted an integrative transcriptomic strategy to investigate molecular differences
+between early-onset and late-onset colorectal cancer (EOCRC and LOCRC). Building
+upon a previously conducted gene-level study from [Marx et al.](https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2024.1365762/full), we extend the analysis by incorporating
+isoform-level regulation and RNA secondary structure prediction, thereby moving beyond expression
+changes alone to explore post-transcriptional and structural layers of regulation. The overall integrative analysis workflow is summarized below:
+
+![tfm-workflow](/docs/images/tfm-schematics.svg)
+**Figure.** Schematic overview of the integrative transcriptomic analysis workflow implemented
+in this study.
+
+## From concept to implementation
+The main milestones of this project were tracked using a dedicated 🏁 [roadmap](https://github.com/users/sblaizerwize/projects/5/views/4?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Milestone%22%2C224733603%2C224733604%5D&sortedBy%5Bdirection%5D=desc&sortedBy%5BcolumnId%5D=224733604) on GitHub projects, which facilitated version control and documentation of analytical decisions. Among these decisions, the main technical and methodological challenges encountered during the development of this project and the mitigation strategies adopted are listed below:
+
+- [Report 1](/docs/reports/project-progress/tfm-proposal.pdf) - the proposal
+- [Report 2](/docs/reports/project-progress/tfm-starting-point.pdf) - the starting point
+- [Report 3](/docs/reports/project-progress/tfm-tipping-point.pdf) - the tipping point
+
+## Summary of products obtained
+This project produced the following deliverables.
+
+- A [master’s thesis manuscript](/docs/reports/project-progress/tfm-bioinformatics-semv-manuscript.pdf) documenting the analytical workflow, results, and their
+biological interpretation.
+
+- A configured and validated **nf-core/rnaseq Nextflow pipeline** for reproducible RNA-seq
+analysis on high-performance computing (HPC) clusters.
+
+- A [Zenodo repository](https://doi.org/10.5281/zenodo.17801437) hosting primary and processed
+data generated in this study.
+
+- A [GitHub repository](https://github.com/sblaizerwize/master-bioinformatics) containing primary scripts and documentation.
+
+## Results
+This is a summary of results after the implementation of the integrative transcriptomic workflow for the analysis of EOCRC and LOCRC samples.
+
+### **nf-core/rnaseq pipeline reports**
+
+SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925) comprising 21 pairs of EOCRC patients 
+- [MULTIQC Report](/docs/reports/nfcore-rnaseq-42samples/multiqc_report.html)
+- [Nextflow Report](/docs/reports/nfcore-rnaseq-42samples/nextflow-report.html)
+- [Nextflow Timeline Report](/docs/reports/nfcore-rnaseq-42samples/nextflow-timeline.html)
+
+SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528) comprising 22 pairs of LOCRC patients 
+- [MULTIQC Report](/docs/reports/nfcore-rnaseq-44samples/multiqc_report.html)
+- [Nextflow Report](/docs/reports/nfcore-rnaseq-44samples/report.html)
+- [Nextflow Timeline Report](/docs/reports/nfcore-rnaseq-44samples/nextflow-timeline.html)
+
+### **Differential Gene Expression Analysis (DGE) report in R**
+- [EOCRC samples](/docs/reports/dge-analysis/Deseq2_42crc.html)
+- [LOCRC samples](/docs/reports/dge-analysis/Deseq2_44crc.html)
+
+### **Differential Transcript Usage Analysis (DTU) report in R**
+- [EOCRC and LOCRC samples](/docs/reports/dtu-analysis/dtu-read-rds-isoforms_42_44.html)
+
+### **RNA Secondary Structure Analysis (RSS) report in R**
+- [Common EOCRC and LOCRC isoforms](/docs/reports/secondary-rna-structure-analysis/motifs_plots.html)
+
+
+## Contributing
+This is a personal thesis repository, but suggestions for improvements are welcome via GitHub issues.
+
 
 
