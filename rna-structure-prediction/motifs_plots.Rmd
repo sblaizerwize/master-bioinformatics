@@ -1,6 +1,6 @@
 ---
-title: "Visualization of RNA structure motifs using radar plots"
-author: "Salomón Marquez"
+title: "Visualization of RNA structure motifs"
+author: "Salomon Marquez"
 date: "`r Sys.Date()`"
 output:
    html_document:
@@ -73,7 +73,7 @@ setwd(directory)
 list.files()
 ```
 
-```{r, echo=FALSE}
+```{r}
 # Read .csv file 
 bpRNA_6_isoforms <- read.csv("bpRNA_st_stats_6_isoforms_all.csv", header=TRUE, row.names = 1, check.names = FALSE)
 bpRNA_6_isoforms <- bpRNA_6_isoforms[7:12]
@@ -89,13 +89,17 @@ bpRNA_locrc <- read.csv("bpRNA_st_stats_locrc_all.csv", header=TRUE, row.names =
 bpRNA_locrc <- bpRNA_locrc[7:12]
 bpRNA_locrc
 ```
-```{r, echo=FALSE}
+# Data summary
+
+```{r}
 # Summary of reports
 summary(bpRNA_6_isoforms)
 summary(bpRNA_eocrc)
 summary(bpRNA_locrc)
 ```
-```{r, heatmap_structural_elements_6_isoforms, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+# Motif visualization
+
+```{r, heatmap_structural_elements_6_isoforms, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Heatmap plot of the 6 overlapped isoforms 
 bpRNA_6_isoforms_long <- bpRNA_6_isoforms |>
   tibble::rownames_to_column("id") |>
@@ -126,7 +130,7 @@ ggplot(bpRNA_6_isoforms_long, aes(feature, id, fill = count)) +
 ```
 
 
-```{r, heatmap_structural_elements_EOCRC, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+```{r, heatmap_structural_elements_EOCRC, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Heatmap plot of EOCRC transcripts 
 bpRNA_eocrc_long <- bpRNA_eocrc |>
   tibble::rownames_to_column("id") |>
@@ -156,7 +160,7 @@ ggplot(bpRNA_eocrc_long, aes(feature, id, fill = count)) +
   )
 ```
 
-```{r, heatmap_structural_elements_LOCRC, echo=FALSE, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
+```{r, heatmap_structural_elements_LOCRC, fig.width=5.0, fig.height=4.0, dev="pdf", fig.path="figures/", fig.ext="pdf"}
 # Heatmap plot of LOCRC transcripts 
 bpRNA_locrc_long <- bpRNA_locrc |>
   tibble::rownames_to_column("id") |>
@@ -184,4 +188,11 @@ ggplot(bpRNA_locrc_long, aes(feature, id, fill = count)) +
     y = NULL,
     fill = "Count"
   )
+```
+
+# R Session Information 
+
+```{r, echo=FALSE}
+# Session info
+devtools::session_info()
 ```
