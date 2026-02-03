@@ -67,8 +67,8 @@ The general workflow of the project involves the following steps:
 
 1. **Data Preparation**: Obtain RNA-seq data from NCBI Gene Expression Omnibus (GEO) database. The SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925) dataset comprises 21 pairs of EOCRC patients and the SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528) dataset 22 pairs of LOCRC patients. Other required files, check the Data availability section in this README, such as reference genomes and annotation files can be downloaded from Zenodo under accession [DOI: 10.5281/zenodo.17801437](https://zenodo.org/records/17801437).
 2. **Pipeline Execution**: Run appropriate Nextflow pipelines to process raw reads into counts or abundances.
-3. **Analysis**: Use R scripts for data visualization and statistical analyses.
-4. **Structure Prediction**: Identify isoforms and predict their RNA secondary structures.
+3. **Analysis**: Use R scripts for data visualization and DGE and DTU analyses.
+4. **Structure Prediction**: From the identified isoforms, predict their RNA secondary structures.
 
 For detailed instructions, refer to the README files within each subfolder. If you encounter issues, check the project's roadmap for updates or known issues.
 
