@@ -89,13 +89,36 @@ data generated in this study.
 # Results
 This is a summary of results after the implementation of the integrative transcriptomic workflow for the analysis of EOCRC and LOCRC samples.
 
-| Workflow Stage | Resulting Reports |
-|----------------|-------------------|
-| `1. nf-core/rnaseq pipeline (EOCRC)` | SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925) (21 EOCRC pairs)<br>• [MultiQC Report](reports/nfcore-rnaseq-42samples/multiqc_report.html)<br>• [Nextflow Report](reports/nfcore-rnaseq-42samples/report.html)<br>• [Nextflow Timeline](reports/nfcore-rnaseq-42samples/timeline.html) |
-| `2. nf-core/rnaseq pipeline (LOCRC)` | SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528) (22 LOCRC pairs)<br>• [MultiQC Report](reports/nfcore-rnaseq-44samples/multiqc_report.html)<br>• [Nextflow Report](reports/nfcore-rnaseq-44samples/report.html)<br>• [Nextflow Timeline](reports/nfcore-rnaseq-44samples/timeline.html) |
-| `3. Differential Gene Expression (DGE)` | • [EOCRC samples](reports/dge-analysis/Deseq2_42crc.html)<br>• [LOCRC samples](reports/dge-analysis/Deseq2_44crc.html) |
-| `4. Differential Transcript Usage (DTU)` | • [EOCRC and LOCRC samples](reports/dtu-analysis/dtu-read-rds-isoforms_42_44.html) |
-| `5. RNA Secondary Structure Analysis (RSS)` | • [Common EOCRC and LOCRC isoforms](reports/secondary-rna-structure-analysis/motifs_plots.html) |
+### 1. nf-core/rnaseq pipeline — EOCRC
+SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925)  
+21 EOCRC patient pairs
+
+- [MultiQC Report](reports/nfcore-rnaseq-42samples/multiqc_report.html)
+- [Nextflow Report](reports/nfcore-rnaseq-42samples/report.html)
+- [Nextflow Timeline](reports/nfcore-rnaseq-42samples/timeline.html)
+
+---
+### 2. nf-core/rnaseq pipeline — LOCRC
+SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528)  
+22 LOCRC patient pairs
+
+- [MultiQC Report](reports/nfcore-rnaseq-44samples/multiqc_report.html)
+- [Nextflow Report](reports/nfcore-rnaseq-44samples/report.html)
+- [Nextflow Timeline](reports/nfcore-rnaseq-44samples/timeline.html)
+
+---
+### 3. Differential Gene Expression (DGE)
+- [EOCRC samples](reports/dge-analysis/Deseq2_42crc.html)
+- [LOCRC samples](reports/dge-analysis/Deseq2_44crc.html)
+
+---
+### 4. Differential Transcript Usage (DTU)
+- [EOCRC and LOCRC samples](reports/dtu-analysis/dtu-read-rds-isoforms_42_44.html)
+
+---
+### 5. RNA Secondary Structure Analysis (RSS)
+- [Common EOCRC and LOCRC isoforms](reports/secondary-rna-structure-analysis/motifs_plots.html)
+
 ---
 # Contributing
 This is a thesis repository, but suggestions for improvements are welcome via [GitHub issues](https://github.com/sblaizerwize/master-bioinformatics/issues).
