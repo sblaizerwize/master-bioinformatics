@@ -12,7 +12,7 @@ For a detailed overview of the project, you can check the following resources:
 
 🎬 [YouTube video](https://youtu.be/atpuYKZB7xI) describing the project
 
-💻 [GitHub repository](https://sblaizerwize.github.io/master-bioinformatics/)
+💻 [GitHub repository](https://github.com/sblaizerwize/master-bioinformatics)
 
 ---
 # Abstract
@@ -89,7 +89,7 @@ data generated in this study.
 # Results
 This is a summary of results after the implementation of the integrative transcriptomic workflow for the analysis of EOCRC and LOCRC samples.
 
-### 1. nf-core/rnaseq pipeline — EOCRC
+### **1. nf-core/rnaseq pipeline — EOCRC**
 SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925)  
 21 EOCRC patient pairs
 
@@ -97,8 +97,7 @@ SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=stud
 - [Nextflow Report](reports/nfcore-rnaseq-42samples/report.html)
 - [Nextflow Timeline](reports/nfcore-rnaseq-42samples/timeline.html)
 
----
-### 2. nf-core/rnaseq pipeline — LOCRC
+### **2. nf-core/rnaseq pipeline — LOCRC**
 SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528)  
 22 LOCRC patient pairs
 
@@ -106,17 +105,14 @@ SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP
 - [Nextflow Report](reports/nfcore-rnaseq-44samples/report.html)
 - [Nextflow Timeline](reports/nfcore-rnaseq-44samples/timeline.html)
 
----
-### 3. Differential Gene Expression (DGE)
+### **3. Differential Gene Expression (DGE)**
 - [EOCRC samples](reports/dge-analysis/Deseq2_42crc.html)
 - [LOCRC samples](reports/dge-analysis/Deseq2_44crc.html)
 
----
-### 4. Differential Transcript Usage (DTU)
+### **4. Differential Transcript Usage (DTU)**
 - [EOCRC and LOCRC samples](reports/dtu-analysis/dtu-read-rds-isoforms_42_44.html)
 
----
-### 5. RNA Secondary Structure Analysis (RSS)
+### **5. RNA Secondary Structure Analysis (RSS)**
 - [Common EOCRC and LOCRC isoforms](reports/secondary-rna-structure-analysis/motifs_plots.html)
 
 ---
