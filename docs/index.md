@@ -6,15 +6,15 @@ nav_order: 1
 
 This site contains a summary of my bioinformatics master's thesis developed at CIMA University of Navarra under the supervision of Fernando Pastor Rodriguez and Igor Ruiz de los Mozos.
 
-For a quick overview of the project, you can check the following resources:
+For a detailed overview of the project, you can check the following resources:
 
 📄 [Thesis document](reports/project-progress/tfm-bioinformatics-semv-manuscript.pdf)
 
 🎬 [YouTube video](https://youtu.be/atpuYKZB7xI) describing the project
 
-📊 [Main results](#results) 
+💻 [GitHub repository](https://sblaizerwize.github.io/master-bioinformatics/)
 
-
+---
 # Abstract
 
 Colorectal cancer is increasingly diagnosed in individuals younger than 50 years, a
@@ -41,8 +41,9 @@ presented here provides a methodological basis for future large-scale studies
 and supports the exploration of RNA structural features as potential biomarkers
 and therapeutic targets in colorectal cancer.
 
-**keywords**: colorectal-cancer, deseq2-analysis, dtu-analysis, rna-structure-prediction, nf-core-rnaseq, isoformSwitchAnalyzeR, hpc-cluster, nextflow
+**keywords**: `colorectal-cancer`, `deseq2-analysis`, `dtu-analysis`, `rna-structure-prediction`, `nf-core-rnaseq`, `isoformSwitchAnalyzeR`, `hpc-cluster`, `nextflow`
 
+---
 # Objective  
 
 The primary goal of this project is to identify genes and transcripts that are differentially
@@ -50,6 +51,7 @@ regulated in early-onset and late-onset colorectal cancer, and to evaluate wheth
 in isoform usage are associated with differences in their RNA secondary structure through
 computational prediction.
 
+---
 # Proposed solution
 We adopted an integrative transcriptomic strategy to investigate molecular differences
 between early-onset and late-onset colorectal cancer (EOCRC and LOCRC). Building
@@ -60,13 +62,15 @@ changes alone to explore post-transcriptional and structural layers of regulatio
 ![tfm-workflow](images/tfm-schematics.svg)
 Schematic overview of the integrative transcriptomic analysis workflow implemented in this study.
 
+---
 # From concept to implementation
 The main milestones of this project were tracked using a dedicated 🏁 [roadmap](https://github.com/users/sblaizerwize/projects/5/views/4?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Milestone%22%2C224733603%2C224733604%5D&sortedBy%5Bdirection%5D=desc&sortedBy%5BcolumnId%5D=224733604) on GitHub projects, which facilitated version control and documentation of analytical decisions. Among these decisions, the main technical and methodological challenges encountered during the development of this project and the mitigation strategies adopted are listed below:
 
 - [Report 1](reports/project-progress/tfm-proposal.pdf) - the proposal
-- [Report 2](reports/project-progress/tfm-starting-point.pdf) - the starting point
-- [Report 3](reports/project-progress/tfm-tipping-point.pdf) - the tipping point
+- [Report 2](reports/project-progress/tfm-report-update-1.pdf) - the starting point
+- [Report 3](reports/project-progress/tfm-report-update-2.pdf) - the tipping point
 
+---
 # Summary of products obtained
 This project produced the following deliverables.
 
@@ -81,34 +85,20 @@ data generated in this study.
 
 - A [GitHub repository](https://github.com/sblaizerwize/master-bioinformatics) containing primary scripts and documentation.
 
+---
 # Results
 This is a summary of results after the implementation of the integrative transcriptomic workflow for the analysis of EOCRC and LOCRC samples.
 
-## **nf-core/rnaseq pipeline reports**
-
-SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925) comprising 21 pairs of EOCRC patients 
-- [MULTIQC Report](reports/nfcore-rnaseq-42samples/multiqc_report.html)
-- [Nextflow Report](reports/nfcore-rnaseq-42samples/nextflow-report.html)
-- [Nextflow Timeline Report](reports/nfcore-rnaseq-42samples/nextflow-timeline.html)
-
-SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528) comprising 22 pairs of LOCRC patients 
-- [MULTIQC Report](reports/nfcore-rnaseq-44samples/multiqc_report.html)
-- [Nextflow Report](reports/nfcore-rnaseq-44samples/report.html)
-- [Nextflow Timeline Report](reports/nfcore-rnaseq-44samples/nextflow-timeline.html)
-
-## **Differential Gene Expression Analysis (DGE) report in R**
-- [EOCRC samples](reports/dge-analysis/Deseq2_42crc.html)
-- [LOCRC samples](reports/dge-analysis/Deseq2_44crc.html)
-
-## **Differential Transcript Usage Analysis (DTU) report in R**
-- [EOCRC and LOCRC samples](reports/dtu-analysis/dtu-read-rds-isoforms_42_44.html)
-
-## **RNA Secondary Structure Analysis (RSS) report in R**
-- [Common EOCRC and LOCRC isoforms](reports/secondary-rna-structure-analysis/motifs_plots.html)
-
-
+| Workflow Stage | Resulting Reports |
+|----------------|-------------------|
+| `1. nf-core/rnaseq pipeline (EOCRC)` | SRA study [SRP357925](https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=study&acc=SRP357925) (21 EOCRC pairs)<br>• [MultiQC Report](reports/nfcore-rnaseq-42samples/multiqc_report.html)<br>• [Nextflow Report](reports/nfcore-rnaseq-42samples/report.html)<br>• [Nextflow Timeline](reports/nfcore-rnaseq-42samples/timeline.html) |
+| `2. nf-core/rnaseq pipeline (LOCRC)` | SRA study [SRP479528](https://trace.ncbi.nlm.nih.gov/Traces/index.html?study=SRP479528) (22 LOCRC pairs)<br>• [MultiQC Report](reports/nfcore-rnaseq-44samples/multiqc_report.html)<br>• [Nextflow Report](reports/nfcore-rnaseq-44samples/report.html)<br>• [Nextflow Timeline](reports/nfcore-rnaseq-44samples/timeline.html) |
+| `3. Differential Gene Expression (DGE)` | • [EOCRC samples](reports/dge-analysis/Deseq2_42crc.html)<br>• [LOCRC samples](reports/dge-analysis/Deseq2_44crc.html) |
+| `4. Differential Transcript Usage (DTU)` | • [EOCRC and LOCRC samples](reports/dtu-analysis/dtu-read-rds-isoforms_42_44.html) |
+| `5. RNA Secondary Structure Analysis (RSS)` | • [Common EOCRC and LOCRC isoforms](reports/secondary-rna-structure-analysis/motifs_plots.html) |
+---
 # Contributing
-This is a personal thesis repository, but suggestions for improvements are welcome via GitHub issues.
+This is a thesis repository, but suggestions for improvements are welcome via [GitHub issues](https://github.com/sblaizerwize/master-bioinformatics/issues).
 
 
 
