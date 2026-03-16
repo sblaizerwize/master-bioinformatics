@@ -57,3 +57,8 @@ nextflow-pipelines/nf-core-rnaseq/nf-core-rnaseq-salmon-pe/reports-pipeline-setu
 
 *.err
 *.out
+
+nextflow-pipelines/nf-core-rnasplice/.nextflow/
+nextflow-pipelines/nf-core-rnasplice/results/
+nextflow-pipelines/nf-core-rnasplice/work/
+nextflow-pipelines/nf-core-rnasplice/.nextflow.log
