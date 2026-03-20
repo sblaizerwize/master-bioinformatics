@@ -1,0 +1,2 @@
+sample,fastq_1,fastq_2,strandedness
+srr27320655,/mnt/netapp2/Store_uni/home/otras/cim/smv/data/SRR27320655_1.fastq.gz,/mnt/netapp2/Store_uni/home/otras/cim/smv/data/SRR27320655_2.fastq.gz,auto
