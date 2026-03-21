@@ -7,8 +7,6 @@
 $ squeue -u $USER -h | wc -l
 $ squeue -u $USER -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R %q"
 $ sacct -j 5776638 --format=JobID,JobName,ReqMem,MaxRSS,MaxVMSize,AveRSS,State,ExitCode,Elapsed
-$ du -h --max-depth=1 $HOME | sort -hr
-$ rm -rf $HOME/.apptainer/cache/*
 
 # PARTITIONS
 
