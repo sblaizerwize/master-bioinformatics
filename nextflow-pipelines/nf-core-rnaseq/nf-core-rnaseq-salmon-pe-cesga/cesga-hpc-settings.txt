@@ -1,14 +1,45 @@
 # TIPS
 - Select the largest sample i.e. 3.3 GB and apply the pipeline to fix the maximum resources
 - Check samples' strandedness on the cmd_info.json file located at /crc86-rnaseq-results/salmon/<SRR17866817> 
+- Suppa will expect replicates, at least 2, per condition
 
 # USEFUL COMMANDS
 
 $ squeue -u $USER -h | wc -l
-$ squeue -u $USER -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %R %q"
+$ squeue -u $USER -o "%.18i %.9P %.75j %.8u %.2t %.10M %.6D %R %q"
 $ sacct -j 5776638 --format=JobID,JobName,ReqMem,MaxRSS,MaxVMSize,AveRSS,State,ExitCode,Elapsed
 $ du -h --max-depth=1 $HOME | sort -hr
 $ rm -rf $HOME/.apptainer/cache/*
+$ nextflow run nf-core/rnasplice -r 1.0.4 --help --validationShowHiddenParams
+
+# QoS Classification by Job Type
+QoS/Partition	Max Walltime	Max CPUs*	Best Use Case
+
+LIGHT	
+short	         6h	2-4	Default short jobs
+clk_short	   6h	8-16	High-throughput (400 submits)
+epyc_short	   6h	8-16	CPU-optimized light jobs
+hwl_short	   6h	8-16	Memory-light with high throughput
+viz	         8h	8-16	Visualization only
+class_c	      1d	8-16	Low priority, opportunistic
+requeue	      1d	8-16	Jobs that can be requeued
+
+MEDIUM	      
+medium	      3d	8-16	Default medium jobs
+clk_medium	   3d	16-32	High-throughput medium jobs (250 submits)
+epyc_medium	   3d	16-32	CPU-optimized medium jobs
+hwl_medium	   3d	16-32	Memory-optimized medium jobs
+class_a	      3d	16-32	High priority, good for batch
+class_b	      2d	8-16	Moderate priority
+
+HEAVY	
+long	         7d	32-64	Default long jobs (limited: 5 concurrent)
+clk_long	      7d	32-64	High-throughput heavy jobs (60 concurrent)
+hwl_long	      7d	32-64	Best for memory-heavy jobs (RMATS, STAR)
+ondemand	      42d	16-32	Long-running, lower priority
+clk_ondemand	42d	16-32	Long-running with high throughput
+hwl_ondemand	42d	16-32	Long-running memory-optimized
+cesga_prio	   42d	16-32	High priority, long-running
 
 # PARTITIONS
 

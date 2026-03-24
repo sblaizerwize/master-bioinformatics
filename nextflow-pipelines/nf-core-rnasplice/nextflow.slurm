@@ -4,7 +4,7 @@
 #SBATCH --error=rnasplice-hpc-%j.err
 #SBATCH --cpus-per-task=8      # number of CPUs
 #SBATCH --mem=16G              # memory
-#SBATCH --time=12:00:00        # time limit
+#SBATCH --time=18:00:00        # time limit
 #SBATCH --partition=short      # or your HPC’s partition name
 
 # Load Nexflow module 
@@ -27,8 +27,8 @@ export NXF_APPTAINER_CACHEDIR=$APPTAINER_CACHEDIR
 
 # Run nf-core/rnaseq pipeline
 nextflow run nf-core/rnasplice -r 1.0.4 \
-    -profile test,apptainer \
-    -c hpc.config \
-    -w $LUSTRE/nf-work \
-    --outdir /mnt/netapp2/Store_uni/home/otras/cim/smv/rnasplice-results \
-    -resume
+    -profile cesga \
+    -params-file params_rnaseq.yaml \
+    -c nextflow.config \
+
+#-resume
