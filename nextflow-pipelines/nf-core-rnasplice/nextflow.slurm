@@ -30,5 +30,4 @@ nextflow run nf-core/rnasplice -r 1.0.4 \
     -profile cesga \
     -params-file params_rnaseq.yaml \
     -c nextflow.config \
-
 #-resume
