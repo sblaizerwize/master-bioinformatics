@@ -1,0 +1,13 @@
+sample,fastq_1,fastq_2,strandedness,condition
+SRR17866817,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866817_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866817_2.fastq.gz,reverse,tumor_eocrc
+SRR17866818,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866818_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866818_2.fastq.gz,reverse,normal_eocrc
+SRR17866819,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866819_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866819_2.fastq.gz,reverse,tumor_eocrc
+SRR17866820,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866820_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866820_2.fastq.gz,reverse,normal_eocrc
+SRR17866821,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866821_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866821_2.fastq.gz,reverse,tumor_eocrc
+SRR17866822,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866822_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR17866822_2.fastq.gz,reverse,normal_eocrc
+SRR27320655,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320655_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320655_2.fastq.gz,reverse,normal_locrc
+SRR27320656,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320656_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320656_2.fastq.gz,reverse,tumor_locrc
+SRR27320657,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320657_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320657_2.fastq.gz,reverse,normal_locrc
+SRR27320658,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320658_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320658_2.fastq.gz,reverse,tumor_locrc
+SRR27320659,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320659_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320659_2.fastq.gz,reverse,normal_locrc
+SRR27320660,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320660_1.fastq.gz,/mnt/lustre/scratch/nlsas/home/otras/cim/smv/data/SRR27320660_2.fastq.gz,reverse,tumor_locrc
