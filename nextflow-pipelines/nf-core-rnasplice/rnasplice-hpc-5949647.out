@@ -1,0 +1,1280 @@
+slurmstepd: info: Setting TMPDIR to /scratch/5949647. Previous errors about TMPDIR can be discarded
+
+ N E X T F L O W   ~  version 25.04.6
+
+Launching `https://github.com/nf-core/rnasplice` [gloomy_wescoff] DSL2 - revision: 1d0494ae34 [1.0.4]
+
+
+
+------------------------------------------------------
+                                        ,--./,-.
+        ___     __   __   __   ___     /,-._.--~'
+  |\ | |__  __ /  ` /  \ |__) |__         }  {
+  | \| |       \__, \__/ |  \ |___     \`-._,-`-,
+                                        `._,._,'
+  nf-core/rnasplice v1.0.4-g1d0494a
+------------------------------------------------------
+Core Nextflow options
+  revision              : 1.0.4
+  runName               : gloomy_wescoff
+  containerEngine       : singularity
+  launchDir             : /mnt/netapp2/Home_FT2/home/otras/cim/smv/master-bioinformatics/nextflow-pipelines/nf-core-rnasplice
+  workDir               : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/work-rnasplice-86samples
+  projectDir            : /home/otras/cim/smv/.nextflow/assets/nf-core/rnasplice
+  userName              : otcimsmv
+  profile               : cesga
+  configFiles           : 
+
+Input/output options
+  input                 : samplesheet_few_samples.csv
+  contrasts             : contrastsheet.csv
+  outdir                : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/rnasplice-86samples-results
+  multiqc_title         : rnasplice-86samples-results
+
+Reference genome options
+  fasta                 : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/GRCh38.primary_assembly.genome.fa.gz
+  gtf                   : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/gencode.v49.primary_assembly.annotation.gtf.gz
+  transcript_fasta      : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/genome.transcripts.fa.gz
+  star_index            : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/index/star
+  salmon_index          : /mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/index/salmon
+  gencode               : true
+  igenomes_base         : s3://ngi-igenomes/igenomes/
+
+Alignment options
+  aligner               : star_salmon
+  save_align_intermeds  : true
+
+rMATS options
+  rmats                 : true
+
+DEXSeq DEU options
+  dexseq_exon           : true
+  n_dexseq_plot         : 50
+
+edgeR DEU options
+  edger_exon            : true
+  n_edger_plot          : 5
+
+DEXSeq DTU options
+  dexseq_dtu            : true
+  min_samps_gene_expr   : 4
+  min_samps_feature_expr: 2
+  min_samps_feature_prop: 2
+
+Miso
+  miso_genes            : ENSG00000004961, ENSG00000005302, ENSG00000147403
+  miso_genes_file       : null
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+------------------------------------------------------
+If you use nf-core/rnasplice for your analysis please cite:
+
+* The pipeline
+  https://doi.org/10.5281/zenodo.8424632
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://github.com/nf-core/rnasplice/blob/master/CITATIONS.md
+
+WARN: =============================================================================
+  '--transcript_fasta' parameter has been provided.
+  Make sure transcript names in this file match those in the GFF/GTF file.
+
+  Please see:
+  https://github.com/nf-core/rnaseq/issues/753
+===================================================================================
+WARN: Both --aligner=star_salmon and --pseudo_aligner=salmon specified. Downstream analyses will be performed on both salmon output files.
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 2 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 12 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 22 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 32 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 42 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[-        ] NFC…REPARE_GENOME:GUNZIP_FASTA -
+[-        ] NFC…:PREPARE_GENOME:GUNZIP_GTF -
+[-        ] NFC…ME:GUNZIP_TRANSCRIPT_FASTA -
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[-        ] NFC…UT_CHECK:SAMPLESHEET_CHECK -
+[-        ] NFC…_CHECK:CONTRASTSHEET_CHECK -
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 46 more processes waiting for tasks…
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1
+[-        ] NFC…_TRANSCRIPTS_FASTA_GENCODE -
+[-        ] NFC…ENOME:CUSTOM_GETCHROMSIZES -
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[-        ] NFC…UMITOOLS_TRIMGALORE:FASTQC -
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION -
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[-        ] NFC…GER_DEU:SUBREAD_FLATTENGTF -
+Plus 47 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-suppa-2.3--py36_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[44/722f4f] NFC…ALORE:FASTQC (SRR17866820) | 7 of 8, cached: 7
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-suppa-2.3--py36_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/trim-galore:0.6.7--hdfd78af_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-trim-galore-0.6.7--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[44/722f4f] NFC…ALORE:FASTQC (SRR17866820) | 7 of 8, cached: 7
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[-        ] NFC…XSEQ_DEU:DEXSEQ_ANNOTATION | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-suppa-2.3--py36_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/trim-galore:0.6.7--hdfd78af_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-trim-galore-0.6.7--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (1)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[44/722f4f] NFC…ALORE:FASTQC (SRR17866820) | 7 of 8, cached: 7
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-suppa-2.3--py36_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/trim-galore:0.6.7--hdfd78af_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-trim-galore-0.6.7--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (2)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-suppa-2.3--py36_0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/trim-galore:0.6.7--hdfd78af_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-trim-galore-0.6.7--hdfd78af_0.img]
+WARN: The operator `first` is useless when applied to a value channel which returns a single value by definition
+
+executor >  slurm (2)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE -
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+
+
+
+
+executor >  slurm (2)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[-        ] NFC…OOLS_TRIMGALORE:TRIMGALORE | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+
+
+
+
+executor >  slurm (3)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[9f/845447] NFC…E:TRIMGALORE (SRR17866820) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+
+executor >  slurm (4)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[c4/707163] NFC…E:TRIMGALORE (SRR17866817) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+
+executor >  slurm (5)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[4b/cbe135] NFC…E:TRIMGALORE (SRR27320655) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+Plus 45 more processes waiting for tasks…
+
+executor >  slurm (5)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[4b/cbe135] NFC…E:TRIMGALORE (SRR27320655) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (6)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[b1/11087e] NFC…E:TRIMGALORE (SRR27320657) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (7)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[b8/0c92ce] NFC…E:TRIMGALORE (SRR17866819) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (8)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[b9/4ef494] NFC…E:TRIMGALORE (SRR27320658) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (9)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[ff/aa7acd] NFC…E:TRIMGALORE (SRR27320656) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (10)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (11)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (12)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOI | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (13)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SALMON:GENERATE_EVENTS_IOE | 0 of 1
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 0 of 1
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 7 of 8, cached: 7
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 0 of 1
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 0 of 1
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 0 of 1
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 0 of 1
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 0 of 1
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 0 of 1
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 0 of 1
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 0 of 1
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 0 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 41 more processes waiting for tasks…
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[4b/cbe135] NFC…E:TRIMGALORE (SRR27320655) | 1 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 41 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.1--h7e5ed60_0.img]
+
+executor >  slurm (14)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 2 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 41 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.1--h7e5ed60_0.img]
+
+executor >  slurm (15)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 2 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[e0/0e796f] NFC…QUANT_SALMON (SRR27320655) | 0 of 2
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.1--h7e5ed60_0.img]
+
+executor >  slurm (16)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 2 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[a6/443dce] NFC…QUANT_SALMON (SRR17866818) | 0 of 2
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+Pulling Singularity image https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img]
+Pulling Singularity image https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0 [cache /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/depot.galaxyproject.org-singularity-salmon-1.10.1--h7e5ed60_0.img]
+
+executor >  slurm (16)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[8c/78211f] NFC…E:TRIMGALORE (SRR17866818) | 2 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[a6/443dce] NFC…QUANT_SALMON (SRR17866818) | 0 of 2
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+
+
+
+executor >  slurm (16)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[b8/0c92ce] NFC…E:TRIMGALORE (SRR17866819) | 3 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[a6/443dce] NFC…QUANT_SALMON (SRR17866818) | 0 of 3
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+
+
+
+executor >  slurm (17)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[b8/0c92ce] NFC…E:TRIMGALORE (SRR17866819) | 3 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[87/f11085] NFC…QUANT_SALMON (SRR17866819) | 0 of 3
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+
+executor >  slurm (17)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[b8/0c92ce] NFC…E:TRIMGALORE (SRR17866819) | 3 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[87/f11085] NFC…QUANT_SALMON (SRR17866819) | 0 of 3
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+ERROR ~ Error executing process > 'NFCORE_RNASPLICE:RNASPLICE:ALIGN_STAR:STAR_ALIGN (1)'
+
+Caused by:
+  Failed to pull singularity image
+    command: singularity pull  --name depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img.pulling.1774604120739 https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0 > /dev/null
+    status : 255
+    hint   : Try and increase singularity.pullTimeout in the config (current is "2h")
+    message:
+      INFO:    Downloading network image
+      INFO:    Cleaning up incomplete download: /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/cache/net/tmp_271605720
+      FATAL:   unexpected EOF
+
+
+
+ -- Check '.nextflow.log' file for details
+-[nf-core/rnasplice] Pipeline completed with errors-
+WARN: Killing running tasks (8)
+
+executor >  slurm (17)
+[db/59857b] NFC…ary_assembly.genome.fa.gz) | 1 of 1, cached: 1 ✔
+[da/afef47] NFC…ssembly.annotation.gtf.gz) | 1 of 1, cached: 1 ✔
+[17/1413b0] NFC…(genome.transcripts.fa.gz) | 1 of 1, cached: 1 ✔
+[82/36cfff] NFC…DE (genome.transcripts.fa) | 1 of 1, cached: 1 ✔
+[5b/3dc35a] NFC…rimary_assembly.genome.fa) | 1 of 1, cached: 1 ✔
+[1d/bf5c46] NFC…mplesheet_few_samples.csv) | 1 of 1, cached: 1 ✔
+[27/c6abdb] NFC…_CHECK (contrastsheet.csv) | 1 of 1, cached: 1 ✔
+[-        ] NFC…SPLICE:RNASPLICE:CAT_FASTQ -
+[c4/7c4208] NFC…ALORE:FASTQC (SRR27320657) | 8 of 8, cached: 7 ✔
+[ff/aa7acd] NFC…E:TRIMGALORE (SRR27320656) | 3 of 8
+[-        ] NFC…LICE:ALIGN_STAR:STAR_ALIGN -
+[-        ] NFC…ATS_SAMTOOLS:SAMTOOLS_SORT -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_INDEX -
+[-        ] NFC…TS_SAMTOOLS:SAMTOOLS_STATS -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_FLAGSTAT -
+[-        ] NFC…SAMTOOLS:SAMTOOLS_IDXSTATS -
+[9f/9141c4] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[-        ] NFC…CE:DEXSEQ_DEU:DEXSEQ_COUNT -
+[-        ] NFC…ICE:DEXSEQ_DEU:DEXSEQ_EXON -
+[5c/a9984c] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[cd/2d0601] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[40/a01110] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[57/95f9bc] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[87/f11085] NFC…QUANT_SALMON (SRR17866819) | 0 of 3
+[37/dbc723] NFC…y_assembly.annotation.gtf) | 1 of 1, cached: 1 ✔
+[0b/5569fa] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+[f0/0d3dfb] NFC…y_assembly.annotation.gtf) | 1 of 1 ✔
+Plus 40 more processes waiting for tasks…
+ERROR ~ Error executing process > 'NFCORE_RNASPLICE:RNASPLICE:ALIGN_STAR:STAR_ALIGN (1)'
+
+Caused by:
+  Failed to pull singularity image
+    command: singularity pull  --name depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img.pulling.1774604120739 https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0 > /dev/null
+    status : 255
+    hint   : Try and increase singularity.pullTimeout in the config (current is "2h")
+    message:
+      INFO:    Downloading network image
+      INFO:    Cleaning up incomplete download: /mnt/lustre/scratch/nlsas/home/otras/cim/smv/singularity_images/cache/net/tmp_271605720
+      FATAL:   unexpected EOF
+
+
+
+ -- Check '.nextflow.log' file for details
+
