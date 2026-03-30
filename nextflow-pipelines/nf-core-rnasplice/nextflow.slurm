@@ -29,5 +29,5 @@ export NXF_APPTAINER_CACHEDIR=$APPTAINER_CACHEDIR
 nextflow run nf-core/rnasplice -r 1.0.4 \
     -profile cesga \
     -params-file params_rnaseq.yaml \
-    -c nextflow.config \
-#-resume
+    -c hpc.config \
+    -resume

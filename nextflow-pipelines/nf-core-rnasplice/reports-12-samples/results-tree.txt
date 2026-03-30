@@ -1,0 +1,581 @@
+[otcimsmv@login210-18 rnasplice-12samples-results]$ tree -L 3
+.
+├── contrastsheet
+│   └── contrastsheet.valid.csv
+├── fastqc
+│   ├── SRR17866817_1_fastqc.html
+│   ├── SRR17866817_1_fastqc.zip
+│   ├── SRR17866817_2_fastqc.html
+│   ├── SRR17866817_2_fastqc.zip
+│   ├── SRR17866818_1_fastqc.html
+│   ├── SRR17866818_1_fastqc.zip
+│   ├── SRR17866818_2_fastqc.html
+│   ├── SRR17866818_2_fastqc.zip
+│   ├── SRR17866819_1_fastqc.html
+│   ├── SRR17866819_1_fastqc.zip
+│   ├── SRR17866819_2_fastqc.html
+│   ├── SRR17866819_2_fastqc.zip
+│   ├── SRR17866820_1_fastqc.html
+│   ├── SRR17866820_1_fastqc.zip
+│   ├── SRR17866820_2_fastqc.html
+│   ├── SRR17866820_2_fastqc.zip
+│   ├── SRR17866821_1_fastqc.html
+│   ├── SRR17866821_1_fastqc.zip
+│   ├── SRR17866821_2_fastqc.html
+│   ├── SRR17866821_2_fastqc.zip
+│   ├── SRR17866822_1_fastqc.html
+│   ├── SRR17866822_1_fastqc.zip
+│   ├── SRR17866822_2_fastqc.html
+│   ├── SRR17866822_2_fastqc.zip
+│   ├── SRR27320655_1_fastqc.html
+│   ├── SRR27320655_1_fastqc.zip
+│   ├── SRR27320655_2_fastqc.html
+│   ├── SRR27320655_2_fastqc.zip
+│   ├── SRR27320656_1_fastqc.html
+│   ├── SRR27320656_1_fastqc.zip
+│   ├── SRR27320656_2_fastqc.html
+│   ├── SRR27320656_2_fastqc.zip
+│   ├── SRR27320657_1_fastqc.html
+│   ├── SRR27320657_1_fastqc.zip
+│   ├── SRR27320657_2_fastqc.html
+│   ├── SRR27320657_2_fastqc.zip
+│   ├── SRR27320658_1_fastqc.html
+│   ├── SRR27320658_1_fastqc.zip
+│   ├── SRR27320658_2_fastqc.html
+│   ├── SRR27320658_2_fastqc.zip
+│   ├── SRR27320659_1_fastqc.html
+│   ├── SRR27320659_1_fastqc.zip
+│   ├── SRR27320659_2_fastqc.html
+│   ├── SRR27320659_2_fastqc.zip
+│   ├── SRR27320660_1_fastqc.html
+│   ├── SRR27320660_1_fastqc.zip
+│   ├── SRR27320660_2_fastqc.html
+│   └── SRR27320660_2_fastqc.zip
+├── genome
+│   ├── gencode.v49.primary_assembly.annotation.gtf
+│   ├── gencode.v49.primary_assembly.annotation.tx2gene.tsv
+│   ├── GRCh38.primary_assembly.genome.fa
+│   ├── GRCh38.primary_assembly.genome.fa.fai
+│   ├── GRCh38.primary_assembly.genome.fa.sizes
+│   ├── GRCh38.primary_assembly.genome_genes.gtf
+│   └── rsem
+│       ├── genome.chrlist
+│       ├── genome.grp
+│       ├── genome.idx.fa
+│       ├── genome.n2g.idx.fa
+│       ├── genome.seq
+│       ├── genome.ti
+│       ├── genome.transcripts.fa
+│       └── GRCh38.primary_assembly.genome.fa
+├── multiqc
+│   ├── multiqc_data
+│   │   ├── mqc_cutadapt_filtered_reads_plot_1.txt
+│   │   ├── mqc_cutadapt_trimmed_sequences_plot_3_Counts.txt
+│   │   ├── mqc_cutadapt_trimmed_sequences_plot_3_Obs_Exp.txt
+│   │   ├── mqc_fastqc_adapter_content_plot_1.txt
+│   │   ├── mqc_fastqc_per_base_n_content_plot_1.txt
+│   │   ├── mqc_fastqc_per_base_sequence_quality_plot_1.txt
+│   │   ├── mqc_fastqc_per_sequence_gc_content_plot_Counts.txt
+│   │   ├── mqc_fastqc_per_sequence_gc_content_plot_Percentages.txt
+│   │   ├── mqc_fastqc_per_sequence_quality_scores_plot_1.txt
+│   │   ├── mqc_fastqc_sequence_counts_plot_1.txt
+│   │   ├── mqc_fastqc_sequence_duplication_levels_plot_1.txt
+│   │   ├── mqc_fastqc_sequence_length_distribution_plot_1.txt
+│   │   ├── mqc_featureCounts_assignment_plot_1.txt
+│   │   ├── mqc_salmon_plot_1.txt
+│   │   ├── mqc_samtools_alignment_plot_1.txt
+│   │   ├── mqc_samtools-idxstats-mapped-reads-plot_Normalised_Counts.txt
+│   │   ├── mqc_samtools-idxstats-mapped-reads-plot_Observed_over_Expected_Counts.txt
+│   │   ├── mqc_samtools-idxstats-mapped-reads-plot_Raw_Counts.txt
+│   │   ├── mqc_samtools-idxstats-xy-plot_1.txt
+│   │   ├── mqc_star_alignment_plot_1.txt
+│   │   ├── multiqc_citations.txt
+│   │   ├── multiqc_cutadapt.txt
+│   │   ├── multiqc_data.json
+│   │   ├── multiqc_fastqc.txt
+│   │   ├── multiqc_featureCounts.txt
+│   │   ├── multiqc_general_stats.txt
+│   │   ├── multiqc.log
+│   │   ├── multiqc_salmon.txt
+│   │   ├── multiqc_samtools_flagstat.txt
+│   │   ├── multiqc_samtools_idxstats.txt
+│   │   ├── multiqc_samtools_stats.txt
+│   │   ├── multiqc_software_versions.txt
+│   │   ├── multiqc_sources.txt
+│   │   └── multiqc_star.txt
+│   ├── multiqc_plots
+│   │   ├── pdf
+│   │   ├── png
+│   │   └── svg
+│   └── multiqc_report.html
+├── pipeline_info
+│   ├── execution_report_2026-03-23_10-41-42.html
+│   ├── execution_timeline_2026-03-23_10-41-42.html
+│   ├── execution_trace_2026-03-23_10-41-42.txt
+│   ├── params_2026-03-23_21-33-26.json
+│   ├── pipeline_dag_2026-03-23_10-41-42.html
+│   ├── samplesheet.valid.csv
+│   └── software_versions.yml
+├── salmon
+│   ├── dexseq_dtu
+│   │   ├── filter
+│   │   └── results
+│   ├── SRR17866817
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR17866817_meta_info.json
+│   ├── SRR17866818
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR17866818_meta_info.json
+│   ├── SRR17866819
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR17866819_meta_info.json
+│   ├── SRR17866820
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR17866820_meta_info.json
+│   ├── SRR17866821
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR17866821_meta_info.json
+│   ├── SRR17866822
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR17866822_meta_info.json
+│   ├── SRR27320655
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR27320655_meta_info.json
+│   ├── SRR27320656
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR27320656_meta_info.json
+│   ├── SRR27320657
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR27320657_meta_info.json
+│   ├── SRR27320658
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR27320658_meta_info.json
+│   ├── SRR27320659
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR27320659_meta_info.json
+│   ├── SRR27320660
+│   │   ├── aux_info
+│   │   ├── cmd_info.json
+│   │   ├── lib_format_counts.json
+│   │   ├── libParams
+│   │   ├── logs
+│   │   ├── quant.genes.sf
+│   │   └── quant.sf
+│   ├── SRR27320660_meta_info.json
+│   ├── suppa
+│   │   ├── clusterevents
+│   │   ├── diffsplice
+│   │   ├── generate_events
+│   │   ├── psi_per_isoform
+│   │   ├── psi_per_local_event
+│   │   └── split_files
+│   └── tximport
+│       ├── salmon.merged.gene_counts_length_scaled.tsv
+│       ├── salmon.merged.gene_counts_scaled.tsv
+│       ├── salmon.merged.gene_counts.tsv
+│       ├── salmon.merged.gene_tpm_length_scaled.tsv
+│       ├── salmon.merged.gene_tpm_scaled.tsv
+│       ├── salmon.merged.gene_tpm.tsv
+│       ├── salmon.merged.gi.ls.rds
+│       ├── salmon.merged.gi.rds
+│       ├── salmon.merged.gi.s.rds
+│       ├── salmon.merged.transcript_counts_dtu_scaled.tsv
+│       ├── salmon.merged.transcript_counts_length_scaled.tsv
+│       ├── salmon.merged.transcript_counts_scaled.tsv
+│       ├── salmon.merged.transcript_counts.tsv
+│       ├── salmon.merged.transcript_tpm_dtu_scaled.tsv
+│       ├── salmon.merged.transcript_tpm_length_scaled.tsv
+│       ├── salmon.merged.transcript_tpm_scaled.tsv
+│       ├── salmon.merged.transcript_tpm.tsv
+│       ├── salmon.merged.txi.dtu.rds
+│       ├── salmon.merged.txi.ls.rds
+│       ├── salmon.merged.txi.rds
+│       ├── salmon.merged.txi.s.rds
+│       ├── suppa_tpm.txt
+│       └── tximport.tx2gene.tsv
+├── star_salmon
+│   ├── dexseq_dtu
+│   │   ├── filter
+│   │   └── results
+│   ├── dexseq_exon
+│   │   ├── counts
+│   │   └── results
+│   ├── edger
+│   │   ├── contrast_tumor_vs_normal_eocrc.exprs.csv
+│   │   ├── contrast_tumor_vs_normal_eocrc.usage.exon.csv
+│   │   ├── contrast_tumor_vs_normal_eocrc.usage.exon.pdf
+│   │   ├── contrast_tumor_vs_normal_eocrc.usage.gene.csv
+│   │   ├── contrast_tumor_vs_normal_eocrc.usage.gene.pdf
+│   │   ├── contrast_tumor_vs_normal_eocrc.usage.simes.csv
+│   │   ├── contrast_tumor_vs_normal_eocrc.usage.simes.pdf
+│   │   ├── contrast_tumor_vs_normal_locrc.exprs.csv
+│   │   ├── contrast_tumor_vs_normal_locrc.usage.exon.csv
+│   │   ├── contrast_tumor_vs_normal_locrc.usage.exon.pdf
+│   │   ├── contrast_tumor_vs_normal_locrc.usage.gene.csv
+│   │   ├── contrast_tumor_vs_normal_locrc.usage.gene.pdf
+│   │   ├── contrast_tumor_vs_normal_locrc.usage.simes.csv
+│   │   ├── contrast_tumor_vs_normal_locrc.usage.simes.pdf
+│   │   ├── DGEGLM.rds
+│   │   ├── DGEList.rds
+│   │   ├── DGELRT.exprs.rds
+│   │   └── DGELRT.usage.rds
+│   ├── featurecounts
+│   │   ├── annotation.saf
+│   │   ├── SRR17866817.featureCounts.txt
+│   │   ├── SRR17866817.featureCounts.txt.summary
+│   │   ├── SRR17866818.featureCounts.txt
+│   │   ├── SRR17866818.featureCounts.txt.summary
+│   │   ├── SRR17866819.featureCounts.txt
+│   │   ├── SRR17866819.featureCounts.txt.summary
+│   │   ├── SRR17866820.featureCounts.txt
+│   │   ├── SRR17866820.featureCounts.txt.summary
+│   │   ├── SRR17866821.featureCounts.txt
+│   │   ├── SRR17866821.featureCounts.txt.summary
+│   │   ├── SRR17866822.featureCounts.txt
+│   │   ├── SRR17866822.featureCounts.txt.summary
+│   │   ├── SRR27320655.featureCounts.txt
+│   │   ├── SRR27320655.featureCounts.txt.summary
+│   │   ├── SRR27320656.featureCounts.txt
+│   │   ├── SRR27320656.featureCounts.txt.summary
+│   │   ├── SRR27320657.featureCounts.txt
+│   │   ├── SRR27320657.featureCounts.txt.summary
+│   │   ├── SRR27320658.featureCounts.txt
+│   │   ├── SRR27320658.featureCounts.txt.summary
+│   │   ├── SRR27320659.featureCounts.txt
+│   │   ├── SRR27320659.featureCounts.txt.summary
+│   │   ├── SRR27320660.featureCounts.txt
+│   │   └── SRR27320660.featureCounts.txt.summary
+│   ├── log
+│   │   ├── SRR17866817.Log.final.out
+│   │   ├── SRR17866817.Log.out
+│   │   ├── SRR17866817.Log.progress.out
+│   │   ├── SRR17866817.SJ.out.tab
+│   │   ├── SRR17866818.Log.final.out
+│   │   ├── SRR17866818.Log.out
+│   │   ├── SRR17866818.Log.progress.out
+│   │   ├── SRR17866818.SJ.out.tab
+│   │   ├── SRR17866819.Log.final.out
+│   │   ├── SRR17866819.Log.out
+│   │   ├── SRR17866819.Log.progress.out
+│   │   ├── SRR17866819.SJ.out.tab
+│   │   ├── SRR17866820.Log.final.out
+│   │   ├── SRR17866820.Log.out
+│   │   ├── SRR17866820.Log.progress.out
+│   │   ├── SRR17866820.SJ.out.tab
+│   │   ├── SRR17866821.Log.final.out
+│   │   ├── SRR17866821.Log.out
+│   │   ├── SRR17866821.Log.progress.out
+│   │   ├── SRR17866821.SJ.out.tab
+│   │   ├── SRR17866822.Log.final.out
+│   │   ├── SRR17866822.Log.out
+│   │   ├── SRR17866822.Log.progress.out
+│   │   ├── SRR17866822.SJ.out.tab
+│   │   ├── SRR27320655.Log.final.out
+│   │   ├── SRR27320655.Log.out
+│   │   ├── SRR27320655.Log.progress.out
+│   │   ├── SRR27320655.SJ.out.tab
+│   │   ├── SRR27320656.Log.final.out
+│   │   ├── SRR27320656.Log.out
+│   │   ├── SRR27320656.Log.progress.out
+│   │   ├── SRR27320656.SJ.out.tab
+│   │   ├── SRR27320657.Log.final.out
+│   │   ├── SRR27320657.Log.out
+│   │   ├── SRR27320657.Log.progress.out
+│   │   ├── SRR27320657.SJ.out.tab
+│   │   ├── SRR27320658.Log.final.out
+│   │   ├── SRR27320658.Log.out
+│   │   ├── SRR27320658.Log.progress.out
+│   │   ├── SRR27320658.SJ.out.tab
+│   │   ├── SRR27320659.Log.final.out
+│   │   ├── SRR27320659.Log.out
+│   │   ├── SRR27320659.Log.progress.out
+│   │   ├── SRR27320659.SJ.out.tab
+│   │   ├── SRR27320660.Log.final.out
+│   │   ├── SRR27320660.Log.out
+│   │   ├── SRR27320660.Log.progress.out
+│   │   └── SRR27320660.SJ.out.tab
+│   ├── rmats
+│   │   ├── bamlist
+│   │   ├── tumor_eocrc-normal_eocrc
+│   │   └── tumor_locrc-normal_locrc
+│   ├── salmon
+│   │   ├── SRR17866817
+│   │   ├── SRR17866817_meta_info.json
+│   │   ├── SRR17866818
+│   │   ├── SRR17866818_meta_info.json
+│   │   ├── SRR17866819
+│   │   ├── SRR17866819_meta_info.json
+│   │   ├── SRR17866820
+│   │   ├── SRR17866820_meta_info.json
+│   │   ├── SRR17866821
+│   │   ├── SRR17866821_meta_info.json
+│   │   ├── SRR17866822
+│   │   ├── SRR17866822_meta_info.json
+│   │   ├── SRR27320655
+│   │   ├── SRR27320655_meta_info.json
+│   │   ├── SRR27320656
+│   │   ├── SRR27320656_meta_info.json
+│   │   ├── SRR27320657
+│   │   ├── SRR27320657_meta_info.json
+│   │   ├── SRR27320658
+│   │   ├── SRR27320658_meta_info.json
+│   │   ├── SRR27320659
+│   │   ├── SRR27320659_meta_info.json
+│   │   ├── SRR27320660
+│   │   └── SRR27320660_meta_info.json
+│   ├── samtools_stats
+│   │   ├── SRR17866817.flagstat
+│   │   ├── SRR17866817.idxstats
+│   │   ├── SRR17866817.stats
+│   │   ├── SRR17866818.flagstat
+│   │   ├── SRR17866818.idxstats
+│   │   ├── SRR17866818.stats
+│   │   ├── SRR17866819.flagstat
+│   │   ├── SRR17866819.idxstats
+│   │   ├── SRR17866819.stats
+│   │   ├── SRR17866820.flagstat
+│   │   ├── SRR17866820.idxstats
+│   │   ├── SRR17866820.stats
+│   │   ├── SRR17866821.flagstat
+│   │   ├── SRR17866821.idxstats
+│   │   ├── SRR17866821.stats
+│   │   ├── SRR17866822.flagstat
+│   │   ├── SRR17866822.idxstats
+│   │   ├── SRR17866822.stats
+│   │   ├── SRR27320655.flagstat
+│   │   ├── SRR27320655.idxstats
+│   │   ├── SRR27320655.stats
+│   │   ├── SRR27320656.flagstat
+│   │   ├── SRR27320656.idxstats
+│   │   ├── SRR27320656.stats
+│   │   ├── SRR27320657.flagstat
+│   │   ├── SRR27320657.idxstats
+│   │   ├── SRR27320657.stats
+│   │   ├── SRR27320658.flagstat
+│   │   ├── SRR27320658.idxstats
+│   │   ├── SRR27320658.stats
+│   │   ├── SRR27320659.flagstat
+│   │   ├── SRR27320659.idxstats
+│   │   ├── SRR27320659.stats
+│   │   ├── SRR27320660.flagstat
+│   │   ├── SRR27320660.idxstats
+│   │   └── SRR27320660.stats
+│   ├── SRR17866817.Aligned.out.bam
+│   ├── SRR17866817.Aligned.toTranscriptome.out.bam
+│   ├── SRR17866817_sorted.bam
+│   ├── SRR17866817_sorted.bam.bai
+│   ├── SRR17866818.Aligned.out.bam
+│   ├── SRR17866818.Aligned.toTranscriptome.out.bam
+│   ├── SRR17866818_sorted.bam
+│   ├── SRR17866818_sorted.bam.bai
+│   ├── SRR17866819.Aligned.out.bam
+│   ├── SRR17866819.Aligned.toTranscriptome.out.bam
+│   ├── SRR17866819_sorted.bam
+│   ├── SRR17866819_sorted.bam.bai
+│   ├── SRR17866820.Aligned.out.bam
+│   ├── SRR17866820.Aligned.toTranscriptome.out.bam
+│   ├── SRR17866820_sorted.bam
+│   ├── SRR17866820_sorted.bam.bai
+│   ├── SRR17866821.Aligned.out.bam
+│   ├── SRR17866821.Aligned.toTranscriptome.out.bam
+│   ├── SRR17866821_sorted.bam
+│   ├── SRR17866821_sorted.bam.bai
+│   ├── SRR17866822.Aligned.out.bam
+│   ├── SRR17866822.Aligned.toTranscriptome.out.bam
+│   ├── SRR17866822_sorted.bam
+│   ├── SRR17866822_sorted.bam.bai
+│   ├── SRR27320655.Aligned.out.bam
+│   ├── SRR27320655.Aligned.toTranscriptome.out.bam
+│   ├── SRR27320655_sorted.bam
+│   ├── SRR27320655_sorted.bam.bai
+│   ├── SRR27320656.Aligned.out.bam
+│   ├── SRR27320656.Aligned.toTranscriptome.out.bam
+│   ├── SRR27320656_sorted.bam
+│   ├── SRR27320656_sorted.bam.bai
+│   ├── SRR27320657.Aligned.out.bam
+│   ├── SRR27320657.Aligned.toTranscriptome.out.bam
+│   ├── SRR27320657_sorted.bam
+│   ├── SRR27320657_sorted.bam.bai
+│   ├── SRR27320658.Aligned.out.bam
+│   ├── SRR27320658.Aligned.toTranscriptome.out.bam
+│   ├── SRR27320658_sorted.bam
+│   ├── SRR27320658_sorted.bam.bai
+│   ├── SRR27320659.Aligned.out.bam
+│   ├── SRR27320659.Aligned.toTranscriptome.out.bam
+│   ├── SRR27320659_sorted.bam
+│   ├── SRR27320659_sorted.bam.bai
+│   ├── SRR27320660.Aligned.out.bam
+│   ├── SRR27320660.Aligned.toTranscriptome.out.bam
+│   ├── SRR27320660_sorted.bam
+│   ├── SRR27320660_sorted.bam.bai
+│   ├── suppa
+│   │   ├── clusterevents
+│   │   ├── diffsplice
+│   │   ├── generate_events
+│   │   ├── psi_per_isoform
+│   │   ├── psi_per_local_event
+│   │   └── split_files
+│   └── tximport
+│       ├── salmon.merged.gene_counts_length_scaled.tsv
+│       ├── salmon.merged.gene_counts_scaled.tsv
+│       ├── salmon.merged.gene_counts.tsv
+│       ├── salmon.merged.gene_tpm_length_scaled.tsv
+│       ├── salmon.merged.gene_tpm_scaled.tsv
+│       ├── salmon.merged.gene_tpm.tsv
+│       ├── salmon.merged.gi.ls.rds
+│       ├── salmon.merged.gi.rds
+│       ├── salmon.merged.gi.s.rds
+│       ├── salmon.merged.transcript_counts_dtu_scaled.tsv
+│       ├── salmon.merged.transcript_counts_length_scaled.tsv
+│       ├── salmon.merged.transcript_counts_scaled.tsv
+│       ├── salmon.merged.transcript_counts.tsv
+│       ├── salmon.merged.transcript_tpm_dtu_scaled.tsv
+│       ├── salmon.merged.transcript_tpm_length_scaled.tsv
+│       ├── salmon.merged.transcript_tpm_scaled.tsv
+│       ├── salmon.merged.transcript_tpm.tsv
+│       ├── salmon.merged.txi.dtu.rds
+│       ├── salmon.merged.txi.ls.rds
+│       ├── salmon.merged.txi.rds
+│       ├── salmon.merged.txi.s.rds
+│       ├── suppa_tpm.txt
+│       └── tximport.tx2gene.tsv
+└── trimgalore
+    ├── fastqc
+    │   ├── SRR17866817_1_val_1_fastqc.html
+    │   ├── SRR17866817_1_val_1_fastqc.zip
+    │   ├── SRR17866817_2_val_2_fastqc.html
+    │   ├── SRR17866817_2_val_2_fastqc.zip
+    │   ├── SRR17866818_1_val_1_fastqc.html
+    │   ├── SRR17866818_1_val_1_fastqc.zip
+    │   ├── SRR17866818_2_val_2_fastqc.html
+    │   ├── SRR17866818_2_val_2_fastqc.zip
+    │   ├── SRR17866819_1_val_1_fastqc.html
+    │   ├── SRR17866819_1_val_1_fastqc.zip
+    │   ├── SRR17866819_2_val_2_fastqc.html
+    │   ├── SRR17866819_2_val_2_fastqc.zip
+    │   ├── SRR17866820_1_val_1_fastqc.html
+    │   ├── SRR17866820_1_val_1_fastqc.zip
+    │   ├── SRR17866820_2_val_2_fastqc.html
+    │   ├── SRR17866820_2_val_2_fastqc.zip
+    │   ├── SRR17866821_1_val_1_fastqc.html
+    │   ├── SRR17866821_1_val_1_fastqc.zip
+    │   ├── SRR17866821_2_val_2_fastqc.html
+    │   ├── SRR17866821_2_val_2_fastqc.zip
+    │   ├── SRR17866822_1_val_1_fastqc.html
+    │   ├── SRR17866822_1_val_1_fastqc.zip
+    │   ├── SRR17866822_2_val_2_fastqc.html
+    │   ├── SRR17866822_2_val_2_fastqc.zip
+    │   ├── SRR27320655_1_val_1_fastqc.html
+    │   ├── SRR27320655_1_val_1_fastqc.zip
+    │   ├── SRR27320655_2_val_2_fastqc.html
+    │   ├── SRR27320655_2_val_2_fastqc.zip
+    │   ├── SRR27320656_1_val_1_fastqc.html
+    │   ├── SRR27320656_1_val_1_fastqc.zip
+    │   ├── SRR27320656_2_val_2_fastqc.html
+    │   ├── SRR27320656_2_val_2_fastqc.zip
+    │   ├── SRR27320657_1_val_1_fastqc.html
+    │   ├── SRR27320657_1_val_1_fastqc.zip
+    │   ├── SRR27320657_2_val_2_fastqc.html
+    │   ├── SRR27320657_2_val_2_fastqc.zip
+    │   ├── SRR27320658_1_val_1_fastqc.html
+    │   ├── SRR27320658_1_val_1_fastqc.zip
+    │   ├── SRR27320658_2_val_2_fastqc.html
+    │   ├── SRR27320658_2_val_2_fastqc.zip
+    │   ├── SRR27320659_1_val_1_fastqc.html
+    │   ├── SRR27320659_1_val_1_fastqc.zip
+    │   ├── SRR27320659_2_val_2_fastqc.html
+    │   ├── SRR27320659_2_val_2_fastqc.zip
+    │   ├── SRR27320660_1_val_1_fastqc.html
+    │   ├── SRR27320660_1_val_1_fastqc.zip
+    │   ├── SRR27320660_2_val_2_fastqc.html
+    │   └── SRR27320660_2_val_2_fastqc.zip
+    ├── SRR17866817_1.fastq.gz_trimming_report.txt
+    ├── SRR17866817_2.fastq.gz_trimming_report.txt
+    ├── SRR17866818_1.fastq.gz_trimming_report.txt
+    ├── SRR17866818_2.fastq.gz_trimming_report.txt
+    ├── SRR17866819_1.fastq.gz_trimming_report.txt
+    ├── SRR17866819_2.fastq.gz_trimming_report.txt
+    ├── SRR17866820_1.fastq.gz_trimming_report.txt
+    ├── SRR17866820_2.fastq.gz_trimming_report.txt
+    ├── SRR17866821_1.fastq.gz_trimming_report.txt
+    ├── SRR17866821_2.fastq.gz_trimming_report.txt
+    ├── SRR17866822_1.fastq.gz_trimming_report.txt
+    ├── SRR17866822_2.fastq.gz_trimming_report.txt
+    ├── SRR27320655_1.fastq.gz_trimming_report.txt
+    ├── SRR27320655_2.fastq.gz_trimming_report.txt
+    ├── SRR27320656_1.fastq.gz_trimming_report.txt
+    ├── SRR27320656_2.fastq.gz_trimming_report.txt
+    ├── SRR27320657_1.fastq.gz_trimming_report.txt
+    ├── SRR27320657_2.fastq.gz_trimming_report.txt
+    ├── SRR27320658_1.fastq.gz_trimming_report.txt
+    ├── SRR27320658_2.fastq.gz_trimming_report.txt
+    ├── SRR27320659_1.fastq.gz_trimming_report.txt
+    ├── SRR27320659_2.fastq.gz_trimming_report.txt
+    ├── SRR27320660_1.fastq.gz_trimming_report.txt
+    └── SRR27320660_2.fastq.gz_trimming_report.txt
