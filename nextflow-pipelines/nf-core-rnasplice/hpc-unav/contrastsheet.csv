@@ -1,0 +1,3 @@
+contrast,treatment,control
+tumor_vs_normal_eocrc,tumor_eocrc,normal_eocrc
+tumor_vs_normal_locrc,tumor_locrc,normal_locrc

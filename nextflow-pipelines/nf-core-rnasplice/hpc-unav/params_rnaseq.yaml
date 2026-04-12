@@ -1,0 +1,149 @@
+# ===========================================================
+# nf-core/rnasplice parameter file (YAML format)
+# Version tested: nf-core/rnasplice == 1.0.4
+# ===========================================================
+
+# -----------------------------------------------------------
+# INPUT/OUTPUT OPTIONS
+# -----------------------------------------------------------
+input: "samplesheet_few_samples.csv"                # nf-core formatted sample sheet
+contrasts: "contrastsheet.csv"                      # optional contrasts file for differential expression (if using DESeq2/edgeR/limma downstream)
+source: "fastq"                                     # input data type: 'fastq' or 'bam'
+outdir: "/home/samarquez/tfm-rnaseq/results-rnasplice-8samples"                      # output directory
+multiqc_title: "results-rnasplice-4samples"
+
+# -----------------------------------------------------------
+# REFERENCE GENOME OPTIONS
+# -----------------------------------------------------------
+# Genome FASTA from Ensembl
+#fasta: "data/genomes/GRCh38/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz"
+
+# Matching GTF from Ensemble
+#gtf: "data/genomes/GRCh38/Homo_sapiens.GRCh38.115.gtf.gz"
+
+# Genome FASTA from GENCODE
+fasta: "/home/samarquez/tfm-rnaseq/data/genomes/rnasplice/GRCh38.primary_assembly.genome.fa.gz"
+
+# Matching GTF from GENCODE
+gtf: "/home/samarquez/tfm-rnaseq/data/genomes/rnasplice/gencode.v49.primary_assembly.annotation.gtf.gz"
+
+transcript_fasta: "/home/samarquez/tfm-rnaseq/data/genomes/rnasplice/gencode.v49.transcripts.fa.gz"
+star_index: "/mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/index/star"
+salmon_index: "/mnt/lustre/scratch/nlsas/home/otras/cim/smv/genomes/index/salmon"
+
+# To specify if your GTF annotation is in GENCODE format
+gencode: true  
+#igenomes_ignore: true                  # use local reference paths only
+
+# -----------------------------------------------------------
+# ALIGNMENT OPTIONS
+# -----------------------------------------------------------
+aligner: "star_salmon"
+#pseudo_aligner: "salmon"                   # which pseudo-aligner to use (e.g. "sal
+skip_alignment: false                       # whether to skip alignment (e.g. if using a pseudo-aligner like Salmon)
+save_reference: false                       # true: to create a new salmon index; false: to reuse an existing one
+#save_unaligned: false                       # whether to keep unaligned reads (if using STAR)
+save_align_intermeds: true                 # whether to keep STAR intermediate files (BAMs, logs, etc.)
+
+# -----------------------------------------------------------
+# READ TRIMMING OPTIONS
+# -----------------------------------------------------------
+#skip_trimming: false                    # enable or disable adapter trimming
+#skip_trimgalore_fastqc: false           # whether to skip FastQC on trimmed reads (if using Trim Galore!)
+#save_trimmed: false                    # whether to keep trimmed reads
+
+# -----------------------------------------------------------
+# QC OPTIONS
+# -----------------------------------------------------------
+#skip_fastqc: false                         # if true, skips FastQC/MultiQC
+
+# -----------------------------------------------------------
+# rMATS OPTIONS
+# -----------------------------------------------------------
+rmats: true                      #[boolean] Run rMATS workflow.
+#rmats_splice_diff_cutoff: 0.001        #[number]  The cutoff used in the null hypothesis test for differential splicing. [default: 0.0001]
+#rmats_paired_stats: true              #[boolean] Use paired statistical model. [default: true]
+#rmats_read_len: 40                  #[integer] The length of each read. [default: 40]
+#rmats_novel_splice_site: false         #[boolean] Detect splicing events that involve an unannotated splice site.
+#rmats_min_intron_len: 50            #[integer] Minimum Intron Length. [default: 50]
+#rmats_max_exon_len: 500              #[integer] Maximum exon length. [default: 500]
+
+# -----------------------------------------------------------
+# DEXSeq DEU OPTIONS
+# -----------------------------------------------------------
+#dexseq_exon: true                      #[boolean] Run DEXSeq differential exon usage workflow.
+#save_dexseq_annotation: false           #[boolean] Save pre-processed GFF annotation file.
+#gff_dexseq: null                       #[string]  Path to GFF3 annotation file.
+#alignment_quality: 10                #[integer] Minimum alignment quality required for reads to be counted. [default: 10]
+#aggregation: true                      #[boolean] Combine overlapping genes into a single aggregate gene. [default: true]
+#save_dexseq_plot: true                 #[boolean] Save plots of the per gene DEXSeq results. [default: true]
+n_dexseq_plot: 50                 #[integer] Plot the N most significant genes from the DEXSeq results. [default: 10]
+
+# -----------------------------------------------------------
+# edgeR DEU options
+# -----------------------------------------------------------
+#edger_exon: true                       #[boolean] Run edgeR workflow.
+#save_edger_plot: true                  #[boolean] Save plots of the per gene edgeR results. [default: true]
+n_edger_plot: 5                  #[integer] Plot the N most significant genes from the edgeR results. [default: 10]
+
+# -----------------------------------------------------------
+# DEXSeq DTU options
+# -----------------------------------------------------------
+#dexseq_dtu: true                       #[boolean] Run DEXSeq differential transcript usage workflow.
+#dtu_txi: dtuScaledTPM                  #[string]  Generate estimated counts using dtuScaledTPM or scaledTPM abundance estimates. (accepted: dtuScaledTPM, scaledTPM) [default: dtuScaledTPM] 
+#min_samps_gene_expr: 4              #[integer] Minimal number of samples where genes should be expressed. [default: 6]
+#min_samps_feature_expr: 2           #[integer] Minimal number of samples where features should be expressed. [default: 0]
+#min_samps_feature_prop: 2           #[integer] Minimal proportion of samples where features should be expressed. [default: 0]
+#min_gene_expr: 10                    #[integer] Minimal gene expression. [default: 10]
+#min_feature_expr: 10                 #[integer] Minimal feature expression. [default: 10]
+#min_feature_prop: 0.1                #[number]  Minimal proportion for feature expression. This value should be between 0 and 1. [default: 0.1]
+
+# -----------------------------------------------------------
+# Miso
+# -----------------------------------------------------------
+sashimi_plot: false              #[boolean] Create sashimi plots using MISO.
+#miso_genes                       #[string]  List containing identifiers of genes to plot. [default: ENSG00000004961, ENSG00000005302]
+#miso_genes_file                  #[string]  New-line separate file containing identifiers of genes to plot. [default: None]
+#miso_read_len                    #[integer] Read length used to calculate coverage. [default: 75]
+#fig_height                       #[integer] Sashimi figure height (inches). [default: 7]
+#fig_width                        #[integer] Sashimi figure width (inches). [default: 7]
+
+# -----------------------------------------------------------
+# SUPPA options
+# -----------------------------------------------------------
+#suppa: true                            #[boolean] Run SUPPA workflow. [default: true]
+#suppa_per_local_event: true           #[boolean] Quantify event inclusion levels (PSIs) from multiple samples. [default: true]
+#suppa_per_isoform: true                #[boolean] Quantify isoform inclusion levels (PSIs) from multiple samples. [default: true]
+#suppa_tpm: null                        #[string]  Expression file containing the abundances of all transcripts (ideally in TPM units).
+#generateevents_pool_genes: true        #[boolean] Redefine genes by clustering together transcripts by genomic stranded overlap and sharing at least one exon. [default: true] 
+#generateevents_event_type: "SE SS MX RI FL"        #[string]  Space separated list of events to generate. [default: SE SS MX RI FL]
+#generateevents_boundary: "S"          #[string]  Boundary type (only used for local AS events). (accepted: S, V) [default: S]
+#generateevents_threshold: 10         #[integer] Variability treshold. [default: 10]
+#generateevents_exon_length: 100       #[integer] Defines the number of nucleotides to display in the output GTF. [default: 100]
+#psiperevent_total_filter: 0         #[integer] Minimum total expression of the transcripts involved in the event. [default: 0]
+#diffsplice_local_event: true           #[boolean] Calculate differential splicing for AS events across multiple conditions with replicates. [default: true]
+#diffsplice_isoform: true               #[boolean] Calculate differential splicing for differential transcript usage across multiple conditions with replicates [default: true] 
+#diffsplice_method: "empirical"                #[string]  The method to use to calculate the significance. (accepted: empirical, classical) [default: empirical]
+#diffsplice_area: 1000                  #[integer] Integer indicating the number of points in the local area of the delta PSI - average TPM distribution. [default: 1000] 
+#diffsplice_lower_bound: 0           #[integer] Lower-bound for the absolute delta PSI value to test for significance. [default: 0]
+#diffsplice_gene_correction: true       #[boolean] Correct the p-values by gene. [default: true]
+#diffsplice_paired: true                #[boolean] Indicates if replicates across conditions are paired. [default: true]
+#diffsplice_alpha: 0.05                 #[number]  Family-wise error rate to use for the multiple test correction. [default: 0.05]
+#diffsplice_median: false                #[boolean] Use the median to calculate the Delta PSI, instead of the mean.
+#diffsplice_tpm_threshold: 0         #[integer] Minimum expression (calculated as average TPM value within-replicates and between-conditions) to be included in the analysis. [default: 0] 
+#diffsplice_nan_threshold: 0         #[integer] Proportion of samples with nan values allowed per condition to calculate a DeltaPSI . [default: 0]
+#clusterevents_local_event: true        #[boolean] Cluster events according to PSI values across conditions [default: true]
+#clusterevents_isoform: true            #[boolean] Cluster transcripts according to PSI values across conditions [default: true]
+#clusterevents_sigthreshold: null       #[number]  P-value threshold to consider an event significant from the dpsi file.
+#clusterevents_dpsithreshold: 0.05      #[number]  Lower-bound for the absolute delta PSI value to cluster. [default: 0.05]
+#clusterevents_eps: 0.05                #[number]  Maximum distance (between 0 and 1) to consider two events as members of the same cluster. [default: 0.05]
+#clusterevents_metric: "euclidean"             #[string]  Distance metric. (accepted: euclidean, manhattan, cosine) [default: euclidean]
+#clusterevents_separation: null         #[integer] Maximum distance in PSI space of an event to a cluster.
+#clusterevents_min_pts: 20            #[integer] Minimum number of events required per cluster. [default: 20]
+#clusterevents_method: "DBSCAN"             #[string]  Clustering method to use (DBSCAN, OPTICS). (accepted: OPTICS, DBSCAN) [default: DBSCAN]
+
+# -----------------------------------------------------------
+# Generic options
+# -----------------------------------------------------------
+publish_dir_mode: "copy"               # copy results instead of symlink (safer on HPC)
+
