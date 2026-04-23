@@ -1,0 +1,9 @@
+sample,fastq_1,fastq_2,strandedness,condition
+SRR17866817,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866817_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866817_2.fastq.gz,reverse,tumor_eocrc
+SRR17866818,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866818_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866818_2.fastq.gz,reverse,normal_eocrc
+SRR17866819,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866819_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866819_2.fastq.gz,reverse,tumor_eocrc
+SRR17866820,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866820_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR17866820_2.fastq.gz,reverse,normal_eocrc
+SRR27320655,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320655_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320655_2.fastq.gz,reverse,normal_locrc
+SRR27320656,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320656_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320656_2.fastq.gz,reverse,tumor_locrc
+SRR27320657,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320657_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320657_2.fastq.gz,reverse,normal_locrc
+SRR27320658,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320658_1.fastq.gz,/home/samarquez/tfm-rnaseq/data/reads/rnaseq/SRR27320658_2.fastq.gz,reverse,tumor_locrc
