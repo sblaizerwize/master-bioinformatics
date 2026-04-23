@@ -1,0 +1,88 @@
+# TIPS UNAV CLUSTER
+- Select the largest sample i.e. 3.3 GB and apply the pipeline to fix the maximum resources
+- Check samples' strandedness on the cmd_info.json file located at /crc86-rnaseq-results/salmon/<SRR17866817> 
+- Suppa will expect replicates, at least 2, per condition
+- BAMs are on a Lustre filesystem and the job cannot read them reliably.
+
+# USEFUL COMMANDS
+
+$ squeue -u $USER -h | wc -l
+$ squeue -u $USER -o "%.18i %.9P %.75j %.8u %.2t %.10M %.6D %R %q"
+$ sacct -j 5776638 --format=JobID,JobName,ReqMem,MaxRSS,MaxVMSize,AveRSS,State,ExitCode,Elapsed
+$ du -h --max-depth=1 $HOME | sort -hr
+$ rm -rf $HOME/.apptainer/cache/*
+$ nextflow run nf-core/rnasplice -r 1.0.4 --help --validationShowHiddenParams
+$ To compress a folder: tar -czvf archive.tar.gz folder/
+$ Copy files to local: scp samarquez@hpclogin.unav.es:/switchlist.rds ~/Downloads
+
+# Check myquota from UNAV cluster
+
+$ beegfsquota
+--------------------------
+       BeeGFS Quota
+--------------------------
+user: samarquez (uid: 222267)
+quota limit: 5.00 TiB
+used: 1.40 TiB
+
+# PARTITIONS
+
+$ scontrol show partition
+PartitionName=ml4bm
+   AllowGroups=ALL AllowAccounts=ml4bm AllowQos=ALL
+   AllocNodes=ALL Default=NO QoS=normal
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=30-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nodo[13-14]
+   PriorityJobFactor=1000 PriorityTier=1000 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=256 TotalNodes=2 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=256,mem=1416568M,node=2,billing=256
+
+PartitionName=short
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=NO QoS=normal
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=1-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nodo[01,03-14]
+   PriorityJobFactor=100 PriorityTier=100 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=832 TotalNodes=13 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=832,mem=4089624M,node=13,billing=832,gres/gpu=2,gres/gpu:tesla_p100=2
+
+PartitionName=medium
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=NO QoS=normal
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=7-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nodo[01,03-12]
+   PriorityJobFactor=100 PriorityTier=100 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=576 TotalNodes=11 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=576,mem=2673056M,node=11,billing=576,gres/gpu=2,gres/gpu:tesla_p100=2
+
+PartitionName=long
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=NO QoS=normal
+   DefaultTime=NONE DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=30-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nodo[01,03-12]
+   PriorityJobFactor=100 PriorityTier=100 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=576 TotalNodes=11 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=576,mem=2673056M,node=11,billing=576,gres/gpu=2,gres/gpu:tesla_p100=2
+
+# JOBS PER PARTITION 
+$ sacctmgr show qos format=Name,MaxSubmitJobs,MaxJobs,MaxWall
+      Name MaxSubmit MaxJobs     MaxWall 
+---------- --------- ------- ----------- 
+    normal                50   
+

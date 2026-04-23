@@ -1,0 +1,35 @@
+CONTRASTSHEET_CHECK:
+  python: 3.9.5
+CUSTOM_DUMPSOFTWAREVERSIONS:
+  python: 3.12.0
+  yaml: 6.0.1
+CUSTOM_GETCHROMSIZES:
+  getchromsizes: 1.16.1
+FASTQC:
+  fastqc: 0.12.1
+GFFREAD_TX2GENE:
+  gffread: 0.12.1
+GUNZIP_FASTA:
+  gunzip: '1.10'
+GUNZIP_GTF:
+  gunzip: '1.10'
+GUNZIP_TRANSCRIPT_FASTA:
+  gunzip: '1.10'
+ISOFORMSWITCHANALYZER:
+  bioconductor-stager: 2.2.0
+  r-base: 4.3.2
+PREPROCESS_TRANSCRIPTS_FASTA_GENCODE:
+  sed: '4.7'
+SALMON_QUANT_SALMON:
+  salmon: 1.10.1
+SAMPLESHEET_CHECK:
+  python: 3.9.5
+TRIMGALORE:
+  cutadapt: '3.4'
+  trimgalore: 0.6.7
+TXIMPORT:
+  bioconductor-tximeta: 1.8.0
+  r-base: 4.0.3
+Workflow:
+  Nextflow: 25.04.6
+  nf-core/rnasplice: 1.0.5

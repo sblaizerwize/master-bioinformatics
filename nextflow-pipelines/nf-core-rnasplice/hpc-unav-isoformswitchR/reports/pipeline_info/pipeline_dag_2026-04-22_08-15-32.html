@@ -1,0 +1,276 @@
+<!--
+  ~ Copyright 2013-2024, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v0["Channel.fromPath"]
+    v7[" "]
+    v11[" "]
+    v15[" "]
+    v41["samplesheet"]
+    v42["source"]
+    v50["Channel.fromPath"]
+    v51["contrastsheet"]
+    v56["Channel.fromPath"]
+    v96["salmon_index"]
+    v97["transcript_fasta"]
+    v98["alignment_mode"]
+    v99["lib_type"]
+    v139["alpha"]
+    v140["dIF"]
+    v156["ch_workflow_summary"]
+    v159["ch_methods_description"]
+    end
+    subgraph "NFCORE_RNASPLICE [NFCORE_RNASPLICE]"
+    subgraph "NFCORE_RNASPLICE:RNASPLICE [RNASPLICE]"
+    subgraph "NFCORE_RNASPLICE:RNASPLICE:PREPARE_GENOME [PREPARE_GENOME]"
+    v8(["GUNZIP_FASTA"])
+    v12(["GUNZIP_GTF"])
+    v16(["GUNZIP_TRANSCRIPT_FASTA"])
+    v19(["PREPROCESS_TRANSCRIPTS_FASTA_GENCODE"])
+    v22(["CUSTOM_GETCHROMSIZES"])
+    v9(( ))
+    v10(( ))
+    v13(( ))
+    v17(( ))
+    v24(( ))
+    v26(( ))
+    end
+    subgraph "NFCORE_RNASPLICE:RNASPLICE:INPUT_CHECK [INPUT_CHECK]"
+    v43(["SAMPLESHEET_CHECK"])
+    v44(( ))
+    end
+    subgraph "NFCORE_RNASPLICE:RNASPLICE:CONTRASTS_CHECK [CONTRASTS_CHECK]"
+    v52(["CONTRASTSHEET_CHECK"])
+    v53(( ))
+    end
+    v57(["CAT_FASTQ"])
+    subgraph "NFCORE_RNASPLICE:RNASPLICE:FASTQ_FASTQC_UMITOOLS_TRIMGALORE [FASTQ_FASTQC_UMITOOLS_TRIMGALORE]"
+    v65(["FASTQC"])
+    v81(["TRIMGALORE"])
+    v67(( ))
+    v86(( ))
+    end
+    v100(["SALMON_QUANT_SALMON"])
+    subgraph "NFCORE_RNASPLICE:RNASPLICE:TX2GENE_TXIMPORT_SALMON [TX2GENE_TXIMPORT_SALMON]"
+    v106(["UNTAR"])
+    v109(["GFFREAD_TX2GENE"])
+    v112(["TXIMPORT"])
+    v104(( ))
+    v110(( ))
+    end
+    v141(["ISOFORMSWITCHANALYZER"])
+    v149(["CUSTOM_DUMPSOFTWAREVERSIONS"])
+    v183(["MULTIQC"])
+    v38(( ))
+    v40(( ))
+    v46(( ))
+    v93(( ))
+    v138(( ))
+    v180(( ))
+    v181(( ))
+    v182(( ))
+    v187(( ))
+    end
+    end
+    subgraph " "
+    v23[" "]
+    v25["fai"]
+    v27["chrom_sizes"]
+    v39["ch_meta_fasta"]
+    v54["contrasts"]
+    v66["fastqc_html"]
+    v82["trim_html"]
+    v83["trim_unpaired"]
+    v101[" "]
+    v107[" "]
+    v113["suppa_tpm"]
+    v114["tximport_tx2gene"]
+    v115["counts_transcript_dtu_scaled"]
+    v116["tpm_transcript_dtu_scaled"]
+    v117["counts_transcript_length_scaled"]
+    v118["tpm_transcript_length_scaled"]
+    v119["counts_transcript_scaled"]
+    v120["tpm_transcript_scaled"]
+    v121["counts_transcript"]
+    v122["tpm_transcript"]
+    v123["counts_gene_length_scaled"]
+    v124["tpm_gene_length_scaled"]
+    v125["counts_gene_scaled"]
+    v126["tpm_gene_scaled"]
+    v127["counts_gene"]
+    v128["tpm_gene"]
+    v129["gi_ls"]
+    v130["gi_s"]
+    v131["gi"]
+    v132["txi_dtu"]
+    v133["txi_ls"]
+    v134["txi_s"]
+    v135["txi"]
+    v142[" "]
+    v143[" "]
+    v144[" "]
+    v145[" "]
+    v150[" "]
+    v151[" "]
+    v184[" "]
+    v185[" "]
+    v186[" "]
+    v188["multiqc_report"]
+    end
+    v0 --> v180
+    v7 --> v8
+    v8 --> v9
+    v8 --> v10
+    v11 --> v12
+    v12 --> v10
+    v12 --> v13
+    v15 --> v16
+    v16 --> v10
+    v16 --> v17
+    v17 --> v19
+    v19 --> v141
+    v19 --> v10
+    v9 --> v22
+    v22 --> v23
+    v22 --> v10
+    v22 --> v24
+    v22 --> v26
+    v24 --> v25
+    v26 --> v27
+    v38 --> v39
+    v41 --> v43
+    v42 --> v43
+    v43 --> v40
+    v43 --> v44
+    v50 --> v141
+    v51 --> v52
+    v52 --> v40
+    v52 --> v53
+    v53 --> v54
+    v56 --> v141
+    v46 --> v57
+    v57 --> v40
+    v57 --> v46
+    v46 --> v65
+    v65 --> v66
+    v65 --> v67
+    v65 --> v93
+    v46 --> v81
+    v81 --> v83
+    v81 --> v82
+    v81 --> v67
+    v81 --> v86
+    v81 --> v93
+    v96 --> v100
+    v97 --> v100
+    v98 --> v100
+    v99 --> v100
+    v13 --> v100
+    v86 --> v100
+    v100 --> v101
+    v100 --> v40
+    v100 --> v93
+    v100 --> v104
+    v100 --> v138
+    v104 --> v106
+    v106 --> v107
+    v106 --> v104
+    v13 --> v109
+    v109 --> v112
+    v109 --> v110
+    v104 --> v112
+    v112 --> v135
+    v112 --> v134
+    v112 --> v133
+    v112 --> v132
+    v112 --> v131
+    v112 --> v130
+    v112 --> v129
+    v112 --> v128
+    v112 --> v127
+    v112 --> v126
+    v112 --> v125
+    v112 --> v124
+    v112 --> v123
+    v112 --> v122
+    v112 --> v121
+    v112 --> v120
+    v112 --> v119
+    v112 --> v118
+    v112 --> v117
+    v112 --> v116
+    v112 --> v115
+    v112 --> v114
+    v112 --> v113
+    v112 --> v110
+    v139 --> v141
+    v140 --> v141
+    v13 --> v141
+    v138 --> v141
+    v141 --> v145
+    v141 --> v144
+    v141 --> v143
+    v141 --> v142
+    v141 --> v40
+    v40 --> v149
+    v149 --> v151
+    v149 --> v150
+    v149 --> v93
+    v156 --> v93
+    v159 --> v93
+    v93 --> v183
+    v180 --> v183
+    v181 --> v183
+    v182 --> v183
+    v183 --> v186
+    v183 --> v185
+    v183 --> v184
+    v183 --> v187
+    v187 --> v188
+    v9 --> v38
+    v10 --> v40
+    v67 --> v40
+    v110 --> v40
+    v44 --> v46
+    v86 --> v93
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>
